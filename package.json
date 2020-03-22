@@ -1,0 +1,70 @@
+{
+  "name": "photo-frontend",
+  "version": "0.6.1",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.16.1",
+    "apollo-boost": "^0.3.1",
+    "apollo-upload-client": "^10.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-import": "^1.11.0",
+    "css-loader": "^2.1.1",
+    "customize-cra": "^0.2.12",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "grommet": "^2.5.5",
+    "grommet-icons": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
+    "ramda": "^0.26.1",
+    "rc-form": "^2.4.4",
+    "react": "^16.8.4",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-apollo": "^2.5.2",
+    "react-app-rewire-sass-modules": "^1.1.7",
+    "react-app-rewired": "^2.1.1",
+    "react-dom": "^16.8.4",
+    "react-dropzone": "^10.1.4",
+    "react-lazyload": "^2.5.0",
+    "react-redux": "^6.0.1",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "react-stripe-elements": "^3.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "styled-components": "^4.2.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "format": "standard --fix"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "standard": {
+    "ignore": [
+      "/src/localStorage.js",
+      "/src/serviceWorker.js"
+    ]
+  },
+  "xproxy": "https://backend.burst.gallery/graphql",
+  "proxy": "http://localhost:9000/graphql",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}

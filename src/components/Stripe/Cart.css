@@ -1,0 +1,12 @@
+.cart-wrapper {
+  display: flex;
+  flex-grow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.cart-items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
