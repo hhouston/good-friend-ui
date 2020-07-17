@@ -1,45 +1,64 @@
-import React, { Component } from 'react'
-import './NavBar.css'
-import { Menu, Icon } from 'antd'
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
+import React, { Component } from "react";
+import "./NavBar.css";
+import { Menu, Icon, Button, Typography } from "antd";
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
+const { Text } = Typography;
 
 class NavBar extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      current: 'home'
-    }
+      current: "home",
+      hover: false,
+    };
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.toggleHover = this.toggleHover.bind(this);
   }
 
-  handleClick (e) {
-    this.setState({ current: e.key })
+  handleClick(e) {
+    this.setState({ current: e.key });
   }
 
-  render () {
+  toggleHover() {
+    this.setState({ hover: !this.state.hover });
+  }
+
+  render() {
     return (
-      <div className='navbar-wrapper'>
-        <div className='navbar-logo' />
-        <Menu className='navbar' onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' style={{ borderBottom: 'none' }}>
-          <SubMenu title={<span className='submenu-title-wrapper'>
-            <Icon type='camera' />Gallery</span>}>
-            <MenuItemGroup title='Lacrosse'>
-              <Menu.Item key='Riptide Orange'>Riptide Orange</Menu.Item>
-              <Menu.Item key='Riptide Grey'>Riptide Grey</Menu.Item>
-            </MenuItemGroup>
-            <MenuItemGroup title='Soccer'>
-              <Menu.Item key='Starfires'>Starfires</Menu.Item>
-            </MenuItemGroup>
-          </SubMenu>
-          <Menu.Item key='about'>About</Menu.Item>
-          <Menu.Item key='contact'>Contact</Menu.Item>
+      <div className="navbar-wrapper">
+        <Menu
+          className="navbar"
+          onClick={this.handleClick}
+          selectedKeys={[this.state.current]}
+          mode="horizontal"
+          style={{ borderBottom: "none" }}
+        >
+          <Menu.Item className="navbar-item" key="pricing">
+            Pricing Page
+          </Menu.Item>
+          <Menu.Item className="navbar-item" key="about">
+            About
+          </Menu.Item>
+          <Menu.Item className="navbar-item" key="careers">
+            Careers
+          </Menu.Item>
+          <Button
+            type="primary"
+            shape="round"
+            size="medium"
+            ghost={!this.state.hover}
+            onMouseEnter={this.toggleHover}
+            onMouseLeave={this.toggleHover}
+          >
+            Logout
+          </Button>
         </Menu>
       </div>
-    )
+    );
   }
 }
 
-export default NavBar
+export default NavBar;

@@ -1,0 +1,42 @@
+.how-it-works-container {
+  margin-top: 96px;
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebf3f6;
+}
+
+.subtitle {
+  font-family: "sifonn", sans-serif;
+  text-transform: uppercase;
+}
+
+.step-one-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-image {
+  flex: 0 0 40%;
+  max-width: 20%;
+}
+
+.step-content {
+  flex: 0 0 40%;
+  max-width: 25%;
+  margin-left: 96px;
+}
+
+.step-image-right {
+  margin-left: 96px;
+}
+
+.step-image-left {
+  margin-left: 96px;
+}
+
+.step-container {
+  padding: 16px 0 16px 0;
+}
