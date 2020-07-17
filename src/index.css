@@ -1,9 +1,17 @@
+@font-face {
+  font-family: "grotesk";
+  src: local("grotesk"),
+    url(./fonts/grotesk/HKGrotesk-Medium.otf) format("truetype");
+}
+@font-face {
+  font-family: "sifonn";
+  src: local("sifonn"), url(./fonts/sifonn/SIFONN_PRO.woff) format("woff");
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

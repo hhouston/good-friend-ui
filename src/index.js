@@ -47,7 +47,6 @@ const client = createApolloClient()
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
     <Provider store={store}>
-      <NavBar />
       <Root />
     </Provider>
   </ApolloProvider>,

@@ -1,0 +1,46 @@
+.personal-gifts-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.subtitle {
+  font-family: "sifonn", sans-serif;
+  text-transform: uppercase;
+}
+
+.personal-gifts-image {
+  flex: 0 0 26.33333%;
+  max-width: 26.33333%;
+}
+
+.personal-gifts-image::after {
+  content: "";
+}
+
+.personal-gifts-blob {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+  position: absolute;
+  right: 0;
+  max-height: 741px;
+}
+
+.personal-gifts-content {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  margin-left: 48px;
+}
+
+.thank-you-app-text {
+  font-family: "Dancing Script", cursive;
+  font-size: 38px;
+  color: #ff3399;
+  padding-top: 16px;
+}
+
+.section-image {
+  background-image: url("../../images/ty-envelope.png");
+}
