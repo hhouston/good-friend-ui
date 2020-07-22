@@ -23,7 +23,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var Anchor = (0, _react.forwardRef)(function (_ref, ref) {
+var Anchor = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var a11yTitle = _ref.a11yTitle,
       children = _ref.children,
       color = _ref.color,
@@ -51,14 +51,14 @@ var Anchor = (0, _react.forwardRef)(function (_ref, ref) {
   var coloredIcon = icon;
 
   if (icon && !icon.props.color) {
-    coloredIcon = (0, _react.cloneElement)(icon, {
+    coloredIcon = /*#__PURE__*/(0, _react.cloneElement)(icon, {
       color: (0, _utils.normalizeColor)(color || theme.anchor.color, theme)
     });
   }
 
   var first = reverse ? label : coloredIcon;
   var second = reverse ? coloredIcon : label;
-  return _react["default"].createElement(_StyledAnchor.StyledAnchor, _extends({}, rest, {
+  return /*#__PURE__*/_react["default"].createElement(_StyledAnchor.StyledAnchor, _extends({}, rest, {
     ref: ref,
     "aria-label": a11yTitle,
     colorProp: color,
@@ -77,7 +77,7 @@ var Anchor = (0, _react.forwardRef)(function (_ref, ref) {
       setFocus(false);
       if (_onBlur) _onBlur(event);
     }
-  }), first && second ? _react["default"].createElement(_Box.Box, {
+  }), first && second ? /*#__PURE__*/_react["default"].createElement(_Box.Box, {
     as: "span",
     direction: "row",
     align: "center",

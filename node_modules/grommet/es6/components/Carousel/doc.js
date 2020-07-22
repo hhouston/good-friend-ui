@@ -43,4 +43,4 @@ export var themeDoc = _extends({
     type: "string | { 'dark': string, 'light': string }",
     defaultValue: undefined
   }
-}, themeDocUtils.iconColor, {}, themeDocUtils.edgeStyle('The possible sizes for margin.'));
+}, themeDocUtils.iconColor, themeDocUtils.edgeStyle('The possible sizes for margin.'));

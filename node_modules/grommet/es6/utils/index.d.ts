@@ -38,16 +38,16 @@ export {isObject, deepFreeze, deepMerge, removeUndefined};
 type BoxSideType = "top" | "left" | "bottom" | "right" | "start" | "end" | "horizontal" | "vertical" | "all" | "between";
 type BoxSizeType = "xsmall" | "small" | "medium" | "large" | "xlarge" | string;
 type BoxStyleType = "solid" | "dashed" | "dotted" | "double" | "groove" | "ridge" | "inset" | "outset" | "hidden";
-type EdgeSizeType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge";
+export type EdgeSizeType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge";
 type EdgeType = "none" | EdgeSizeType | {bottom?: EdgeSizeType | string,end?: EdgeSizeType | string,horizontal?: EdgeSizeType | string,left?: EdgeSizeType | string,right?: EdgeSizeType | string,start?: EdgeSizeType | string,top?: EdgeSizeType | string,vertical?: EdgeSizeType | string} | string
 
 export type A11yTitleType = string;
 export type AlignContentType = "start" | "center" | "end" | "between" | "around" | "stretch";
 export type AlignSelfType = "start" | "center" | "end" | "stretch";
 export type AnimateType = boolean;
-export type BackgroundType = string | {color?: string,dark?: boolean | string,image?: string,position?: string,opacity?: "weak" | "medium" | "strong" | number | boolean,repeat?: "no-repeat" | "repeat" | string,size?: "cover" | "contain" | string,light?: string};
+export type BackgroundType = string | {color?: ColorType,dark?: boolean | string,image?: string,position?: string,opacity?: "weak" | "medium" | "strong" | number | boolean,repeat?: "no-repeat" | "repeat" | string,size?: "cover" | "contain" | string,light?: string};
 export type BasisType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "full" | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "auto" | string;
-export type BorderType = boolean | BoxSideType | {color?: ColorType, side?: BoxSideType, size?: BoxSizeType, style?: BoxStyleType} | ({color?: ColorType, side?: BoxStyleType, size?: BoxStyleType, style?: BoxStyleType})[];
+export type BorderType = boolean | BoxSideType | {color?: ColorType, side?: BoxSideType, size?: BoxSizeType, style?: BoxStyleType} | ({color?: ColorType, side?: BoxSideType, size?: BoxSizeType, style?: BoxStyleType})[];
 export type ColorType = string | {dark?: string,light?: string} | undefined;
 export type ElevationType = "none" | "xsmall" | "small" | "medium" | "large" | "xlarge" | string;
 export type FillType = "horizontal" | "vertical" | boolean;

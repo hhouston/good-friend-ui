@@ -30,6 +30,7 @@ export var doc = function doc(Select) {
       multiple: PropTypes.string
     }).description('Custom messages.'),
     multiple: PropTypes.bool.description('Whether to allow multiple options to be selected.'),
+    name: PropTypes.string.description("The name of the attribute when in a Form or FormField."),
     onChange: PropTypes.func.description('Function that will be called when the user selects an option.'),
     onClose: PropTypes.func.description('Function that will be called when the Select drop closes.'),
     onOpen: PropTypes.func.description('Function that will be called when the Select drop opens.'),
@@ -44,9 +45,12 @@ export var doc = function doc(Select) {
     selected: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).description("Index of the currently selected option. When multiple, the set of\n      options selected. NOTE: This is deprecated in favor of indicating\n      the selected values via the 'value' property."),
     size: PropTypes.oneOfType([PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']), PropTypes.string]).description('The size of the text and icon.'),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.element, // deprecated, use valueLabel
-    PropTypes.object, PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object]))]).description("Currently selected value. This can be an array\n      when multiple. Passing an element allows the caller to control how\n      the value is rendered. Passing an element is deprecated. Instead,\n      use the 'valueLabel' property."),
+    PropTypes.object, PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]))]).description("Currently selected value. This can be an array\n      when multiple. Passing an element allows the caller to control how\n      the value is rendered. Passing an element is deprecated. Instead,\n      use the 'valueLabel' property."),
     valueLabel: PropTypes.node.description("Provides custom rendering of the value. If not provided, Select\n      will render the value automatically."),
-    valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).description("When the options array contains objects, this property indicates how\n      to determine the value of each option. If a string is\n      provided, it is used as the key to retrieve each option's value.\n      If a function is provided, it is called with the option and the\n      return value indicates the value."),
+    valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.shape({
+      key: PropTypes.string,
+      reduce: PropTypes.bool
+    })]).description("When the options array contains objects, this property indicates how\n      to determine the value of each option. If a string is\n      provided, it is used as the key to retrieve each option's value.\n      If a function is provided, it is called with the option and the\n      return value indicates the value. If reduce is true, the value\n      coming via the key will be used for the onChange value and the value\n      property is expected to be reduced to align."),
     emptySearchMessage: PropTypes.string.description("Empty option message to display when no matching results were found").defaultValue('No matches found')
   });
   return DocumentedSelect;
@@ -83,8 +87,8 @@ export var themeDoc = {
     defaultValue: undefined
   },
   'select.control.open': {
-    description: "Any additional style for the control open state of the Select \ncomponent.",
-    type: 'object',
+    description: "Any additional style for the Select DropButton when using the\n    controlled open state.",
+    type: 'string | object',
     defaultValue: undefined
   },
   'select.control.extend': {
@@ -106,6 +110,11 @@ export var themeDoc = {
     description: 'The down icon to use for opening the Select.',
     type: 'React.Element',
     defaultValue: '<FormDown />'
+  },
+  'select.icons.up': {
+    description: 'The up icon to use for closing the Select.',
+    type: 'React.Element',
+    defaultValue: undefined
   },
   'select.searchInput': {
     description: "Component for the Select search input field.",

@@ -53,6 +53,6 @@ var themeDoc = _extends({
     type: "string | { 'dark': string, 'light': string }",
     defaultValue: undefined
   }
-}, _utils.themeDocUtils.iconColor, {}, _utils.themeDocUtils.edgeStyle('The possible sizes for margin.'));
+}, _utils.themeDocUtils.iconColor, _utils.themeDocUtils.edgeStyle('The possible sizes for margin.'));
 
 exports.themeDoc = themeDoc;

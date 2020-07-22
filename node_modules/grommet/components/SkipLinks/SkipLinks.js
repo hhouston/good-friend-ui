@@ -45,26 +45,26 @@ var SkipLinks = function SkipLinks(_ref) {
     }, 0);
   };
 
-  return _react["default"].createElement(_Layer.Layer, {
+  return /*#__PURE__*/_react["default"].createElement(_Layer.Layer, {
     id: id,
     position: showLayer ? 'top' : 'hidden',
     ref: layerRef,
     onFocus: onFocus,
     onBlur: onBlur
-  }, _react["default"].createElement(_Box.Box, {
+  }, /*#__PURE__*/_react["default"].createElement(_Box.Box, {
     pad: {
       horizontal: 'medium'
     }
-  }, _react["default"].createElement(_Heading.Heading, {
+  }, /*#__PURE__*/_react["default"].createElement(_Heading.Heading, {
     level: 2
-  }, messages.skipTo, ":"), _react["default"].createElement(_Box.Box, {
+  }, messages.skipTo, ":"), /*#__PURE__*/_react["default"].createElement(_Box.Box, {
     direction: "row",
     align: "center",
     pad: {
       bottom: 'medium'
     }
   }, children.map(function (element, index) {
-    return (0, _react.cloneElement)(element, {
+    return /*#__PURE__*/(0, _react.cloneElement)(element, {
       key: "skip-link-" + index,
       onClick: removeLayer
     });

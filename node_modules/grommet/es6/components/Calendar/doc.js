@@ -132,4 +132,4 @@ export var themeDoc = _extends({
     type: 'string',
     defaultValue: '768px'
   }
-}, themeDocUtils.iconColor, {}, themeDocUtils.edgeStyle('The possible sizes for margin.'));
+}, themeDocUtils.iconColor, themeDocUtils.edgeStyle('The possible sizes for margin.'));

@@ -13,7 +13,6 @@ import {
   MarginType, 
   PadType,
   PolymorphicType,
-  ColorType, 
   RoundType,
 } from "../../utils";
 
@@ -24,13 +23,13 @@ export interface BoxProps {
   margin?: MarginType;
   align?: "start" | "center" | "end" | "baseline" | "stretch";
   alignContent?: AlignContentType;
-  animation?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut" | {type?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut",delay?: number,duration?: number,size?: "xsmall" | "small" | "medium" | "large" | "xlarge"} | ("fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut" | {type?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut",delay?: number,duration?: number,size?: "xsmall" | "small" | "medium" | "large" | "xlarge"})[];
+  animation?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "rotateLeft" | "rotateRight" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut" | {type?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut",delay?: number,duration?: number,size?: "xsmall" | "small" | "medium" | "large" | "xlarge"} | ("fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut" | {type?: "fadeIn" | "fadeOut" | "jiggle" | "pulse" | "slideUp" | "slideDown" | "slideLeft" | "slideRight" | "zoomIn" | "zoomOut",delay?: number,duration?: number,size?: "xsmall" | "small" | "medium" | "large" | "xlarge"})[];
   background?: BackgroundType;
   basis?: BasisType;
   border?: BorderType;
   direction?: "row" | "column" | "row-responsive" | 'row-reverse' | 'column-reverse';
   elevation?: ElevationType;
-  flex?: "grow" | "shrink" | boolean | {grow?: number,shrink?: number};
+  flex?: "grow" | "shrink" | boolean | { grow?: number, shrink?: number };
   fill?: FillType;
   focusIndicator?: boolean;
   gap?: GapType;
