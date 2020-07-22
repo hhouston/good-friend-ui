@@ -40,18 +40,30 @@ class Home extends Component {
                 <Title
                   type="primary"
                   className="title"
-                  style={{ fontSize: "72px" }}
+                  style={{ fontSize: "72px", margin: "0" }}
                 >
                   Spread The Love
                 </Title>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    color: "#5E5E5E",
+                    paddingBottom: "24px",
+                  }}
+                >
+                  The gift that keeps on giving
+                </p>
                 <Button
                   type="primary"
                   shape="round"
                   size="large"
-                  ghost={!this.state.hover}
                   onMouseEnter={this.toggleHover}
                   onMouseLeave={this.toggleHover}
-                  style={{ height: "0", padding: "24px 36px", lineHeight: "0" }}
+                  style={{
+                    backgroundColor: "#FF3399",
+                    color: "#fff",
+                    borderColor: "#FF3399",
+                  }}
                 >
                   Apply Now
                 </Button>
@@ -85,11 +97,5 @@ class Home extends Component {
     );
   }
 }
-
-// <div class="cart-item giftIconAdded"></div>
-// <img
-//   src={require("../images/gift.svg")}
-//   className="giftIcon shake jump"
-// />
 
 export default withApollo(Home);
