@@ -18,9 +18,22 @@ class Home extends Component {
 
     this.state = {
       hover: false,
+      isMobile: false,
     };
 
     this.toggleHover = this.toggleHover.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  resize() {
+    this.setState({ isMobile: window.innerWidth < 768 });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize.bind(this));
   }
 
   toggleHover() {
@@ -28,10 +41,12 @@ class Home extends Component {
   }
 
   render() {
+    const { isMobile } = this.state;
+    const titleSize = isMobile ? "32px" : "48px";
     return (
       <div className="app">
         <div className="header-section">
-          <Header style={{ background: "transparent" }}>
+          <Header style={{ background: "transparent", textAlign: "end" }}>
             <NavBar />
           </Header>
           <div className="container">
@@ -41,7 +56,7 @@ class Home extends Component {
                   <Title
                     type="primary"
                     className="title"
-                    style={{ margin: "0" }}
+                    style={{ margin: "0", fontSize: titleSize }}
                   >
                     Spread The Love
                   </Title>
