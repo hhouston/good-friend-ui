@@ -29,7 +29,7 @@ class NavBar extends Component {
   }
 
   resize() {
-    this.setState({ isMobile: window.innerWidth <= 768 });
+    this.setState({ isMobile: window.innerWidth < 768 });
   }
 
   componentWillUnmount() {
@@ -53,9 +53,9 @@ class NavBar extends Component {
 
   render() {
     const { isMobile } = this.state;
-    return (
-      <div className="navbar-wrapper">
-        {!isMobile ? (
+    if (!isMobile) {
+      return (
+        <div className="navbar-wrapper">
           <Menu
             className="navbar"
             onClick={this.handleClick}
@@ -83,48 +83,24 @@ class NavBar extends Component {
               Logout
             </Button>
           </Menu>
-        ) : (
-          <>
-            <MenuOutlined onClick={this.showDrawer} />
-            <Drawer
-              title="Basic Drawer"
-              placement="right"
-              closable={false}
-              onClose={this.onClose}
-              visible={this.state.visible}
-              width="80%"
-            >
-              <Menu
-                className="navbar"
-                onClick={this.handleClick}
-                selectedKeys={[this.state.current]}
-                mode="horizontal"
-                style={{ borderBottom: "none" }}
-              >
-                <Menu.Item className="navbar-item" key="pricing">
-                  Pricing Page
-                </Menu.Item>
-                <Menu.Item className="navbar-item" key="about">
-                  About
-                </Menu.Item>
-                <Menu.Item className="navbar-item" key="careers">
-                  Careers
-                </Menu.Item>
-                <Button
-                  type="primary"
-                  shape="round"
-                  size="medium"
-                  ghost={!this.state.hover}
-                  onMouseEnter={this.toggleHover}
-                  onMouseLeave={this.toggleHover}
-                >
-                  Logout
-                </Button>
-              </Menu>
-            </Drawer>
-          </>
-        )}
-      </div>
+        </div>
+      );
+    }
+    return (
+      <>
+        <MenuOutlined onClick={this.showDrawer} />
+        <Drawer
+          title="Welcome"
+          onClose={this.onClose}
+          visible={this.state.visible}
+          width="70%"
+        >
+          <p>Pricing Page</p>
+          <p>Packages</p>
+          <p>About</p>
+          <p>Careers</p>
+        </Drawer>
+      </>
     );
   }
 }
