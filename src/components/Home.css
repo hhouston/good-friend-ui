@@ -1,14 +1,5 @@
-.carousel-image img {
-  width: 100%;
-  height: 70vh;
-  overflow: hidden;
-  object-fit: cover;
-}
-
-.photo-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.header-section {
+  background-image: linear-gradient(#ebf3f6, #d7f0fc);
 }
 
 .container {
@@ -22,25 +13,9 @@
   align-items: center;
   margin-top: 32px;
 }
-.site-layout-horizontal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 32px;
-}
 
 .title {
   font-family: "sifonn", sans-serif;
-}
-
-.apply-now-button {
-  height: 0;
-  padding: 24px 36px;
-}
-
-.app {
-  background-image: linear-gradient(#d7f0fc, #fff, #fff);
 }
 
 .subheader {
@@ -48,10 +23,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 
 .subheader-image {
   width: 100%;
+}
+
+.header-image-section {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: -30px;
+}
+
+.header-image-section img {
+  max-width: 27%;
+  object-fit: contain;
+}
+
+.subheader-separator {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
 }
 
 @-webkit-keyframes fadeInLeft {
