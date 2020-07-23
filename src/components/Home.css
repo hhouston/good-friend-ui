@@ -55,6 +55,16 @@
   padding-top: 28px;
 }
 
+@media (max-width: 767px) {
+  .header-image-section {
+    margin-top: 0px;
+  }
+
+  .header-image-section img {
+    max-width: 44%;
+  }
+}
+
 @-webkit-keyframes fadeInLeft {
   from {
     opacity: 0;
