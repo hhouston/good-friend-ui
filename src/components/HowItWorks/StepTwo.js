@@ -11,7 +11,7 @@ class HowItWorks extends Component {
     return (
       <FadeInSection direction="left">
         <div className="step-container">
-          <div className="step-one-section">
+          <div className="step-two-section">
             <img
               src={require("../../images/step-two.png")}
               className="step-image step-image-left"
@@ -29,12 +29,11 @@ class HowItWorks extends Component {
                 Step 02
               </Button>
               <p
+                className="step-content-text-two"
                 style={{
                   fontSize: "14px",
                   color: "#7A7A7A",
                   paddingTop: "16px",
-                  float: "right",
-                  textAlign: "end",
                 }}
               >
                 Select the type of event (birthday, anniversary, graduation,
