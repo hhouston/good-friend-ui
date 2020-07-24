@@ -19,3 +19,20 @@
   flex: 0 0 40%;
   max-width: 40%;
 }
+
+@media (max-width: 767px) {
+  .why-container {
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 16px;
+  }
+
+  .why-content {
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .why-image {
+    max-width: 80%;
+  }
+}
