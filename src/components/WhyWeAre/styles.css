@@ -1,0 +1,21 @@
+.why-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 64px;
+  background-color: #dcf3fd;
+}
+
+.why-content {
+  padding: 0 64px;
+}
+
+.why-text {
+  font-size: 14px;
+  line-height: 1.8em;
+}
+
+.why-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+}

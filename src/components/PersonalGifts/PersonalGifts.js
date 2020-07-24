@@ -10,6 +10,7 @@ class PersonalGifts extends Component {
   }
 
   render() {
+    const { titleSize } = this.props;
     return (
       <FadeInSection direction="up">
         <div className="personal-gifts-container">
@@ -18,15 +19,20 @@ class PersonalGifts extends Component {
             className="personal-gifts-image"
           />
           <div className="personal-gifts-content">
-            <Title type="secondary" level={2} className="subtitle">
+            <Title
+              type="secondary"
+              level={2}
+              className="subtitle"
+              style={{ fontSize: titleSize }}
+            >
               Personal Gifts
             </Title>
-            <p style={{ fontSize: "14px", color: "#7A7A7A" }}>
+            <p className="personal-gifts-text">
               Keeping a strong connection with your loved ones is important. Our
-              personal gift curators will help pick out (and deliver)the perfect
-              present for any occasion.
+              personal gift curators will help pick out (and deliver) the
+              perfect present for any occasion.
             </p>
-            <p style={{ fontSize: "14px" }} level={2}>
+            <p className="personal-gifts-subtext">
               Will ensure you never show up empty handed
             </p>
           </div>

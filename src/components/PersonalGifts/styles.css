@@ -8,7 +8,6 @@
 
 .subtitle {
   font-family: "sifonn", sans-serif;
-  text-transform: uppercase;
 }
 
 .personal-gifts-image {
@@ -25,14 +24,17 @@
   max-width: 33.33333%;
   position: absolute;
   right: 0;
-  max-height: 741px;
+  max-height: 600px;
 }
 
-.thank-you-app-text {
-  font-family: "Dancing Script", cursive;
-  font-size: 38px;
-  color: #ff3399;
-  padding-top: 16px;
+.personal-gifts-text {
+  font-size: 16px;
+  color: #656565;
+  line-height: 1.8em;
+}
+
+.personal-gifts-subtext {
+  font-size: 16px;
 }
 
 .section-image {
@@ -65,11 +67,18 @@
   .personal-gifts-container {
     flex-direction: column;
     text-align: center;
-    padding: 0 8px;
+    padding: 0 16px;
   }
 
   .personal-gifts-image {
     max-width: 50%;
     padding-bottom: 8px;
+  }
+  .personal-gifts-text {
+    font-size: 16px;
+  }
+
+  .personal-gifts-subtext {
+    font-size: 14px;
   }
 }

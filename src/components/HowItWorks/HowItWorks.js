@@ -14,9 +14,15 @@ class HowItWorks extends Component {
   }
 
   render() {
+    const { titleSize } = this.props;
     return (
       <div className="how-it-works-container">
-        <Title type="secondary" level={2} className="subtitle">
+        <Title
+          type="secondary"
+          level={2}
+          className="subtitle"
+          style={{ fontSize: titleSize }}
+        >
           How It Works
         </Title>
         <StepOne />
