@@ -9,7 +9,6 @@
 
 .subtitle {
   font-family: "sifonn", sans-serif;
-  text-transform: uppercase;
 }
 
 .step-one-section {
@@ -21,6 +20,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #656565;
+  padding-top: 16px;
+  line-height: 1.8em;
 }
 
 .step-image {
@@ -66,6 +72,12 @@
     max-width: 25%;
     margin-left: 96px;
   }
+
+  .step-content-two {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
   .step-image-right {
     margin-left: 96px;
   }
@@ -75,7 +87,6 @@
   }
 
   .step-content-text-two {
-    float: "right";
     text-align: end;
   }
 }
@@ -86,7 +97,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 32px 12px 0px;
+    padding: 32px 16px 0px;
   }
 
   .step-image {

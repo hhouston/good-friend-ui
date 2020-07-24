@@ -27,13 +27,7 @@ class StepOne extends Component {
               >
                 Step 01
               </Button>
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#7A7A7A",
-                  paddingTop: "16px",
-                }}
-              >
+              <p className="step-text">
                 Select a package that fits your needs and we will pair you up
                 with the curator that can best fulfill your needs
               </p>

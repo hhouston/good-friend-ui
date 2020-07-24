@@ -25,13 +25,7 @@ class HowItWorks extends Component {
               >
                 Step 03
               </Button>
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#7A7A7A",
-                  paddingTop: "16px",
-                }}
-              >
+              <p className="step-text">
                 Your personal curator will handle the rest.
               </p>
             </div>

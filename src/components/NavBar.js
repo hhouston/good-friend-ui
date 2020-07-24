@@ -79,8 +79,9 @@ class NavBar extends Component {
               ghost={!this.state.hover}
               onMouseEnter={this.toggleHover}
               onMouseLeave={this.toggleHover}
+              style={{ border: "2px solid #2b137d" }}
             >
-              Logout
+              Sign in
             </Button>
           </Menu>
         </div>
@@ -94,6 +95,8 @@ class NavBar extends Component {
           onClose={this.onClose}
           visible={this.state.visible}
           width="70%"
+          bodyStyle={{ lineHeight: "2.5" }}
+          headerStyle={{ borderBottom: "none" }}
         >
           <p>Pricing Page</p>
           <p>Packages</p>

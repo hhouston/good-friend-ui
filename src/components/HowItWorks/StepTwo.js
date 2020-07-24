@@ -16,26 +16,18 @@ class HowItWorks extends Component {
               src={require("../../images/step-two.png")}
               className="step-image step-image-left"
             />
-            <div className="step-content">
+            <div className="step-content step-content-two">
               <Button
                 shape="round"
                 style={{
                   backgroundColor: "#FF3399",
                   color: "#fff",
-                  float: "right",
                   borderColor: "#FF3399",
                 }}
               >
                 Step 02
               </Button>
-              <p
-                className="step-content-text-two"
-                style={{
-                  fontSize: "14px",
-                  color: "#7A7A7A",
-                  paddingTop: "16px",
-                }}
-              >
+              <p className="step-text step-content-text-two">
                 Select the type of event (birthday, anniversary, graduation,
                 etc) the date your gift price range any info you'd like use to
                 have on the recipient and your personal curator will handle the

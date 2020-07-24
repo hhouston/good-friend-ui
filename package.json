@@ -56,8 +56,8 @@
       "/src/serviceWorker.js"
     ]
   },
-  "xproxy": "https://backend.burst.gallery/graphql",
-  "proxy": "http://localhost:9000/graphql",
+  "proxy": "https://172.31.69.172/graphql",
+  "xproxy": "http://localhost:9000/graphql",
   "browserslist": [
     ">0.2%",
     "not dead",
