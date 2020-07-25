@@ -56,8 +56,8 @@
       "/src/serviceWorker.js"
     ]
   },
-  "proxy": "https://54.80.191.226:9000/graphql",
-  "xproxy": "http://localhost:9000/graphql",
+  "proxy": "54.80.191.226:9000/graphql",
+  "xproxy": "localhost:9000/graphql",
   "browserslist": [
     ">0.2%",
     "not dead",

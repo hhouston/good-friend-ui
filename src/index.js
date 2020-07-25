@@ -33,7 +33,7 @@ const createApolloClient = (cache = {}) =>
     cache: new InMemoryCache().restore(cache),
     link: createUploadLink({
       // uri: 'http://localhost:9000/graphql'
-      uri: "https://54.80.191.226:9000/graphql",
+      uri: "54.80.191.226:9000/graphql",
     }),
   });
 
