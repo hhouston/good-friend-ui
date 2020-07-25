@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 64px;
-  background-color: #dcf3fd;
+  margin-top: 64px;
+  background-color: rgba(234, 242, 246, 0.6);
 }
 
 .why-content {
   padding: 0 64px;
+  z-index: 10;
 }
 
 .why-text {
@@ -18,21 +19,51 @@
 .why-image {
   flex: 0 0 40%;
   max-width: 40%;
+  z-index: 20;
+}
+
+.why-image-transparent {
+  position: absolute;
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+@media (min-width: 1013px) {
+  .why-image-transparent {
+    top: 0;
+    right: 0;
+  }
+}
+@media (max-width: 1012px) and (min-width: 768px) {
+  .why-content {
+    padding: 32px 64px;
+  }
+  .why-image-transparent {
+    top: 0;
+    right: 0;
+  }
 }
 
 @media (max-width: 767px) {
   .why-container {
     justify-content: center;
     flex-direction: column;
-    margin-top: 16px;
+    margin: 16px 0 32px 0;
   }
 
   .why-content {
-    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 12px;
     text-align: center;
   }
 
   .why-image {
     max-width: 80%;
+  }
+
+  .why-image-transparent {
+    display: none;
   }
 }
