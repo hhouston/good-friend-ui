@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 64px;
+  padding: 64px 0 16px 0;
 }
 
 .featured-item-content {
@@ -40,10 +40,6 @@
 }
 
 @media (max-width: 767px) {
-  .featured-item-text {
-    font-size: 14px;
-    color: #656565;
-  }
   .featured-item-image {
     padding-top: 32px;
     max-width: 85%;

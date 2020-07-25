@@ -10,7 +10,7 @@ class WhyWeAre extends Component {
   }
 
   render() {
-    const { titleSize } = this.props;
+    const { titleSize, isTablet, isMobile } = this.props;
     return (
       <FadeInSection direction="up">
         <div className="why-container">
@@ -34,10 +34,23 @@ class WhyWeAre extends Component {
               gift possible.
             </p>
           </div>
-          <img
-            src={require("../../images/why-section.png")}
-            className="why-image"
-          />
+          {isTablet ? (
+            <>
+              <img
+                src={require("../../images/why-section-transparent.png")}
+                className="why-image"
+              />
+              <img
+                src={require("../../images/why-section-blob.png")}
+                className="why-image-transparent"
+              />
+            </>
+          ) : (
+            <img
+              src={require("../../images/why-section.png")}
+              className="why-image"
+            />
+          )}
         </div>
       </FadeInSection>
     );

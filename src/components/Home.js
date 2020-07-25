@@ -31,6 +31,7 @@ class Home extends Component {
     this.state = {
       hover: false,
       isMobile: false,
+      isTablet: false,
     };
 
     this.toggleHover = this.toggleHover.bind(this);
@@ -41,7 +42,10 @@ class Home extends Component {
   }
 
   resize() {
-    this.setState({ isMobile: window.innerWidth < 768 });
+    this.setState({
+      isMobile: window.innerWidth < 768,
+      isTablet: window.innerWidth < 1012,
+    });
   }
 
   componentWillUnmount() {
@@ -53,7 +57,7 @@ class Home extends Component {
   }
 
   render() {
-    const { isMobile } = this.state;
+    const { isMobile, isTablet } = this.state;
     const titleSize = isMobile ? "32px" : "48px";
     const titleTwoSize = isMobile ? "32px" : "38px";
     return (
@@ -131,7 +135,11 @@ class Home extends Component {
             <PersonalGifts titleSize={titleTwoSize} />
             <HowItWorks titleSize={titleTwoSize} />
             <FeaturedItem titleSize={titleTwoSize} />
-            <WhyWeAre titleSize={titleTwoSize} />
+            <WhyWeAre
+              titleSize={titleTwoSize}
+              isMobile={isMobile}
+              isTablet={isTablet}
+            />
           </div>
         )}
       </ApolloConsumer>
