@@ -111,12 +111,7 @@ class Home extends Component {
                         className="hero-image"
                       />
                     )}
-                    {isMobile ? (
-                      <img
-                        src={require("../images/responsive-header-image.png")}
-                        className="responsive-purple-blob"
-                      />
-                    ) : (
+                    {isMobile ? null : (
                       <img
                         src={require("../images/purple-blob.png")}
                         className="purple-blob"

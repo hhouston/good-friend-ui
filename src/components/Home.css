@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: flex-end;
 }
 
 .hero-image {
@@ -124,6 +125,12 @@
     margin-top: 0px;
   }
 
+  .header-section {
+    background-image: url("../images/responsive-header-image.png");
+    background-position: center;
+    background-size: cover;
+  }
+
   .header-image-section img {
     max-width: 44%;
   }
@@ -140,6 +147,14 @@
 
   .apply-now-button {
     margin-top: 80px;
+  }
+
+  .subheader-separator {
+    padding: 0;
+  }
+
+  .floating-gift {
+    height: 48px;
   }
 }
 
