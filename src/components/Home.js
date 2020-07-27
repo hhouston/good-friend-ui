@@ -8,6 +8,7 @@ import WhyWeAre from "./WhyWeAre/WhyWeAre";
 import { Typography, Form, Input, Button, Modal, Icon, Layout } from "antd";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import { ApolloConsumer } from "react-apollo";
+import Typed from "react-typed";
 
 import gql from "graphql-tag";
 import { withApollo } from "react-apollo";
@@ -58,7 +59,7 @@ class Home extends Component {
 
   render() {
     const { isMobile, isTablet } = this.state;
-    const titleSize = isMobile ? "32px" : "48px";
+    const titleSize = isTablet ? "32px" : "54px";
     const titleTwoSize = isMobile ? "32px" : "38px";
     return (
       <ApolloConsumer>
@@ -70,50 +71,86 @@ class Home extends Component {
               </Header>
               <div className="container">
                 <div className="site-layout site-layout-subheader">
-                  <div>
+                  <div className="main-section">
                     <div className="subheader">
                       <Title
                         type="primary"
                         className="title"
-                        style={{ margin: "0", fontSize: titleSize }}
+                        style={{
+                          margin: "0",
+                          fontSize: titleSize,
+                          color: isMobile ? "#fff" : "inherit",
+                        }}
                       >
-                        Spread The Love
+                        Your personal gift curator for
                       </Title>
-                      <p
+                      <Typed
+                        classname="title-typing"
+                        strings={[
+                          "birthdays",
+                          "anniversaries",
+                          "Christmas",
+                          "graduation",
+                          "flowers",
+                          "chocolates",
+                        ]}
+                        typeSpeed={40}
+                        backSpeed={50}
+                        loop
+                        backDelay={1000}
                         style={{
-                          fontSize: "16px",
-                          color: "#53467E",
-                          paddingBottom: "24px",
+                          fontSize: titleSize,
+                          borderBottom: "8px solid #FF3399",
+                          color: isMobile ? "#fff" : "inherit",
                         }}
-                      >
-                        The gift that keeps on giving
-                      </p>
-                      <Button
-                        onClick={async () => {
-                          const data = await client.query({
-                            query: GET_TEAMS,
-                          });
-                          console.log(data);
-                        }}
-                        type="secondary"
-                        shape="round"
-                        size="large"
-                        onMouseEnter={this.toggleHover}
-                        onMouseLeave={this.toggleHover}
-                        style={{
-                          backgroundColor: "#FF3399",
-                          color: "#fff",
-                          borderColor: "#FF3399",
-                        }}
-                      >
-                        Apply Now
-                      </Button>
+                      ></Typed>
                     </div>
-                    <div className="header-image-section">
-                      <img src={require("../images/header-14.png")} />
-                      <img src={require("../images/header-11.png")} />
-                    </div>
+                    {isMobile ? null : (
+                      <img
+                        src={require("../images/ty-header.png")}
+                        className="hero-image"
+                      />
+                    )}
+                    {isMobile ? (
+                      <img
+                        src={require("../images/responsive-header-image.png")}
+                        className="responsive-purple-blob"
+                      />
+                    ) : (
+                      <img
+                        src={require("../images/purple-blob.png")}
+                        className="purple-blob"
+                      />
+                    )}
+                    <img
+                      src={require("../images/floating-gift-icon.png")}
+                      className="floating-gift"
+                    />
                   </div>
+                  <Button
+                    onClick={async () => {
+                      const data = await client.query({
+                        query: GET_TEAMS,
+                      });
+                      console.log(data);
+                    }}
+                    className="apply-now-button"
+                    type="secondary"
+                    shape="round"
+                    size="large"
+                    onMouseEnter={this.toggleHover}
+                    onMouseLeave={this.toggleHover}
+                    style={{
+                      background:
+                        "linear-gradient(90deg,#FF3399 0,#FF3399, 76%,#D03AFD",
+                      color: "#fff",
+                      border: "none",
+                      width: "180px",
+                      height: "54px",
+                    }}
+                  >
+                    Apply Now
+                  </Button>
                 </div>
               </div>
             </div>
