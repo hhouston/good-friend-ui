@@ -56,12 +56,13 @@ class NavBar extends Component {
     if (!isMobile) {
       return (
         <div className="navbar-wrapper">
+          <span className="logo">THANK YOU</span>
           <Menu
             className="navbar"
             onClick={this.handleClick}
             selectedKeys={[this.state.current]}
             mode="horizontal"
-            style={{ borderBottom: "none" }}
+            style={{ borderBottom: "none", zIndex: "30" }}
           >
             <Menu.Item className="navbar-item" key="pricing">
               Pricing Page
@@ -73,13 +74,12 @@ class NavBar extends Component {
               Careers
             </Menu.Item>
             <Button
-              type="primary"
               shape="round"
               size="medium"
               ghost={!this.state.hover}
               onMouseEnter={this.toggleHover}
               onMouseLeave={this.toggleHover}
-              style={{ border: "2px solid #2b137d" }}
+              style={{ border: "2px solid #fff" }}
             >
               Sign in
             </Button>
@@ -88,8 +88,9 @@ class NavBar extends Component {
       );
     }
     return (
-      <>
-        <MenuOutlined onClick={this.showDrawer} />
+      <div className="mobile-header">
+        <span className="logo">THANK YOU</span>
+        <MenuOutlined onClick={this.showDrawer} style={{ color: "#fff" }} />
         <Drawer
           title="Welcome"
           onClose={this.onClose}
@@ -103,7 +104,7 @@ class NavBar extends Component {
           <p>About</p>
           <p>Careers</p>
         </Drawer>
-      </>
+      </div>
     );
   }
 }

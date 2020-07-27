@@ -1,5 +1,5 @@
 .header-section {
-  background-image: linear-gradient(#ebf3f6, #d7f0fc);
+  height: 700px;
 }
 
 .container {
@@ -15,19 +15,59 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 32px;
+  margin: 32px 0 120px 0;
+  padding-top: 120px;
 }
 
 .title {
   font-family: "sifonn", sans-serif;
 }
 
+.title-typing {
+  font-family: "sifonn", sans-serif;
+  text-decoration: underline;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.hero-image {
+  max-width: 60%;
+  object-fit: contain;
+  padding-left: 8px;
+  z-index: 30;
+}
+
+.purple-blob {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 70%;
+  object-fit: contain;
+  padding-left: 8px;
+}
+
+.responsive-purple-blob {
+  position: absolute;
+  max-width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  object-fit: contain;
+  z-index: -1;
+}
+
 .subheader {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin-top: 30px;
+  max-width: 380px;
+  padding-left: 18px;
 }
 
 .subheader-image {
@@ -55,13 +95,66 @@
   padding-top: 28px;
 }
 
+.floating-gift {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  height: 80px;
+  object-fit: contain;
+  z-index: 1000;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .apply-now-button {
+    margin-top: 180px;
+    align-self: flex-start;
+    margin-left: 80px;
+  }
+}
+
 @media (max-width: 767px) {
+  .subheader {
+    max-width: 90%;
+  }
   .header-image-section {
     margin-top: 0px;
   }
 
+  .header-section {
+    background-image: url("../images/responsive-header-image.png");
+    background-position: center;
+    background-size: cover;
+  }
+
   .header-image-section img {
     max-width: 44%;
+  }
+  .main-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-layout {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .apply-now-button {
+    margin-top: 80px;
+  }
+
+  .subheader-separator {
+    padding: 0;
+  }
+
+  .floating-gift {
+    height: 48px;
   }
 }
 
