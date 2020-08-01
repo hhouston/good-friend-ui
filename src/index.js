@@ -9,10 +9,8 @@ import Root from "./Root";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 // think about using apolo-client instead of apollo-boost
-import { ApolloClient } from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
 
 import { loadState, saveState } from "./localStorage";
 
@@ -27,20 +25,23 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
-const createApolloClient = (cache = {}) =>
-  new ApolloClient({
-    ssrMode: typeof window !== "undefined",
-    cache: new InMemoryCache().restore(cache),
-    link: createUploadLink({
-      // uri: 'http://localhost:9000/graphql'
-      uri: "http://54.80.191.226:9000/graphql",
-    }),
-  });
+// const createApolloClient = (cache = {}) =>
+//   new ApolloClient({
+//     ssrMode: typeof window !== "undefined",
+//     cache: new InMemoryCache().restore(cache),
+//     link: createUploadLink({
+//       uri: "http://localhost:9000/graphql",
+//       // uri: "http://54.80.191.226:9000/graphql",
+//     }),
+//   });
 
-const client = createApolloClient();
+const client = new ApolloClient({
+  uri: "http://localhost:9000/graphql",
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
-  <ApolloProvider store={store} client={client}>
+  <ApolloProvider client={client}>
     <Provider store={store}>
       <Root />
     </Provider>

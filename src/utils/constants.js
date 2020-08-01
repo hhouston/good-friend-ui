@@ -1,1 +1,8 @@
-export const RIPTIDE_TEAM_ID = 'v514TjOMNqHu5w9cHSlV'
+export const TYPED_STRINGS = [
+  "birthdays",
+  "anniversaries",
+  "Christmas",
+  "flowers",
+  "graduation",
+  "chocolates",
+];

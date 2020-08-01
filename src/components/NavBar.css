@@ -6,16 +6,19 @@
   background: transparent;
 }
 
+.logo-wrapper {
+  margin-right: auto;
+}
 .logo {
   font-family: "sifonn", sans-serif;
-  margin-right: auto;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .logo-image {
   height: 30px;
   object-fit: contain;
-  padding-left: 12px;
+  padding-right: 8px;
 }
 
 .navbar {

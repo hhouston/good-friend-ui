@@ -8,29 +8,22 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Text, Title } = Typography;
 
-class HowItWorks extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { titleSize } = this.props;
-    return (
-      <div className="how-it-works-container">
-        <Title
-          type="secondary"
-          level={2}
-          className="subtitle"
-          style={{ fontSize: titleSize }}
-        >
-          How It Works
-        </Title>
-        <StepOne />
-        <StepTwo />
-        <StepThree />
-      </div>
-    );
-  }
-}
+const HowItWorks = ({ titleSize }) => {
+  return (
+    <div className="how-it-works-container">
+      <Title
+        type="secondary"
+        level={2}
+        className="subtitle"
+        style={{ fontSize: titleSize }}
+      >
+        How It Works
+      </Title>
+      <StepOne />
+      <StepTwo />
+      <StepThree />
+    </div>
+  );
+};
 
 export default HowItWorks;

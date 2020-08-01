@@ -1,43 +1,27 @@
 import React, { Component } from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
+import { PrimaryButton } from "../common";
 
-import { Button } from "antd";
-
-class HowItWorks extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <FadeInSection direction="right">
-        <div className="step-container">
-          <div className="step-one-section">
-            <div className="step-content step-content-left">
-              <Button
-                shape="round"
-                style={{
-                  backgroundColor: "#FF3399",
-                  color: "#fff",
-                  borderColor: "#FF3399",
-                }}
-              >
-                Step 03
-              </Button>
-              <p className="step-text">
-                Your personal curator will handle the rest.
-              </p>
-            </div>
-            <img
-              src={require("../../images/step-three.png")}
-              className="step-image step-image-right"
-            />
+const StepThree = (props) => {
+  return (
+    <FadeInSection direction="right">
+      <div className="step-container">
+        <div className="step-one-section">
+          <div className="step-content step-content-left">
+            <PrimaryButton>Step 03</PrimaryButton>
+            <p className="step-text">
+              Your personal curator will handle the rest.
+            </p>
           </div>
+          <img
+            src={require("../../images/step-three.png")}
+            className="step-image step-image-right"
+          />
         </div>
-      </FadeInSection>
-    );
-  }
-}
+      </div>
+    </FadeInSection>
+  );
+};
 
-export default HowItWorks;
+export default StepThree;
