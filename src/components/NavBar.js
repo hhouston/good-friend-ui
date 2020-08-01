@@ -70,7 +70,13 @@ const Navbar = ({ isMobile }) => {
   }
   return (
     <div className="mobile-header">
-      <span className="logo">THANK YOU</span>
+      <div>
+        <img
+          src={require("../images/geometric-heart-logo.png")}
+          className="logo-image"
+        />
+        <span className="logo">THANK YOU</span>
+      </div>
       <MenuOutlined onClick={showDrawer} style={{ color: "#fff" }} />
       <Drawer
         title="Welcome"

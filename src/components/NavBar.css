@@ -49,8 +49,18 @@
   color: #fff;
 }
 
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media (max-width: 767px) {
   .logo {
     color: #fff;
+  }
+
+  .logo-image {
+    height: 18px;
   }
 }
