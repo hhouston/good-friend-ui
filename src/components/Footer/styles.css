@@ -1,0 +1,33 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(#fff, #c6ebfc);
+  margin: 0 auto;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 25%;
+  padding: 0 16px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #292c44;
+  line-height: 1.8em;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    height: 600px;
+    padding: 200px 80px 20px 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    padding: 120px 16px;
+  }
+}

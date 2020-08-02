@@ -126,7 +126,7 @@
   }
 
   .header-section {
-    background-image: url("../images/responsive-header-image.png");
+    background-image: url("../../images/responsive-header-image.png");
     background-position: center;
     background-size: cover;
   }

@@ -12,14 +12,14 @@ function FadeInSection(props) {
     return () => observer.unobserve(domRef.current);
   }, []);
   return (
-    <div
+    <section
       className={`fade-in-section-${direction} ${
         isVisible ? "is-visible" : ""
       }`}
       ref={domRef}
     >
       {props.children}
-    </div>
+    </section>
   );
 }
 
