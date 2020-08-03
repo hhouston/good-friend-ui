@@ -34,6 +34,7 @@ const Home = (props) => {
   const [isMobile, setIsMobile] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
   const [contentInView, setContentInView] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
 
   const history = useHistory();
 
@@ -53,8 +54,15 @@ const Home = (props) => {
     setIsMobile(window.innerWidth < 768);
   };
 
+  const findContentHeight = () => {
+    const { top } = contentRef.current.getBoundingClientRect();
+    const offset = top + scrollTop - 120;
+    setContentHeight(offset);
+  };
+
   useEffect(() => {
     resize();
+    findContentHeight();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   });
@@ -75,10 +83,7 @@ const Home = (props) => {
   };
 
   const scrollToRef = (ref) => {
-    const { top } = ref.current.getBoundingClientRect();
-    const height1 = top + scrollTop;
-    const height = contentInView ? height1 : height1 - 120;
-    window.scrollTo({ top: height, behavior: "smooth" });
+    window.scrollTo({ top: contentHeight, behavior: "smooth" });
   };
 
   const titleSize = isTablet ? "32px" : "54px";
