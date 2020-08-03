@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./components/Home";
+import SignUp from "./components/SignUp";
 // import { Provider } from 'react-redux'
 // think about using apolo-client instead of apollo-boost
 import { BrowserRouter as Router } from "react-router-dom";
@@ -10,6 +11,7 @@ export const Root = () => (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route path="/signup" component={SignUp} />
     </Switch>
   </Router>
 );

@@ -1,3 +1,4 @@
+import smoothscroll from "smoothscroll-polyfill";
 import NavBar from "./components/NavBar";
 import React from "react";
 import rootReducer from "./reducers/root_reducer";
@@ -13,6 +14,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 
 import { loadState, saveState } from "./localStorage";
+
+smoothscroll.polyfill();
 
 const persistedState = loadState();
 

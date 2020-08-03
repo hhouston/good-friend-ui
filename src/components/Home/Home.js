@@ -13,6 +13,7 @@ import { ArrowDownOutlined } from "@ant-design/icons";
 import Typed from "react-typed";
 import { useLazyQuery, gql } from "@apollo/client";
 import { TYPED_STRINGS } from "../../utils/constants";
+import { useHistory } from "react-router-dom";
 
 const { Header, Content } = Layout;
 
@@ -31,10 +32,20 @@ const Home = (props) => {
   const [hover, setHover] = useState(0);
   const [isTablet, setIsTablet] = useState(0);
   const [isMobile, setIsMobile] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [contentInView, setContentInView] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  const history = useHistory();
 
   const [getTeams, { loading, data }] = useLazyQuery(GET_TEAMS, {
     onCompleted: () => console.log(data),
   });
+
+  const applyNowClick = () => {
+    getTeams();
+    history.push("/signup");
+  };
 
   const contentRef = useRef(null);
 
@@ -43,19 +54,36 @@ const Home = (props) => {
     setIsMobile(window.innerWidth < 768);
   };
 
+  const findContentHeight = () => {
+    const { top } = contentRef.current.getBoundingClientRect();
+    const offset = top + scrollTop - 120;
+    setContentHeight(offset);
+  };
+
   useEffect(() => {
     resize();
+    findContentHeight();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   });
+
+  useEffect(() => {
+    const { top } = contentRef.current.getBoundingClientRect();
+    const onScroll = (e) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+      setContentInView(e.target.documentElement.scrollTop >= top);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
 
   const toggleHover = () => {
     setHover(!hover);
   };
 
   const scrollToRef = (ref) => {
-    const { top } = ref.current.getBoundingClientRect();
-    window.scrollTo({ top, behavior: "smooth" });
+    window.scrollTo({ top: contentHeight, behavior: "smooth" });
   };
 
   const titleSize = isTablet ? "32px" : "54px";
@@ -96,10 +124,10 @@ const Home = (props) => {
                   }}
                 ></Typed>
               </div>
-              <HeaderImages isMobile={isMobile} />
+              <HeaderImages isMobile={isMobile} isVisible={contentInView} />
             </div>
             <Button
-              onClick={() => getTeams()}
+              onClick={() => applyNowClick()}
               className="apply-now-button"
               type="secondary"
               shape="round"
