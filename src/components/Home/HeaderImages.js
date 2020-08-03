@@ -2,7 +2,7 @@ import React from "react";
 import HeaderImage from "../../images/thank-you-header.png";
 import HeaderImage2 from "../../images/thank-you-header@2x.png";
 
-const HeaderImages = ({ isMobile }) => {
+const HeaderImages = ({ isMobile, isVisible }) => {
   return (
     <>
       {
@@ -18,10 +18,12 @@ const HeaderImages = ({ isMobile }) => {
           className="purple-blob"
         />
       }
-      <img
-        src={require("../../images/floating-gift-icon.png")}
-        className="floating-gift shake"
-      />
+      <section className={`fixed-gift ${isVisible ? "is-visible" : ""}`}>
+        <img
+          src={require("../../images/floating-gift-icon.png")}
+          className="floating-gift"
+        />
+      </section>
     </>
   );
 };

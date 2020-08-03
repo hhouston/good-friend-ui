@@ -43,7 +43,7 @@
 
 .fade-in-section-up {
   opacity: 0;
-  transform: translateY(20vh);
+  transform: translateY(120px);
   visibility: hidden;
   transition: opacity 1200ms ease-out, transform 600ms ease-out,
     visibility 1200ms ease-out;
