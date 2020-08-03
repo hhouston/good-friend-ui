@@ -1,3 +1,19 @@
+.loading-overlay {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 4000;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
 .header-section {
   height: 700px;
 }
