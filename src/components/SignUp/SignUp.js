@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
@@ -9,23 +9,24 @@ import { Steps, Button, message } from "antd";
 
 const { Step } = Steps;
 
-const steps = [
-  {
-    title: "",
-    content: <StepOne />,
-  },
-  {
-    title: "",
-    content: <StepTwo />,
-  },
-  {
-    title: "",
-    content: <StepThree />,
-  },
-];
-
 const SignUp = (props) => {
   const [current, setCurrent] = useState(0);
+  const [isMobile, setIsMobile] = useState(0);
+
+  const steps = [
+    {
+      title: "",
+      content: <StepOne />,
+    },
+    {
+      title: "",
+      content: <StepTwo />,
+    },
+    {
+      title: "",
+      content: <StepThree isMobile={isMobile} />,
+    },
+  ];
 
   const history = useHistory();
 
@@ -41,6 +42,16 @@ const SignUp = (props) => {
     history.push("/");
   };
 
+  const resize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  });
+
   return (
     <div className="sign-up-container">
       <div className="logo-wrapper-form" onClick={() => redirectHome()}>
@@ -49,9 +60,9 @@ const SignUp = (props) => {
           className="logo-image-form"
         />
 
-        <span className="logo">THANK YOU.</span>
+        <span className="logo-text">THANK YOU.</span>
       </div>
-      <Steps current={current}>
+      <Steps current={current} direction="horizontal" size="small">
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
         ))}
