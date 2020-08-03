@@ -46,7 +46,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  max-width: 70%;
   object-fit: contain;
   padding-left: 8px;
 }
@@ -115,6 +114,10 @@
     align-self: flex-start;
     margin-left: 80px;
   }
+
+  .purple-blob {
+    max-width: 70%;
+  }
 }
 
 @media (max-width: 767px) {
@@ -125,15 +128,21 @@
     margin-top: 0px;
   }
 
-  .header-section {
-    background-image: url("../../images/responsive-header-image.png");
-    background-position: center;
-    background-size: cover;
-  }
-
   .header-image-section img {
     max-width: 44%;
   }
+
+  .hero-image {
+    max-width: 100%;
+    padding: 0;
+    margin-top: 48px;
+  }
+
+  .purple-blob {
+    z-index: -100;
+    max-height: 100%;
+  }
+
   .main-section {
     flex-direction: column;
     align-items: center;

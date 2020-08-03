@@ -13,6 +13,7 @@ import { ArrowDownOutlined } from "@ant-design/icons";
 import Typed from "react-typed";
 import { useLazyQuery, gql } from "@apollo/client";
 import { TYPED_STRINGS } from "../../utils/constants";
+import { useHistory } from "react-router-dom";
 
 const { Header, Content } = Layout;
 
@@ -32,9 +33,16 @@ const Home = (props) => {
   const [isTablet, setIsTablet] = useState(0);
   const [isMobile, setIsMobile] = useState(0);
 
+  const history = useHistory();
+
   const [getTeams, { loading, data }] = useLazyQuery(GET_TEAMS, {
     onCompleted: () => console.log(data),
   });
+
+  const applyNowClick = () => {
+    getTeams();
+    history.push("/signup");
+  };
 
   const contentRef = useRef(null);
 
@@ -99,7 +107,7 @@ const Home = (props) => {
               <HeaderImages isMobile={isMobile} />
             </div>
             <Button
-              onClick={() => getTeams()}
+              onClick={() => applyNowClick()}
               className="apply-now-button"
               type="secondary"
               shape="round"
