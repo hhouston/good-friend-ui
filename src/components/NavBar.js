@@ -1,12 +1,9 @@
 import React, { Component, useState } from "react";
 import "./NavBar.css";
 import { MenuOutlined } from "@ant-design/icons";
-import { Menu, Icon, Button, Typography, Drawer } from "antd";
+import { Menu, Button, Drawer } from "antd";
 import { PrimaryButton } from "./common";
 import BlobImage from "../images/purple-blob.png";
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-const { Text } = Typography;
 
 const Navbar = ({ isMobile }) => {
   const [current, setCurrent] = useState(0);
@@ -79,7 +76,10 @@ const Navbar = ({ isMobile }) => {
         />
         <span className={visible ? "logo logo-open" : "logo"}>THANK YOU</span>
       </div>
-      <MenuOutlined onClick={showDrawer} style={{ color: "#fff" }} />
+      <MenuOutlined
+        onClick={showDrawer}
+        style={{ color: "#fff", fontSize: "18px" }}
+      />
       <Drawer
         title=" "
         onClose={onClose}
@@ -93,17 +93,19 @@ const Navbar = ({ isMobile }) => {
         }}
         headerStyle={{
           borderBottom: "none",
-          backgroundImage: `url(${BlobImage})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right top",
         }}
       >
+        <img src={BlobImage} className="mobile-drawer-header-img" />
         <p>Pricing Page</p>
         <p>Packages</p>
         <p>About</p>
         <p>Careers</p>
-        <PrimaryButton type="secondary">Sign In</PrimaryButton>
+        <PrimaryButton
+          type="secondary"
+          style={{ fontWeight: "600", border: "2px solid" }}
+        >
+          Sign In
+        </PrimaryButton>
       </Drawer>
     </div>
   );
