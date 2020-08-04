@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import "./NavBar.css";
 import { MenuOutlined } from "@ant-design/icons";
 import { Menu, Icon, Button, Typography, Drawer } from "antd";
+import { PrimaryButton } from "./common";
+import BlobImage from "../images/purple-blob.png";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Text } = Typography;
@@ -70,26 +72,38 @@ const Navbar = ({ isMobile }) => {
   }
   return (
     <div className="mobile-header">
-      <div>
+      <div className="mobile-logo-wrapper">
         <img
           src={require("../images/geometric-heart-logo.png")}
           className="logo-image"
         />
-        <span className="logo">THANK YOU</span>
+        <span className={visible ? "logo logo-open" : "logo"}>THANK YOU</span>
       </div>
       <MenuOutlined onClick={showDrawer} style={{ color: "#fff" }} />
       <Drawer
-        title="Welcome"
+        title=" "
         onClose={onClose}
         visible={visible}
-        width="70%"
-        bodyStyle={{ lineHeight: "2.5" }}
-        headerStyle={{ borderBottom: "none" }}
+        width="100%"
+        bodyStyle={{
+          lineHeight: "3.5",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        headerStyle={{
+          borderBottom: "none",
+          backgroundImage: `url(${BlobImage})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "right top",
+        }}
       >
         <p>Pricing Page</p>
         <p>Packages</p>
         <p>About</p>
         <p>Careers</p>
+        <PrimaryButton type="secondary">Sign In</PrimaryButton>
       </Drawer>
     </div>
   );
