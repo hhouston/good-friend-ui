@@ -7,11 +7,13 @@ const { Meta } = Card;
 
 const { Title } = Typography;
 
-const StepThree = () => {
+const StepThree = ({ isMobile }) => {
   const [selected, setSelected] = useState(null);
   const handleSelect = (title) => {
     setSelected(title);
   };
+
+  const cardSize = isMobile ? "small" : "default";
   return (
     <>
       <Title level={2} className="subtitle">
@@ -23,36 +25,42 @@ const StepThree = () => {
           imgUrl={require("../../images/love.svg")}
           onClick={() => handleSelect("Anniversary")}
           selected={selected}
+          size={cardSize}
         />
         <EventCard
           title="Birthday"
           imgUrl={require("../../images/birthday.svg")}
           onClick={() => handleSelect("Birthday")}
           selected={selected}
+          size={cardSize}
         />
         <EventCard
           title="Graduation"
           imgUrl={require("../../images/graduation.svg")}
           onClick={() => handleSelect("Graduation")}
           selected={selected}
+          size={cardSize}
         />
         <EventCard
           title="Baby shower"
           imgUrl={require("../../images/baby.svg")}
           onClick={() => handleSelect("Baby shower")}
           selected={selected}
+          size={cardSize}
         />
         <EventCard
           title="Mother's Day"
           imgUrl={require("../../images/mother.svg")}
           onClick={() => handleSelect("Mother's Day")}
           selected={selected}
+          size={cardSize}
         />
         <EventCard
           title="Father's Day"
           imgUrl={require("../../images/father.svg")}
           onClick={() => handleSelect("Father's Day")}
           selected={selected}
+          size={cardSize}
         />
       </div>
     </>

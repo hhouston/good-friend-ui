@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 80px;
+  text-align: center;
 }
 
 .logo-wrapper-form {
@@ -28,6 +29,12 @@
   padding-right: 8px;
 }
 
+.logo-text {
+  font-family: "sifonn", sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+}
+
 .prev-button {
   margin: 0 8px;
 }
@@ -41,9 +48,39 @@
 
 .card-image {
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .ant-card-bordered {
   border: 1px solid #2b137d !important;
+}
+
+.ant-card-small {
+  width: 120px !important;
+}
+
+@media (max-width: 767px) {
+  .card-image {
+    height: 100px;
+    width: 80px;
+  }
+
+  .form-wrapper {
+    padding-top: 8px;
+  }
+
+  .logo-wrapper-form {
+    margin-bottom: 0;
+  }
+
+  .logo-image-form {
+    height: 20px;
+    object-fit: contain;
+    padding-right: 8px;
+  }
+  .logo-text {
+    font-family: "sifonn", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+  }
 }

@@ -8,7 +8,16 @@ import WhyWeAre from "../WhyWeAre";
 import Donations from "../Donations";
 import Footer from "../Footer";
 import HeaderImages from "./HeaderImages";
-import { Typography, Form, Input, Button, Modal, Icon, Layout } from "antd";
+import {
+  Typography,
+  Form,
+  Input,
+  Button,
+  Modal,
+  Icon,
+  Layout,
+  Spin,
+} from "antd";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import Typed from "react-typed";
 import { useLazyQuery, gql } from "@apollo/client";
@@ -35,8 +44,13 @@ const Home = (props) => {
   const [scrollTop, setScrollTop] = useState(0);
   const [contentInView, setContentInView] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(0);
 
   const history = useHistory();
+
+  const handleImageLoaded = () => {
+    setImageLoaded(imageLoaded + 1);
+  };
 
   const [getTeams, { loading, data }] = useLazyQuery(GET_TEAMS, {
     onCompleted: () => console.log(data),
@@ -91,6 +105,11 @@ const Home = (props) => {
 
   return (
     <div className="app">
+      {imageLoaded < 2 ? (
+        <div className="loading-overlay">
+          <Spin className="spinner" size="large" />
+        </div>
+      ) : null}
       <div className="header-section">
         <Header style={{ background: "transparent", textAlign: "end" }}>
           <NavBar isMobile={isMobile} />
@@ -124,7 +143,11 @@ const Home = (props) => {
                   }}
                 ></Typed>
               </div>
-              <HeaderImages isMobile={isMobile} isVisible={contentInView} />
+              <HeaderImages
+                isMobile={isMobile}
+                isVisible={contentInView}
+                handleImageLoaded={handleImageLoaded}
+              />
             </div>
             <Button
               onClick={() => applyNowClick()}

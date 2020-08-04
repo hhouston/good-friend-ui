@@ -55,12 +55,39 @@
   justify-content: space-between;
 }
 
+.mobile-logo-wrapper {
+  z-index: 10000;
+}
+
+.ant-drawer-close {
+  color: #fff !important;
+  font-size: 18px;
+}
+
+.mobile-drawer-header-img {
+  object-fit: contain;
+  height: 160px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 @media (max-width: 767px) {
   .logo {
     color: #fff;
   }
 
+  .logo-open {
+    color: #2b137d;
+  }
+
   .logo-image {
     height: 18px;
+  }
+  .ant-layout-header {
+    padding: 0 18px !important;
+  }
+  .ant-drawer-header {
+    padding: 64px 24px !important;
   }
 }
