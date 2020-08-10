@@ -62,7 +62,6 @@
 @media (max-width: 767px) {
   .card-image {
     height: 100px;
-    width: 80px;
   }
 
   .form-wrapper {
