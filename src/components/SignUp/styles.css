@@ -85,3 +85,11 @@
     line-height: 14px;
   }
 }
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: #2b137d !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: #2b137d !important;
+}
