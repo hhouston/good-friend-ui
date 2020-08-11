@@ -1,8 +1,14 @@
 .sign-up-container {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 16px;
+  justify-content: space-between;
+  padding: 16px 16px 32px 16px;
+}
+
+.sign-up-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-wrapper {
@@ -51,10 +57,6 @@
   object-fit: contain;
 }
 
-.ant-card-bordered {
-  border: 1px solid #2b137d !important;
-}
-
 .ant-card-small {
   width: 120px !important;
 }
@@ -65,7 +67,7 @@
   }
 
   .form-wrapper {
-    padding-top: 8px;
+    padding-top: 24px;
   }
 
   .logo-wrapper-form {
@@ -82,4 +84,12 @@
     font-size: 14px;
     line-height: 14px;
   }
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: #2b137d !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: #2b137d !important;
 }

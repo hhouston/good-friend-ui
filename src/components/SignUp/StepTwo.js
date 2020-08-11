@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { gql } from "@apollo/client";
 
 import { Form, DatePicker, TimePicker, Button, Typography } from "antd";
 const { Title } = Typography;
+
+export const CREATE_EVENT = gql`
+  mutation createEvent($event: EventInput!) {
+    createEvent(event: $event)
+  }
+`;
 
 const { RangePicker } = DatePicker;
 
@@ -12,25 +20,29 @@ const formItemLayout = {
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 16 },
   },
 };
 const config = {
   rules: [{ type: "object", required: true, message: "Please select time!" }],
 };
-const rangeConfig = {
-  rules: [{ type: "array", required: true, message: "Please select time!" }],
-};
 
-const StepTwo = () => {
-  const onFinish = (fieldsValue) => {
-    console.log("_________", fieldsValue);
-    // Should format date value before submit.
-    const values = {
-      ...fieldsValue,
-      "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
-    };
-    console.log("Received values of form: ", values);
+const dateFormat = "MM/DD/YYYY";
+
+const StepTwo = ({ next }) => {
+  const [selectedTime, setSelectedTime] = useState(0);
+
+  const [addEvent, { data }] = useMutation(CREATE_EVENT);
+
+  const addNewEvent = () => {
+    addEvent({ variables: { event: { date: selectedTime.toString() } } });
+  };
+
+  const onChange = (e) => {
+    e ? setSelectedTime(e.valueOf()) : setSelectedTime(null);
+  };
+  const onSubmit = () => {
+    next();
+    // addNewEvent({ variables: { event: selectedTime } });
   };
 
   return (
@@ -38,14 +50,13 @@ const StepTwo = () => {
       <Title level={2} className="subtitle">
         Select the date of your upcoming event
       </Title>
-      <Form
-        name="time_related_controls"
-        {...formItemLayout}
-        onFinish={onFinish}
-      >
+      <Form name="time_related_controls" {...formItemLayout}>
         <Form.Item name="date-picker" {...config}>
-          <DatePicker />
+          <DatePicker onChange={onChange} format={dateFormat} />
         </Form.Item>
+        <Button type="primary" onClick={onSubmit}>
+          Submit
+        </Button>
       </Form>
     </>
   );
