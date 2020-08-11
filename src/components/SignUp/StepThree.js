@@ -10,7 +10,9 @@ const { Title } = Typography;
 const StepThree = ({ isMobile }) => {
   const [selected, setSelected] = useState(null);
   const handleSelect = (title) => {
-    setSelected(title);
+    if (title === selected) {
+      setSelected(null);
+    } else setSelected(title);
   };
 
   const cardSize = isMobile ? "small" : "default";
@@ -59,6 +61,13 @@ const StepThree = ({ isMobile }) => {
           title="Father's Day"
           imgUrl={require("../../images/father.svg")}
           onClick={() => handleSelect("Father's Day")}
+          selected={selected}
+          size={cardSize}
+        />
+        <EventCard
+          title="Wedding"
+          imgUrl={require("../../images/wedding.svg")}
+          onClick={() => handleSelect("Wedding")}
           selected={selected}
           size={cardSize}
         />

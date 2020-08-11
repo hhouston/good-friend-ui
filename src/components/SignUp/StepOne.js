@@ -13,13 +13,17 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const SignUp = () => {
+const SignUp = ({ next }) => {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const onSubmit = () => {
+    next();
   };
 
   return (
@@ -35,15 +39,22 @@ const SignUp = () => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="First name"
+          name="firstname"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Last name"
+          name="last name"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Email"
-          name="Eemail"
+          name="Email"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input />
@@ -60,6 +71,9 @@ const SignUp = () => {
         <Form.Item {...tailLayout} name="remember" valuePropName="checked">
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
+        <Button type="primary" onClick={onSubmit}>
+          Submit
+        </Button>
       </Form>
     </>
   );
