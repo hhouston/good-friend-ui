@@ -93,3 +93,7 @@
 .MuiStepIcon-root.MuiStepIcon-completed {
   color: #2b137d !important;
 }
+
+.ant-calendar-input-wrap {
+  display: none;
+}
