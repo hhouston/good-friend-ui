@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import NavBar from "../NavBar";
 import PersonalGifts from "../PersonalGifts";
@@ -8,25 +8,19 @@ import WhyWeAre from "../WhyWeAre";
 import Donations from "../Donations";
 import Footer from "../Footer";
 import HeaderImages from "./HeaderImages";
-import {
-  Typography,
-  Form,
-  Input,
-  Button,
-  Modal,
-  Icon,
-  Layout,
-  Spin,
-} from "antd";
+import { Typography, Button, Layout, Spin } from "antd";
+
 import { ArrowDownOutlined } from "@ant-design/icons";
 import Typed from "react-typed";
 import { useLazyQuery, gql } from "@apollo/client";
 import { TYPED_STRINGS } from "../../utils/constants";
 import { useHistory } from "react-router-dom";
 
-const { Header, Content } = Layout;
+import { useIsMobile, useIsTablet } from "../../hooks/window-resize";
 
-const { Title, Text } = Typography;
+const { Header } = Layout;
+
+const { Title } = Typography;
 
 export const GET_TEAMS = gql`
   query {
@@ -37,19 +31,26 @@ export const GET_TEAMS = gql`
   }
 `;
 
-const Home = (props) => {
-  const [hover, setHover] = useState(0);
-  const [isTablet, setIsTablet] = useState(0);
-  const [isMobile, setIsMobile] = useState(0);
-  const [scrollTop, setScrollTop] = useState(0);
-  const [contentInView, setContentInView] = useState(false);
-  const [contentHeight, setContentHeight] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(0);
+const Home = () => {
+  const initialState = {
+    hover: false,
+    scrollTop: 0,
+    contentInView: false,
+    contentHeight: 0,
+    imageLoaded: 0,
+  };
 
+  const [state, updateState] = useState(initialState);
   const history = useHistory();
 
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+
   const handleImageLoaded = () => {
-    setImageLoaded(imageLoaded + 1);
+    updateState((prevState) => ({
+      ...prevState,
+      imageLoaded: prevState.imageLoaded + 1,
+    }));
   };
 
   const [getTeams, { loading, data }] = useLazyQuery(GET_TEAMS, {
@@ -63,41 +64,35 @@ const Home = (props) => {
 
   const contentRef = useRef(null);
 
-  const resize = () => {
-    setIsTablet(window.innerWidth < 1012);
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  const findContentHeight = () => {
-    const { top } = contentRef.current.getBoundingClientRect();
-    const offset = top + scrollTop - 120;
-    setContentHeight(offset);
-  };
-
   useEffect(() => {
-    resize();
+    const findContentHeight = () => {
+      const { top } = contentRef.current.getBoundingClientRect();
+      const offset = top + state.scrollTop - 120;
+      updateState((prevState) => ({ ...prevState, contentHeight: offset }));
+    };
     findContentHeight();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  });
+  }, []);
 
   useEffect(() => {
     const { top } = contentRef.current.getBoundingClientRect();
     const onScroll = (e) => {
-      setScrollTop(e.target.documentElement.scrollTop);
-      setContentInView(e.target.documentElement.scrollTop >= top);
+      updateState((prevState) => ({
+        ...prevState,
+        scrollTop: e.target.documentElement.scrollTop,
+        contentInView: e.target.documentElement.scrollTop >= top,
+      }));
     };
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop]);
+  }, [state.scrollTop]);
 
   const toggleHover = () => {
-    setHover(!hover);
+    updateState({ ...state, hover: !state.hover });
   };
 
-  const scrollToRef = (ref) => {
-    window.scrollTo({ top: contentHeight, behavior: "smooth" });
+  const scrollToRef = () => {
+    window.scrollTo({ top: state.contentHeight, behavior: "smooth" });
   };
 
   const titleSize = isTablet ? "32px" : "54px";
@@ -105,7 +100,7 @@ const Home = (props) => {
 
   return (
     <div className="app">
-      {imageLoaded < 2 ? (
+      {state.imageLoaded < 2 ? (
         <div className="loading-overlay">
           <Spin className="spinner" size="large" />
         </div>
@@ -145,7 +140,7 @@ const Home = (props) => {
               </div>
               <HeaderImages
                 isMobile={isMobile}
-                isVisible={contentInView}
+                isVisible={state.contentInView}
                 handleImageLoaded={handleImageLoaded}
               />
             </div>

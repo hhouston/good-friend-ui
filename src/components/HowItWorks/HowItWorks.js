@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
-import { Menu, Icon, Button, Typography } from "antd";
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-const { Text, Title } = Typography;
+import { Typography } from "antd";
+const { Title } = Typography;
 
 const HowItWorks = ({ titleSize }) => {
   return (

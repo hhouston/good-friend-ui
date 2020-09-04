@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
 import { PrimaryButton } from "../common";
 
-const StepThree = (props) => {
+const StepThree = () => {
   return (
     <FadeInSection direction="right">
       <div className="step-container">
@@ -17,6 +17,7 @@ const StepThree = (props) => {
           <img
             src={require("../../images/step-three.png")}
             className="step-image step-image-right"
+            alt="step three"
           />
         </div>
       </div>

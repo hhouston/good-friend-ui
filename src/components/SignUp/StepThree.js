@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import EventCard from "./EventCard";
 
-import { Card, Typography, Col, Row } from "antd";
-const { Meta } = Card;
+import { Typography } from "antd";
 
 const { Title } = Typography;
 

@@ -58,6 +58,7 @@ const SignUp = (props) => {
           <img
             src={require("../../images/geometric-heart-logo.png")}
             className="logo-image-form"
+            alt="thank you logo"
           />
 
           <span className="logo-text">THANK YOU.</span>

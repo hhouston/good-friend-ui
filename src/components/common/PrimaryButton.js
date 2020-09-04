@@ -1,11 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import { Button } from "antd";
 
-const PrimaryButton = ({ onClick, className, children, type, style }) => {
+const PrimaryButton = ({
+  onClick,
+  className = null,
+  children,
+  type,
+  style,
+}) => {
   return (
     <Button
       onClick={onClick}
+      className={className}
       shape="round"
       style={
         type === "secondary"

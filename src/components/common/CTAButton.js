@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import { Button } from "antd";
 
@@ -24,6 +24,7 @@ const CTAButton = ({
       }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onClick}
     >
       {children}
     </Button>

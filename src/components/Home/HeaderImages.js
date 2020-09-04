@@ -11,6 +11,7 @@ const HeaderImages = ({ isMobile, isVisible, handleImageLoaded }) => {
           srcSet={`${HeaderImage} 1x, ${HeaderImage2} 2x`}
           className={"hero-image"}
           onLoad={handleImageLoaded}
+          alt="header"
         />
       }
       {
@@ -18,12 +19,14 @@ const HeaderImages = ({ isMobile, isVisible, handleImageLoaded }) => {
           src={require("../../images/purple-blob.png")}
           className="purple-blob"
           onLoad={handleImageLoaded}
+          alt=""
         />
       }
       <section className={`fixed-gift ${isVisible ? "is-visible" : ""}`}>
         <img
           src={require("../../images/floating-gift-icon.png")}
           className="floating-gift"
+          alt="gift count"
         />
       </section>
     </>

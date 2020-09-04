@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./NavBar.css";
 import { MenuOutlined } from "@ant-design/icons";
 import { Menu, Button, Drawer } from "antd";
@@ -32,6 +32,7 @@ const Navbar = ({ isMobile }) => {
           <img
             src={require("../images/geometric-heart-logo.png")}
             className="logo-image"
+            alt="thank you logo"
           />
 
           <span className="logo">THANK YOU.</span>
@@ -55,7 +56,7 @@ const Navbar = ({ isMobile }) => {
           </Menu.Item>
           <Button
             shape="round"
-            size="medium"
+            size="default"
             ghost={!hover}
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
@@ -73,6 +74,7 @@ const Navbar = ({ isMobile }) => {
         <img
           src={require("../images/geometric-heart-logo.png")}
           className="logo-image"
+          alt="thank you logo"
         />
         <span className={visible ? "logo logo-open" : "logo"}>THANK YOU</span>
       </div>
@@ -95,7 +97,7 @@ const Navbar = ({ isMobile }) => {
           borderBottom: "none",
         }}
       >
-        <img src={BlobImage} className="mobile-drawer-header-img" />
+        <img src={BlobImage} className="mobile-drawer-header-img" alt="" />
         <p>Pricing Page</p>
         <p>Packages</p>
         <p>About</p>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
 import { Typography } from "antd";
@@ -11,6 +11,7 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
         <img
           src={require("../../images/envelope-circled.png")}
           className="personal-gifts-image"
+          alt=""
         />
         <div className="personal-gifts-content">
           <Title
@@ -33,6 +34,7 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
         <img
           src={require("../../images/cropped-blob.png")}
           className="personal-gifts-blob"
+          alt=""
         />
       </div>
     </FadeInSection>

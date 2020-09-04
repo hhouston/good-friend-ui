@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { gql } from "@apollo/client";
 
-import { Form, DatePicker, TimePicker, Button, Typography } from "antd";
+import { Form, DatePicker, Button, Typography } from "antd";
 const { Title } = Typography;
 
 export const CREATE_EVENT = gql`
@@ -10,8 +10,6 @@ export const CREATE_EVENT = gql`
     createEvent(event: $event)
   }
 `;
-
-const { RangePicker } = DatePicker;
 
 const formItemLayout = {
   labelCol: {
@@ -34,7 +32,10 @@ const StepTwo = ({ next }) => {
   const [addEvent, { data }] = useMutation(CREATE_EVENT);
 
   const addNewEvent = () => {
-    addEvent({ variables: { event: { date: selectedTime.toString() } } });
+    const data = addEvent({
+      variables: { event: { date: selectedTime.toString() } },
+    });
+    console.log(data);
   };
 
   const onChange = (e) => {

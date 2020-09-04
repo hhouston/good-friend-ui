@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
 import { Typography } from "antd";
@@ -11,6 +11,7 @@ const Donations = ({ titleSize }) => {
         <img
           src={require("../../images/donations-image.png")}
           className="donations-image"
+          alt="donations section"
         />
         <div className="donations-content">
           <Title
@@ -29,6 +30,7 @@ const Donations = ({ titleSize }) => {
           <img
             src={require("../../images/cropped-blob.png")}
             className="donations-blob"
+            alt=""
           />
         </div>
       </div>
