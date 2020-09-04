@@ -58,7 +58,7 @@ const Home = (props) => {
 
   const applyNowClick = () => {
     getTeams();
-    history.push("/signup");
+    // history.push("/signup");
   };
 
   const contentRef = useRef(null);
