@@ -12,8 +12,11 @@ import { Provider } from "react-redux";
 // think about using apolo-client instead of apollo-boost
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
+// import { ApolloClient } from 'apollo-boost';
+// import { ApolloProvider } from 'react-apollo';
+// import { InMemoryCache } from 'apollo-cache-inmemory'
 
-import { loadState, saveState } from "./localStorage";
+import { loadState, saveState } from './localStorage';
 
 smoothscroll.polyfill();
 
@@ -28,24 +31,27 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
-// const createApolloClient = (cache = {}) =>
-//   new ApolloClient({
-//     ssrMode: typeof window !== "undefined",
-//     cache: new InMemoryCache().restore(cache),
-//     link: createUploadLink({
-//       uri: "http://localhost:9000/graphql",
-//       // uri: "http://54.80.191.226:9000/graphql",
-//     }),
-//   });
+const createApolloClient = (cache = {}) =>
+  new ApolloClient({
+    ssrMode: typeof window !== "undefined",
+    cache: new InMemoryCache().restore(cache),
+    link: createUploadLink({
+      uri: "https://api.thankyougift.io/graphql",
+      // uri: "http://54.80.191.226:9000/graphql",
+      cache: new InMemoryCache()
+    }),
+  });
 
-const client = new ApolloClient({
-  // uri: "https://good-friend-1269800380.us-east-1.elb.amazonaws.com/graphql",
-  // uri: "https://3.222.145.116/graphql",
-  uri: "https://api.thankyougift.io/graphql",
-  credentials: 'same-origin',
-  // uri: "https://54.80.191.226/graphql",
-  cache: new InMemoryCache(),
-});
+// const client = new ApolloClient({
+//   // uri: "https://good-friend-1269800380.us-east-1.elb.amazonaws.com/graphql",
+//   // uri: "https://3.222.145.116/graphql",
+//   uri: "https://api.thankyougift.io/graphql",
+//   credentials: 'same-origin',
+//   // uri: "https://54.80.191.226/graphql",
+//   cache: new InMemoryCache(),
+// });
+
+const client = createApolloClient()
 
 ReactDOM.render(
   <ApolloProvider client={client}>
