@@ -39,8 +39,9 @@ store.subscribe(() => {
 //   });
 
 const client = new ApolloClient({
-  uri: "https://good-friend-1269800380.us-east-1.elb.amazonaws.com/graphql",
+  // uri: "https://good-friend-1269800380.us-east-1.elb.amazonaws.com/graphql",
   // uri: "https://3.222.145.116/graphql",
+  uri: "https://api.thankyougift.io/graphql",
   // uri: "https://54.80.191.226/graphql",
   cache: new InMemoryCache(),
 });
