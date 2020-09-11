@@ -36,7 +36,8 @@ const createApolloClient = (cache = {}) =>
     ssrMode: typeof window !== "undefined",
     cache: new InMemoryCache().restore(cache),
     link: createUploadLink({
-      uri: "https://api.thankyougift.io/graphql",
+      uri: "https://ec2.thankyougift.io/graphql",
+      // uri: "https://api.thankyougift.io/graphql",
       // uri: "http://localhost:9000/graphql",
       cache: new InMemoryCache()
     }),
