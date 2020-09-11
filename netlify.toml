@@ -1,10 +1,10 @@
 # A basic redirect rule
 [[redirects]]
-  from = "/*"
-  to = "https://api.thankyougift.io/graphql"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
   # from = "/*"
-  # to = "/index.html"
+  # to = "https://api.thankyougift.io/graphql"
   # status = 200
+  # force = true
+  # headers = {X-From = "Netlify"}
+  from = "/*"
+  to = "/index.html"
+  status = 200
