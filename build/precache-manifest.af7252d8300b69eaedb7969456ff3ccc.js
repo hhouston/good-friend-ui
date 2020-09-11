@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f65291a12bb968c863f2",
+    "revision": "f5177726daa33542e2f3",
     "url": "/static/css/main.7a30108d.chunk.css"
   },
   {
-    "revision": "f65291a12bb968c863f2",
-    "url": "/static/js/main.84363956.chunk.js"
+    "revision": "f5177726daa33542e2f3",
+    "url": "/static/js/main.422f5fa2.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "/static/media/wedding.0ab70c93.svg"
   },
   {
-    "revision": "9c0bfc131781c615b7c86d4b1be77fce",
+    "revision": "9cad55bf441c44e3d64325137e65cb1d",
     "url": "/index.html"
   }
 ];
