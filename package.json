@@ -58,7 +58,7 @@
       "/src/serviceWorker.js"
     ]
   },
-  "proxy": "https://api.thankyougift.io/graphql",
+  "xproxy": "https://api.thankyougift.io/graphql",
   "xproxy": "http://localhost:9000/graphql",
   "browserslist": [
     ">0.2%",
