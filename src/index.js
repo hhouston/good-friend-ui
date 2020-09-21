@@ -39,8 +39,8 @@ const createApolloClient = (cache = {}) =>
       // uri: "https://ec2.thankyougift.io:9000/graphql",
       uri: "https://api.thankyougift.io/graphql",
       // uri: "http://localhost:9000/graphql",
-      cache: new InMemoryCache(),
-      credentials: 'no-cors'
+      cache: new InMemoryCache()
+      // credentials: 'no-cors'
     }),
   });
 
