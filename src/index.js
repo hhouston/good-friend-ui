@@ -9,7 +9,7 @@ import Root from "./Root";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-// import { createUploadLink } from "apollo-upload-client";
+import { createUploadLink } from "apollo-upload-client";
 
 import { loadState, saveState } from './localStorage';
 
