@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
-import FadeInSection from "../FadeInSection";
 import { Typography } from "antd";
 const { Title } = Typography;
 
-const Footer = ({ titleSize }) => {
+const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-section">

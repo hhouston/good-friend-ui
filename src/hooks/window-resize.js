@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { debounce } from "lodash";
 
-export default (callback) => {
+const useWindowResize = (callback) => {
   useEffect(() => {
     const handleWindowResize = debounce(callback, 100);
     window.addEventListener("resize", handleWindowResize);
@@ -9,4 +9,26 @@ export default (callback) => {
 
     return () => window.removeEventListener("resize", handleWindowResize);
   }, [callback]);
+};
+
+export const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useWindowResize(() =>
+    setIsMobile(window && window.matchMedia(`(max-width: 767px)`).matches)
+  );
+
+  return isMobile;
+};
+
+export const useIsTablet = () => {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useWindowResize(() =>
+    setIsTablet(
+      window &&
+        window.matchMedia(`(min-width: 768px) and (max-width: 1012px)`).matches
+    )
+  );
+  return isTablet;
 };

@@ -1,5 +1,4 @@
 import smoothscroll from "smoothscroll-polyfill";
-import NavBar from "./components/NavBar";
 import React from "react";
 import rootReducer from "./reducers/root_reducer";
 import { createStore, applyMiddleware } from "redux";
@@ -10,7 +9,7 @@ import Root from "./Root";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
+// import { createUploadLink } from "apollo-upload-client";
 
 import { loadState, saveState } from './localStorage';
 

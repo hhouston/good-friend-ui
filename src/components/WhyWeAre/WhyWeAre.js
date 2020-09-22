@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
 import { Typography } from "antd";
@@ -32,16 +32,19 @@ const WhyWeAre = ({ titleSize, isTablet, isMobile }) => {
             <img
               src={require("../../images/why-section-transparent.png")}
               className="why-image"
+              alt=""
             />
             <img
               src={require("../../images/why-section-blob.png")}
               className="why-image-transparent"
+              alt=""
             />
           </>
         ) : (
           <img
             src={require("../../images/why-section.png")}
             className="why-image"
+            alt=""
           />
         )}
       </div>

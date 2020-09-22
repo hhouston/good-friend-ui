@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 import FadeInSection from "../FadeInSection";
 import { Typography } from "antd";
@@ -27,10 +27,12 @@ const FeaturedItem = ({ titleSize }) => {
         <img
           src={require("../../images/featured-item.png")}
           className="featured-item-image"
+          alt=""
         />
         <img
           src={require("../../images/blob-2.png")}
           className="blob-image-2"
+          alt=""
         />
       </div>
     </FadeInSection>
