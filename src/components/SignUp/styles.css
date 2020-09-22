@@ -1,99 +1,99 @@
 .sign-up-container {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px 16px 32px 16px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 16px 32px 16px;
 }
 
 .sign-up-wrapper {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 80px;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    text-align: center;
 }
 
 .logo-wrapper-form {
-  margin: 0 auto;
-  margin-bottom: 48px;
+    margin: 0 auto;
+    margin-bottom: 48px;
 }
 
 .logo-wrapper-form:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .logo-image-form {
-  height: 24px;
-  object-fit: contain;
-  padding-right: 8px;
+    height: 24px;
+    object-fit: contain;
+    padding-right: 8px;
 }
 
 .logo-text {
-  font-family: "sifonn", sans-serif;
-  font-size: 16px;
-  line-height: 16px;
+    font-family: 'sifonn', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
 }
 
 .prev-button {
-  margin: 0 8px;
+    margin: 0 8px;
 }
 
 .cards-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card-image {
-  height: 180px;
-  object-fit: contain;
+    height: 180px;
+    object-fit: contain;
 }
 
 .ant-card-small {
-  width: 120px !important;
+    width: 120px !important;
 }
 
 @media (max-width: 767px) {
-  .card-image {
-    height: 100px;
-  }
+    .card-image {
+        height: 100px;
+    }
 
-  .form-wrapper {
-    padding-top: 24px;
-  }
+    .form-wrapper {
+        padding-top: 24px;
+    }
 
-  .logo-wrapper-form {
-    margin-bottom: 0;
-  }
+    .logo-wrapper-form {
+        margin-bottom: 0;
+    }
 
-  .logo-image-form {
-    height: 20px;
-    object-fit: contain;
-    padding-right: 8px;
-  }
-  .logo-text {
-    font-family: "sifonn", sans-serif;
-    font-size: 14px;
-    line-height: 14px;
-  }
+    .logo-image-form {
+        height: 20px;
+        object-fit: contain;
+        padding-right: 8px;
+    }
+    .logo-text {
+        font-family: 'sifonn', sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+    }
 }
 
 .MuiStepIcon-root.MuiStepIcon-active {
-  color: #2b137d !important;
+    color: #2b137d !important;
 }
 
 .MuiStepIcon-root.MuiStepIcon-completed {
-  color: #2b137d !important;
+    color: #2b137d !important;
 }
 
 .ant-calendar-input-wrap {
-  display: none;
+    display: none;
 }

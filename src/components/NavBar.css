@@ -1,93 +1,93 @@
 .navbar-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    background: transparent;
 }
 
 .logo-wrapper {
-  margin-right: auto;
+    margin-right: auto;
 }
 .logo {
-  font-family: "sifonn", sans-serif;
-  font-size: 16px;
-  line-height: 16px;
+    font-family: 'sifonn', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
 }
 
 .logo-image {
-  height: 30px;
-  object-fit: contain;
-  padding-right: 8px;
+    height: 30px;
+    object-fit: contain;
+    padding-right: 8px;
 }
 
 .navbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: transparent;
-  margin-top: 40px;
-  margin-bottom: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .navbar-title {
-  font-size: 20px;
-  font-weight: 800;
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .navbar-logo {
-  display: block;
-  height: 45px;
-  width: 300px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  flex-grow: 1;
+    display: block;
+    height: 45px;
+    width: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-grow: 1;
 }
 
 .navbar-item {
-  font-size: 16px;
-  color: #fff;
+    font-size: 16px;
+    color: #fff;
 }
 
 .mobile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .mobile-logo-wrapper {
-  z-index: 10000;
+    z-index: 10000;
 }
 
 .ant-drawer-close {
-  color: #fff !important;
-  font-size: 18px;
+    color: #fff !important;
+    font-size: 18px;
 }
 
 .mobile-drawer-header-img {
-  object-fit: contain;
-  height: 160px;
-  position: absolute;
-  top: 0;
-  right: 0;
+    object-fit: contain;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media (max-width: 767px) {
-  .logo {
-    color: #fff;
-  }
+    .logo {
+        color: #fff;
+    }
 
-  .logo-open {
-    color: #2b137d;
-  }
+    .logo-open {
+        color: #2b137d;
+    }
 
-  .logo-image {
-    height: 18px;
-  }
-  .ant-layout-header {
-    padding: 0 18px !important;
-  }
-  .ant-drawer-header {
-    padding: 64px 24px !important;
-  }
+    .logo-image {
+        height: 18px;
+    }
+    .ant-layout-header {
+        padding: 0 18px !important;
+    }
+    .ant-drawer-header {
+        padding: 64px 24px !important;
+    }
 }

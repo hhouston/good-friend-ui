@@ -1,56 +1,56 @@
 .donations-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 .subtitle {
-  font-family: "sifonn", sans-serif;
+    font-family: 'sifonn', sans-serif;
 }
 
 .donations-image {
-  flex: 0 0 26.33333%;
-  max-width: 26.33333%;
+    flex: 0 0 26.33333%;
+    max-width: 26.33333%;
 }
 
 .donations-content {
-  flex: 0 0 36.33333%;
-  max-width: 36.33333%;
-  margin-left: 48px;
+    flex: 0 0 36.33333%;
+    max-width: 36.33333%;
+    margin-left: 48px;
 }
 .donations-text {
-  font-size: 16px;
-  color: #656565;
-  line-height: 1.8em;
+    font-size: 16px;
+    color: #656565;
+    line-height: 1.8em;
 }
 
 .donations-blob {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-height: 100%;
-  transform: scaleX(-1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 100%;
+    transform: scaleX(-1);
 }
 
 @media (max-width: 767px) {
-  .donations-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 0 16px;
-  }
+    .donations-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 16px;
+    }
 
-  .donations-image {
-    max-width: 50%;
-    padding-bottom: 8px;
-  }
-  .donations-text {
-    font-size: 16px;
-  }
+    .donations-image {
+        max-width: 50%;
+        padding-bottom: 8px;
+    }
+    .donations-text {
+        font-size: 16px;
+    }
 
-  .donations-content {
-    max-width: 80%;
-    margin: 0;
-  }
+    .donations-content {
+        max-width: 80%;
+        margin: 0;
+    }
 }

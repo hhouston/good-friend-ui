@@ -1,34 +1,34 @@
 @font-face {
-  font-family: "grotesk";
-  src: local("grotesk"),
-    url(./fonts/grotesk/HKGrotesk-Medium.otf) format("truetype");
+    font-family: 'grotesk';
+    src: local('grotesk'),
+        url(./fonts/grotesk/HKGrotesk-Medium.otf) format('truetype');
 }
 @font-face {
-  font-family: "sifonn";
-  src: local("sifonn"), url(./fonts/sifonn/SIFONN_PRO.woff) format("woff");
+    font-family: 'sifonn';
+    src: local('sifonn'), url(./fonts/sifonn/SIFONN_PRO.woff) format('woff');
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Noto Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  min-height: 100%;
+    min-height: 100%;
 }
 
 #root {
-  height: 100%;
+    height: 100%;
 }

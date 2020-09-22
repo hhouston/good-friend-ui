@@ -1,3 +1,3 @@
-import WhyWeAre from "./WhyWeAre.js";
+import WhyWeAre from './WhyWeAre.js'
 
-export default WhyWeAre;
+export default WhyWeAre

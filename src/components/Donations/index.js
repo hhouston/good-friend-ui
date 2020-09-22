@@ -1,3 +1,3 @@
-import Donations from "./Donations.js";
+import Donations from './Donations.js'
 
-export default Donations;
+export default Donations

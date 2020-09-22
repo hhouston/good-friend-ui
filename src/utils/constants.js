@@ -1,8 +1,8 @@
 export const TYPED_STRINGS = [
-  "birthdays",
-  "anniversaries",
-  "Christmas",
-  "flowers",
-  "graduation",
-  "chocolates",
-];
+    'birthdays',
+    'anniversaries',
+    'Christmas',
+    'flowers',
+    'graduation',
+    'chocolates',
+]

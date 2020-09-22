@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-import NameOfYourFontWoff2 from "./nameOfYourFont.woff2";
+import NameOfYourFontWoff2 from './nameOfYourFont.woff2'
 
 export default createGlobalStyle`
     @font-face {
@@ -11,4 +11,4 @@ export default createGlobalStyle`
         font-weight: 300;
         font-style: normal;
     }
-`;
+`

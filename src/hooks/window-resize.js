@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react";
-import { debounce } from "lodash";
+import { useEffect, useState } from 'react'
+import { debounce } from 'lodash'
 
 const useWindowResize = (callback) => {
-  useEffect(() => {
-    const handleWindowResize = debounce(callback, 100);
-    window.addEventListener("resize", handleWindowResize);
-    handleWindowResize();
+    useEffect(() => {
+        const handleWindowResize = debounce(callback, 100)
+        window.addEventListener('resize', handleWindowResize)
+        handleWindowResize()
 
-    return () => window.removeEventListener("resize", handleWindowResize);
-  }, [callback]);
-};
+        return () => window.removeEventListener('resize', handleWindowResize)
+    }, [callback])
+}
 
 export const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false)
 
-  useWindowResize(() =>
-    setIsMobile(window && window.matchMedia(`(max-width: 767px)`).matches)
-  );
+    useWindowResize(() =>
+        setIsMobile(window && window.matchMedia(`(max-width: 767px)`).matches)
+    )
 
-  return isMobile;
-};
+    return isMobile
+}
 
 export const useIsTablet = () => {
-  const [isTablet, setIsTablet] = useState(false);
+    const [isTablet, setIsTablet] = useState(false)
 
-  useWindowResize(() =>
-    setIsTablet(
-      window &&
-        window.matchMedia(`(min-width: 768px) and (max-width: 1012px)`).matches
+    useWindowResize(() =>
+        setIsTablet(
+            window &&
+                window.matchMedia(`(min-width: 768px) and (max-width: 1012px)`)
+                    .matches
+        )
     )
-  );
-  return isTablet;
-};
+    return isTablet
+}

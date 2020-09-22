@@ -1,3 +1,3 @@
-import FeaturedItem from "./FeaturedItem.js";
+import FeaturedItem from './FeaturedItem.js'
 
-export default FeaturedItem;
+export default FeaturedItem

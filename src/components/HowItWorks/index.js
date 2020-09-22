@@ -1,3 +1,3 @@
-import HowItWorks from "./HowItWorks.js";
+import HowItWorks from './HowItWorks.js'
 
-export default HowItWorks;
+export default HowItWorks

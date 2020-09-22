@@ -1,3 +1,3 @@
-import PersonalGifts from "./PersonalGifts.js";
+import PersonalGifts from './PersonalGifts.js'
 
-export default PersonalGifts;
+export default PersonalGifts
