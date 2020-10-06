@@ -2,15 +2,32 @@ import React, { useState, useEffect } from 'react'
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
+import StepFour from './StepFour'
 import { PrimaryButton } from '../common'
 import { useHistory } from 'react-router-dom'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
+import { useMutation } from '@apollo/client'
+import { gql } from '@apollo/client'
 
+export const CREATE_EVENT = gql`
+    mutation createEvent($event: EventInput!) {
+        createEvent(event: $event)
+    }
+`
+
+const initialFormData = {
+    date: null,
+    type: null,
+    userId: 2,
+}
 const SignUp = (props) => {
     const [activeStep, setActiveStep] = React.useState(0)
     const [isMobile, setIsMobile] = useState(0)
+    const [formData, updateFormData] = useState(initialFormData)
+
+    const [addEvent, { data }] = useMutation(CREATE_EVENT)
 
     const history = useHistory()
 
@@ -30,18 +47,33 @@ const SignUp = (props) => {
         setIsMobile(window.innerWidth < 768)
     }
 
+    const updateForm = (field, value) => {
+        updateFormData({
+            ...formData,
+            [field]: value,
+        })
+        console.log(formData)
+    }
+
+    const addNewEvent = () => {
+        const data = addEvent({
+            variables: { event: formData },
+        })
+        console.log(data)
+    }
+
     const steps = [
         {
             title: '',
-            content: <StepOne next={handleNext} />,
+            content: <StepOne next={handleNext} updateForm={updateForm} />,
         },
         {
             title: '',
-            content: <StepTwo next={handleNext} />,
+            content: <StepThree isMobile={isMobile} updateForm={updateForm} />,
         },
         {
             title: '',
-            content: <StepThree isMobile={isMobile} />,
+            content: <StepFour />,
         },
     ]
 
@@ -96,9 +128,7 @@ const SignUp = (props) => {
                     </PrimaryButton>
                 )}
                 {activeStep === steps.length - 1 && (
-                    <PrimaryButton
-                        onClick={() => console.log('Processing complete!')}
-                    >
+                    <PrimaryButton onClick={() => addNewEvent()}>
                         Done
                     </PrimaryButton>
                 )}

@@ -24,7 +24,7 @@ const HeaderImages = ({ isMobile, isVisible, handleImageLoaded }) => {
             }
             <section className={`fixed-gift ${isVisible ? 'is-visible' : ''}`}>
                 <img
-                    src={require('../../images/floating-gift-icon.png')}
+                    src={require('../../images/transparent-gift.svg')}
                     className="floating-gift"
                     alt="gift count"
                 />

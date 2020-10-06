@@ -1,15 +1,7 @@
 import React, { useState } from 'react'
-import { useMutation } from '@apollo/client'
-import { gql } from '@apollo/client'
 
 import { Form, DatePicker, Button, Typography } from 'antd'
 const { Title } = Typography
-
-export const CREATE_EVENT = gql`
-    mutation createEvent($event: EventInput!) {
-        createEvent(event: $event)
-    }
-`
 
 const formItemLayout = {
     labelCol: {
@@ -26,20 +18,16 @@ const config = {
 
 const dateFormat = 'MM/DD/YYYY'
 
-const StepTwo = ({ next }) => {
+const StepTwo = ({ next, updateForm }) => {
     const [selectedTime, setSelectedTime] = useState(0)
 
-    const [addEvent, { data }] = useMutation(CREATE_EVENT)
-
-    const addNewEvent = () => {
-        const data = addEvent({
-            variables: { event: { date: selectedTime.toString() } },
-        })
-        console.log(data)
-    }
-
     const onChange = (e) => {
-        e ? setSelectedTime(e.valueOf()) : setSelectedTime(null)
+        if (e) {
+            updateForm('date', e.valueOf().toString())
+        } else {
+            setSelectedTime(null)
+        }
+        // e ? setSelectedTime(e.valueOf()) : setSelectedTime(null)
     }
     const onSubmit = () => {
         next()

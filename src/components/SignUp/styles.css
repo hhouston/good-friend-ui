@@ -29,6 +29,9 @@
     cursor: pointer;
 }
 
+.subtitle-2 {
+    margin-top: 84px;
+}
 .logo-image-form {
     height: 24px;
     object-fit: contain;
