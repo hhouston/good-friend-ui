@@ -1,0 +1,17 @@
+.row-sub-list {
+    list-style-type: none;
+}
+
+.row-sub-list-img {
+    height: 0px;
+}
+
+.row-sub-list-img.revealed {
+    height: 80px;
+    border-radius: 12px;
+}
+
+.row-pill {
+    text-transform: uppercase;
+    border-radius: 18px;
+}

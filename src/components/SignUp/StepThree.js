@@ -6,12 +6,14 @@ import { Typography } from 'antd'
 
 const { Title } = Typography
 
-const StepThree = ({ isMobile }) => {
+const StepThree = ({ isMobile, updateForm }) => {
     const [selected, setSelected] = useState(null)
     const handleSelect = (title) => {
         if (title === selected) {
             setSelected(null)
-        } else setSelected(title)
+        } else {
+            updateForm('type', title)
+        }
     }
 
     const cardSize = isMobile ? 'small' : 'default'
@@ -24,49 +26,49 @@ const StepThree = ({ isMobile }) => {
                 <EventCard
                     title="Anniversary"
                     imgUrl={require('../../images/love.svg')}
-                    onClick={() => handleSelect('Anniversary')}
+                    onClick={() => handleSelect('ANNIVERSARY')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Birthday"
                     imgUrl={require('../../images/birthday.svg')}
-                    onClick={() => handleSelect('Birthday')}
+                    onClick={() => handleSelect('BIRTHDAY')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Graduation"
                     imgUrl={require('../../images/graduation.svg')}
-                    onClick={() => handleSelect('Graduation')}
+                    onClick={() => handleSelect('GRADUATION')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Baby shower"
                     imgUrl={require('../../images/baby.svg')}
-                    onClick={() => handleSelect('Baby shower')}
+                    onClick={() => handleSelect('BABY_SHOWER')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Mother's Day"
                     imgUrl={require('../../images/mother.svg')}
-                    onClick={() => handleSelect("Mother's Day")}
+                    onClick={() => handleSelect('MOTHERS_DAY')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Father's Day"
                     imgUrl={require('../../images/father.svg')}
-                    onClick={() => handleSelect("Father's Day")}
+                    onClick={() => handleSelect('FATHERS_DAY')}
                     selected={selected}
                     size={cardSize}
                 />
                 <EventCard
                     title="Wedding"
                     imgUrl={require('../../images/wedding.svg')}
-                    onClick={() => handleSelect('Wedding')}
+                    onClick={() => handleSelect('WEDDING')}
                     selected={selected}
                     size={cardSize}
                 />

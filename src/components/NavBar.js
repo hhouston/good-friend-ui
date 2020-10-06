@@ -42,7 +42,6 @@ const Navbar = ({ isMobile }) => {
                     onClick={handleClick}
                     selectedKeys={[current]}
                     mode="horizontal"
-                    theme="dark"
                     style={{ borderBottom: 'none', zIndex: '30' }}
                 >
                     <Menu.Item className="navbar-item" key="pricing">
@@ -83,6 +82,7 @@ const Navbar = ({ isMobile }) => {
             <MenuOutlined
                 onClick={showDrawer}
                 style={{ color: '#fff', fontSize: '18px' }}
+                theme="dark"
             />
             <Drawer
                 title=" "
