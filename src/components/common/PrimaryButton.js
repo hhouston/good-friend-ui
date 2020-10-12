@@ -1,6 +1,7 @@
 import React from 'react'
 import './styles.css'
 import { Button } from 'antd'
+import classNames from 'classnames'
 
 const PrimaryButton = ({
     onClick,
@@ -12,7 +13,7 @@ const PrimaryButton = ({
     return (
         <Button
             onClick={onClick}
-            className={className}
+            className={classNames(className, 'primary-button')}
             shape="round"
             style={
                 type === 'secondary'

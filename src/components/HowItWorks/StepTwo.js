@@ -14,12 +14,20 @@ const StepTwo = () => {
                         alt="step two"
                     />
                     <div className="step-content step-content-two">
-                        <PrimaryButton>Step 02</PrimaryButton>
+                        <PrimaryButton
+                            style={{
+                                fontWeight: '700',
+                                fontFamily: 'Karla, sans-serif',
+                            }}
+                        >
+                            Step 2
+                        </PrimaryButton>
                         <p className="step-text step-content-text-two">
-                            Select the type of event (birthday, anniversary,
-                            graduation, etc) the date your gift price range any
-                            info you'd like use to have on the recipient and
-                            your personal curator will handle the rest
+                            Select the type of event (like birthday,
+                            anniversary, graduation, etc.) the date of a gift
+                            delivery, your gift price range, any info you'd like
+                            to have on the recipient. Your personal curator with
+                            handle the rest.
                         </p>
                     </div>
                 </div>

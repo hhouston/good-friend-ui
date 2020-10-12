@@ -18,11 +18,12 @@ const FeaturedItem = ({ titleSize }) => {
                         Featured Item
                     </Title>
                     <p className="featured-item-text">
-                        Excited about the next gen gaming consoles? How about
-                        the new iPhone? Apply for our featured gift service and
-                        we will handle everything from the preorder to waiting
-                        outside of the Best Buy (or Apple) store to make sure
-                        you get the first batch of devices.
+                        Are you out of gift ideas ? Excited about the next - gen
+                        gaming consoles? How about the new iPhone? Apply for our
+                        featured gift service and we will handle everything from
+                        the preorder to waiting outside of the Best Buy (or
+                        Apple) store to make sure you get the first batch of
+                        devices.
                     </p>
                 </div>
                 <img

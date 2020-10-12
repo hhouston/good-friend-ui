@@ -21,6 +21,7 @@ const initialFormData = {
     date: null,
     type: null,
     userId: 2,
+    status: 'NEW',
 }
 const SignUp = (props) => {
     const [activeStep, setActiveStep] = React.useState(0)
@@ -64,14 +65,28 @@ const SignUp = (props) => {
 
     const steps = [
         {
+            key: 1,
             title: '',
             content: <StepOne next={handleNext} updateForm={updateForm} />,
         },
         {
+            key: 2,
+            title: '',
+            content: (
+                <StepTwo
+                    isMobile={isMobile}
+                    next={handleNext}
+                    updateForm={updateForm}
+                />
+            ),
+        },
+        {
+            key: 3,
             title: '',
             content: <StepThree isMobile={isMobile} updateForm={updateForm} />,
         },
         {
+            key: 4,
             title: '',
             content: <StepFour />,
         },
@@ -99,8 +114,8 @@ const SignUp = (props) => {
                     <span className="logo-text">THANK YOU.</span>
                 </div>
                 <Stepper activeStep={activeStep} alternativeLabel>
-                    {steps.map((step) => (
-                        <Step key={step.title}>
+                    {steps.map((index, step) => (
+                        <Step key={index}>
                             <StepLabel>{step.title}</StepLabel>
                         </Step>
                     ))}

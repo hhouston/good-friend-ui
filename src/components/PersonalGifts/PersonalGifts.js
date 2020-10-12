@@ -24,8 +24,10 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
                     </Title>
                     <p className="personal-gifts-text">
                         Keeping a strong connection with your loved ones is
-                        important. Our personal gift curators will help pick out
-                        (and deliver) the perfect present for any occasion.
+                        important. Go the extra mile to show your love with our
+                        unique tailored gifts. Our personal gift curators will
+                        suggest suitable gift ideas and deliver the perfect gift
+                        for any occasion at the perfect time.
                     </p>
                     <p className="personal-gifts-subtext">
                         Will ensure you never show up empty handed

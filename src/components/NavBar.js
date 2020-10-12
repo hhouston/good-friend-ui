@@ -4,11 +4,13 @@ import { MenuOutlined } from '@ant-design/icons'
 import { Menu, Button, Drawer } from 'antd'
 import { PrimaryButton } from './common'
 import BlobImage from '../images/purple-blob.png'
+import { useHistory } from 'react-router-dom'
 
 const Navbar = ({ isMobile }) => {
     const [current, setCurrent] = useState(0)
     const [hover, setHover] = useState(false)
     const [visible, setVisible] = useState(false)
+    const history = useHistory()
 
     const handleClick = (e) => {
         setCurrent(e.key)
@@ -45,7 +47,9 @@ const Navbar = ({ isMobile }) => {
                     style={{ borderBottom: 'none', zIndex: '30' }}
                 >
                     <Menu.Item className="navbar-item" key="pricing">
-                        Pricing Page
+                        <a style={{ color: '#fff' }} href="/pricing">
+                            Pricing Page
+                        </a>
                     </Menu.Item>
                     <Menu.Item className="navbar-item" key="about">
                         About
@@ -60,6 +64,7 @@ const Navbar = ({ isMobile }) => {
                         onMouseEnter={toggleHover}
                         onMouseLeave={toggleHover}
                         style={{ border: '2px solid #fff' }}
+                        onClick={() => history.push('login')}
                     >
                         Sign in
                     </Button>

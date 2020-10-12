@@ -1,4 +1,5 @@
 .personal-gifts-container {
+    font-family: 'Karla', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,7 +8,7 @@
 }
 
 .subtitle {
-    font-family: 'sifonn', sans-serif;
+    font-family: 'Vollkorn', serif;
 }
 
 .personal-gifts-image {
@@ -28,9 +29,11 @@
 }
 
 .personal-gifts-text {
-    font-size: 16px;
-    color: #656565;
-    line-height: 1.8em;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 20px;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
 }
 
 .personal-gifts-subtext {

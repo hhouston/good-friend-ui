@@ -20,7 +20,9 @@ function StepFour() {
             <Title level={2} className="subtitle">
                 Your event has been saved!
             </Title>
-            <p>A curator will reach out to you shortly.</p>
+            <p style={{ color: '#656565' }}>
+                A curator will reach out to you shortly.
+            </p>
             <Lottie options={defaultOptions} height={400} width={400} />
         </div>
     )
