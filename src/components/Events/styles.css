@@ -15,3 +15,147 @@
     text-transform: uppercase;
     border-radius: 18px;
 }
+
+.row-image {
+    height: 84px;
+}
+
+.loved-one {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.loved-one-image {
+    height: 48px;
+    width: 48px;
+}
+
+.loved-one-content {
+    margin-left: 8px;
+}
+
+.loved-one-name {
+    color: '#404346' !important;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.loved-one-age {
+    color: '#90919E' !important;
+    margin: 0;
+}
+
+.ant-table-cell {
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.event-calendar {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.calendar {
+    height: 84px;
+    width: 84px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    margin-bottom: 12px;
+}
+
+.calendar-month {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.calendar-day {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+    margin-top: 8px;
+}
+
+.gifts-container {
+    display: flex;
+    max-width: 320px;
+    flex-wrap: wrap;
+}
+
+.gift-idea-wrapper {
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    align-items: center;
+    max-width: 150px;
+    margin: 0 8px 16px 0;
+    transition: 200ms ease;
+}
+
+.gift-idea-wrapper:hover {
+    transform: translateY(-3px);
+}
+
+.gift-idea {
+    display: flex;
+    padding: 4px;
+    align-items: center;
+}
+
+.gift-idea-icon {
+    margin-right: 12px;
+}
+
+.text-area-wrapper.ant-input {
+    /* border: 2px solid #d9d9d9; */
+    border-radius: 12px;
+}
+
+.text-area-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    padding: 12px;
+    background-color: #f5f8fb;
+    margin: 84px 0;
+}
+
+.text-area-text {
+    color: #667eea;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 0;
+}
+
+.ant-table-content {
+    font-family: 'Karla', sans-serif;
+    letter-spacing: -0.02em;
+    /* font-size: 18px; */
+}
+
+.notes-column {
+    vertical-align: baseline !important;
+}
+
+.ant-table-wrapper {
+    margin: 0;
+    width: 88%;
+}

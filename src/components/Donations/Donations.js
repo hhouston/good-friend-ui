@@ -23,10 +23,11 @@ const Donations = ({ titleSize }) => {
                         Donations
                     </Title>
                     <p className="donations-text">
-                        Thank You makes it easy to support causes important to
-                        you. Select an organization and with each gift you send,
-                        Thank You will match proceeds up to $1 (Donations will
-                        be kept anon)
+                        Want to pay back to society? Thank You makes it easy to
+                        support causes important to you. Help light up someone’s
+                        life by sending them a gift. With each gift you donate,
+                        Thank you will match the proceeds up to 1$. (We respect
+                        your privacy and send gifts anonymously).
                     </p>
                     <img
                         src={require('../../images/cropped-blob.png')}

@@ -99,6 +99,7 @@ const SignUp = ({ next, updateForm }) => {
                             />
                         }
                         placeholder="Interests"
+                        style={{ borderRadius: '8px' }}
                     />
                 </Form.Item>
                 <Button type="primary" onClick={onSubmit}>

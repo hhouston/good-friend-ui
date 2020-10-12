@@ -9,6 +9,7 @@
 }
 
 body {
+    font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
@@ -27,8 +28,27 @@ html {
 
 body {
     min-height: 100%;
+    font-family: 'Karla', sans-serif;
 }
 
 #root {
     height: 100%;
+}
+
+p {
+    font-family: 'Karla', sans-serif;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
+}
+
+.button {
+    font-family: 'Karla', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Karla', sans-serif;
 }

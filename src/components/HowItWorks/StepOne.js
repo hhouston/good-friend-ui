@@ -9,11 +9,17 @@ const StepOne = () => {
             <div className="step-container">
                 <div className="step-one-section">
                     <div className="step-content">
-                        <PrimaryButton>Step 01</PrimaryButton>
+                        <PrimaryButton
+                            style={{
+                                fontWeight: '700',
+                                fontFamily: 'Karla, sans-serif',
+                            }}
+                        >
+                            Step 1
+                        </PrimaryButton>
                         <p className="step-text">
-                            Select a package that fits your needs and we will
-                            pair you up with the curator that can best fulfill
-                            your needs
+                            Select a gift package that fits your needs and we
+                            will pair you up with a suitable gift curator.
                         </p>
                     </div>
                     <img

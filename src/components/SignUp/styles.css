@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 16px 16px 32px 16px;
+    font-family: 'Karla', sans-serif;
 }
 
 .sign-up-wrapper {
@@ -39,9 +40,11 @@
 }
 
 .logo-text {
-    font-family: 'sifonn', sans-serif;
-    font-size: 16px;
-    line-height: 16px;
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    text-transform: lowercase;
 }
 
 .prev-button {
@@ -53,15 +56,154 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 48px;
+    max-width: 80%;
+}
+
+.event-card {
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 24px 24px 24px;
+    box-shadow: 0 8px 28px 0 rgba(210, 210, 245, 0.6);
+    border-radius: 16px;
+    padding: 24px;
+    transition: 300ms ease;
+    max-width: 300px;
+}
+
+.pricing-card {
+    justify-content: initial;
+    padding: 0;
+}
+
+.pricing-container {
+    display: flex;
+}
+
+.pricing-details {
+    padding: 16px 0;
+    color: #656565;
+}
+
+.pricing-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pricing-list-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.pricing-icon {
+    background-color: #6a4ee1;
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    padding: 4px;
+    color: #fff;
+    margin: 12px;
+}
+
+.pricing-header {
+    padding: 24px 24px 0 24px;
+    border-radius: 16px 16px 0 0;
+    background-color: rgb(233, 216, 253);
+}
+
+.pricing-free {
+    background-color: #2a2c44;
+}
+
+.event-card-active {
+    border: 2px solid;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+}
+
+.card-image-container {
+    border-radius: 24px;
 }
 
 .card-image {
-    height: 180px;
+    width: 180px;
+    object-fit: contain;
+    padding: 16px;
     object-fit: contain;
 }
 
-.ant-card-small {
-    width: 120px !important;
+.card-title {
+    margin: 18px 0;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #553c9a;
+}
+
+.card-title-pricing {
+    margin: 18px 0;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.title-free {
+    color: #fff;
+}
+
+.card-pricing-description {
+    color: #555;
+}
+
+.description-free {
+    color: #fff;
+}
+
+.price-text {
+    margin-top: 22px;
+    margin-bottom: 32px;
+    color: #6a4ee1;
+    font-size: 52px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.month-span {
+    opacity: 0.5;
+    font-size: 16px;
+    color: #888888;
+}
+
+.price-text-free {
+    color: #fff;
+}
+
+.price-button {
+    width: 100%;
+    padding: 20px 35px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 14px 14px 35px 0 rgba(33, 38, 106, 0.1);
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.button-free {
+    background-color: #6a4ee1;
+    color: #fff;
 }
 
 @media (max-width: 767px) {
@@ -83,7 +225,7 @@
         padding-right: 8px;
     }
     .logo-text {
-        font-family: 'sifonn', sans-serif;
+        font-family: 'Vollkorn', serif;
         font-size: 14px;
         line-height: 14px;
     }
@@ -99,4 +241,50 @@
 
 .ant-calendar-input-wrap {
     display: none;
+}
+
+.ant-input-affix-wrapper,
+.ant-picker {
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+}
+
+.ant-input-number {
+    border-radius: 8px !important;
+    padding: 2px 0;
+}
+
+.pricing-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.get-started-button {
+    width: initial;
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.arrow-icon {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    padding: 4px;
+    color: #fff;
+    margin: 8px;
+}
+
+.pricing-title {
+    font-family: 'Vollkorn', serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.notes-column {
+    vertical-align: baseline;
+    margin-top: 80px;
 }

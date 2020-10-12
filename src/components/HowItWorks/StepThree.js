@@ -9,9 +9,17 @@ const StepThree = () => {
             <div className="step-container">
                 <div className="step-one-section">
                     <div className="step-content step-content-left">
-                        <PrimaryButton>Step 03</PrimaryButton>
+                        <PrimaryButton
+                            style={{
+                                fontWeight: '700',
+                                fontFamily: 'Karla, sans-serif',
+                            }}
+                        >
+                            Step 3
+                        </PrimaryButton>
                         <p className="step-text">
-                            Your personal curator will handle the rest.
+                            Your personal gift curator will help with the gift
+                            and wrap selection for your loved ones.
                         </p>
                     </div>
                     <img

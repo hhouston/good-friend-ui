@@ -7,7 +7,7 @@
 }
 
 .subtitle {
-    font-family: 'sifonn', sans-serif;
+    font-family: 'Vollkorn', serif;
 }
 
 .donations-image {
@@ -21,9 +21,10 @@
     margin-left: 48px;
 }
 .donations-text {
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
     color: #656565;
-    line-height: 1.8em;
 }
 
 .donations-blob {

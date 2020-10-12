@@ -10,9 +10,11 @@
     margin-right: auto;
 }
 .logo {
-    font-family: 'sifonn', sans-serif;
-    font-size: 16px;
-    line-height: 16px;
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    text-transform: lowercase;
 }
 
 .logo-image {
@@ -22,6 +24,7 @@
 }
 
 .navbar {
+    font-family: 'Karla', sans-serif;
     display: flex;
     justify-content: flex-end;
     align-items: center;

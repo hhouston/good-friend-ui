@@ -12,8 +12,9 @@
 }
 
 .why-text {
-    font-size: 14px;
-    line-height: 1.8em;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
 }
 
 .why-image {

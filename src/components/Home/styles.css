@@ -19,6 +19,7 @@
 }
 
 .container {
+    font-family: 'Karla', sans-serif;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -36,11 +37,11 @@
 }
 
 .title {
-    font-family: 'sifonn', sans-serif;
+    font-family: 'Vollkorn', serif;
 }
 
 .title-typing {
-    font-family: 'sifonn', sans-serif;
+    font-family: 'Vollkorn', serif;
     text-decoration: underline;
 }
 
@@ -77,6 +78,7 @@
 }
 
 .subheader {
+    font-family: 'Karla', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,19 +1,24 @@
 import React from 'react'
-import { Card } from 'antd'
-const { Meta } = Card
+import './styles.css'
+import classNames from 'classnames'
+
+import { Typography } from 'antd'
+
+const { Title } = Typography
 
 const EventCard = ({ imgUrl, title, onClick, selected, size }) => {
     return (
-        <Card
-            size={size}
-            hoverable
-            bordered={selected === title}
-            style={{ width: 240, margin: '0 24px 24px 24px' }}
-            cover={<img alt="example" className="card-image" src={imgUrl} />}
+        <div
+            className={classNames('event-card', {
+                'event-card-active': selected === title,
+            })}
             onClick={onClick}
         >
-            <Meta title={title} />
-        </Card>
+            <span className="card-image-container">
+                <img className="card-image" src={imgUrl} />
+            </span>
+            <h3 className="card-title">{title}</h3>
+        </div>
     )
 }
 

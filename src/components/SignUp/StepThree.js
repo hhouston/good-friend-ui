@@ -16,6 +16,8 @@ const StepThree = ({ isMobile, updateForm }) => {
         }
     }
 
+    console.log(selected)
+
     const cardSize = isMobile ? 'small' : 'default'
     return (
         <>
@@ -24,6 +26,7 @@ const StepThree = ({ isMobile, updateForm }) => {
             </Title>
             <div className="cards-wrapper">
                 <EventCard
+                    key={'anniversary'}
                     title="Anniversary"
                     imgUrl={require('../../images/love.svg')}
                     onClick={() => handleSelect('ANNIVERSARY')}
@@ -31,6 +34,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'birthday'}
                     title="Birthday"
                     imgUrl={require('../../images/birthday.svg')}
                     onClick={() => handleSelect('BIRTHDAY')}
@@ -38,6 +42,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'graduation'}
                     title="Graduation"
                     imgUrl={require('../../images/graduation.svg')}
                     onClick={() => handleSelect('GRADUATION')}
@@ -45,6 +50,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'baby'}
                     title="Baby shower"
                     imgUrl={require('../../images/baby.svg')}
                     onClick={() => handleSelect('BABY_SHOWER')}
@@ -52,6 +58,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'mother'}
                     title="Mother's Day"
                     imgUrl={require('../../images/mother.svg')}
                     onClick={() => handleSelect('MOTHERS_DAY')}
@@ -59,6 +66,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'father'}
                     title="Father's Day"
                     imgUrl={require('../../images/father.svg')}
                     onClick={() => handleSelect('FATHERS_DAY')}
@@ -66,6 +74,7 @@ const StepThree = ({ isMobile, updateForm }) => {
                     size={cardSize}
                 />
                 <EventCard
+                    key={'wedding'}
                     title="Wedding"
                     imgUrl={require('../../images/wedding.svg')}
                     onClick={() => handleSelect('WEDDING')}
