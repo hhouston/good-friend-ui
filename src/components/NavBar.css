@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: flex-end;
     background: transparent;
+    padding: 24px 36px;
 }
 
 .logo-wrapper {
@@ -29,8 +30,6 @@
     justify-content: flex-end;
     align-items: center;
     background: transparent;
-    margin-top: 40px;
-    margin-bottom: 60px;
 }
 
 .navbar-title {
@@ -48,6 +47,10 @@
 }
 
 .navbar-item {
+    font-size: 16px;
+}
+
+.navbar-item-light {
     font-size: 16px;
     color: #fff;
 }

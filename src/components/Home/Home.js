@@ -110,7 +110,7 @@ const Home = () => {
             ) : null}
             <div className="header-section">
                 <Header style={{ background: 'transparent', textAlign: 'end' }}>
-                    <NavBar isMobile={isMobile} />
+                    <NavBar isMobile={isMobile} isHome />
                 </Header>
                 <div className="container">
                     <div className="site-layout site-layout-subheader">

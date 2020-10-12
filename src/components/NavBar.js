@@ -5,8 +5,9 @@ import { Menu, Button, Drawer } from 'antd'
 import { PrimaryButton } from './common'
 import BlobImage from '../images/purple-blob.png'
 import { useHistory } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-const Navbar = ({ isMobile }) => {
+const Navbar = ({ isMobile, isHome }) => {
     const [current, setCurrent] = useState(0)
     const [hover, setHover] = useState(false)
     const [visible, setVisible] = useState(false)
@@ -46,28 +47,53 @@ const Navbar = ({ isMobile }) => {
                     mode="horizontal"
                     style={{ borderBottom: 'none', zIndex: '30' }}
                 >
-                    <Menu.Item className="navbar-item" key="pricing">
-                        <a style={{ color: '#fff' }} href="/pricing">
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="pricing"
+                    >
+                        <a
+                            style={{ color: isHome ? '#fff' : '#2b137d' }}
+                            href="/pricing"
+                        >
                             Pricing Page
                         </a>
                     </Menu.Item>
-                    <Menu.Item className="navbar-item" key="about">
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="about"
+                    >
                         About
                     </Menu.Item>
-                    <Menu.Item className="navbar-item" key="careers">
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="careers"
+                    >
                         Careers
                     </Menu.Item>
-                    <Button
-                        shape="round"
-                        size="default"
-                        ghost={!hover}
-                        onMouseEnter={toggleHover}
-                        onMouseLeave={toggleHover}
-                        style={{ border: '2px solid #fff' }}
-                        onClick={() => history.push('login')}
-                    >
-                        Sign in
-                    </Button>
+                    {isHome ? (
+                        <Button
+                            shape="round"
+                            size="default"
+                            ghost={!hover}
+                            onMouseEnter={toggleHover}
+                            onMouseLeave={toggleHover}
+                            style={{ border: '2px solid #fff' }}
+                            onClick={() => history.push('login')}
+                        >
+                            Sign in
+                        </Button>
+                    ) : (
+                        <Button
+                            shape="round"
+                            size="default"
+                            type="primary"
+                            onMouseEnter={toggleHover}
+                            onMouseLeave={toggleHover}
+                            onClick={() => history.push('login')}
+                        >
+                            Sign in
+                        </Button>
+                    )}
                 </Menu>
             </div>
         )
@@ -122,6 +148,11 @@ const Navbar = ({ isMobile }) => {
             </Drawer>
         </div>
     )
+}
+
+Navbar.defaultProps = {
+    isMobile: false,
+    isHome: false,
 }
 
 export default Navbar

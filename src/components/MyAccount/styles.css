@@ -1,0 +1,61 @@
+.account-form-wrapper {
+    font-family: 'Karla', sans-serif;
+    color: #e2e8f0;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.account-form {
+    width: 100%;
+    display: flex;
+}
+
+.account-input-container {
+    width: 100%;
+    padding: 0 16px;
+    margin-bottom: 24px;
+}
+.account-form-input {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin: 0;
+    font-size: 16px;
+}
+
+.account-form-label {
+    display: block;
+    text-transform: uppercase;
+    color: #4a5568;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.account-entry {
+    background-color: rgb(237, 242, 247);
+    color: rgb(74, 85, 104);
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 8px;
+    margin: 0;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 12px;
+    font-size: 16px;
+}
+
+.my-account-button {
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: auto;
+    display: block;
+}
+
+.account-form-wrapper .ant-btn {
+    font-size: 14px;
+}
