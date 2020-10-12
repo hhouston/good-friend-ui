@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles.css'
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
 import { useHistory } from 'react-router-dom'
+import { gql, useMutation } from '@apollo/client'
+
+const LOG_IN = gql`
+    mutation login($credentials: LoginInput!) {
+        login(credentials: $credentials)
+    }
+`
+
+const formState = {
+    email: '',
+    password: '',
+}
 
 const Login = () => {
     const history = useHistory()
+    const [login] = useMutation(LOG_IN)
+    const [credentials, updateUserForm] = useState(formState)
+
+    const updateForm = (e) => {
+        updateUserForm({
+            ...credentials,
+            [e.target.name]: e.target.value.trim(),
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const data = login({
+            variables: { credentials },
+            onCompleted: () => localStorage.setItem('token', data.login),
+        })
+    }
+
     return (
         <div className="login-container">
             <div className="login-wrapper">
@@ -34,13 +64,16 @@ const Login = () => {
                             onFailure={() => console.log('google success')}
                         />
                     </div>
-                    <form className="form-wrapper">
+                    <form className="form-wrapper" onSubmit={handleSubmit}>
                         <div className="form">
                             <input
                                 className="form-input"
                                 type="email"
                                 placeholder="Email Address"
                                 aria-label="Email Address"
+                                name="email"
+                                onChange={updateForm}
+                                value={credentials.email}
                             />
                         </div>
                         <div className="form">
@@ -49,13 +82,16 @@ const Login = () => {
                                 type="password"
                                 placeholder="Password"
                                 aria-label="Password"
+                                name="password"
+                                onChange={updateForm}
+                                value={credentials.password}
                             />
                         </div>
                         <div className="form-password-wrapper">
                             <a className="form-forgot-password" href="#">
                                 Forget Password?
                             </a>
-                            <button className="form-button" type="button">
+                            <button className="form-button" type="submit">
                                 Login
                             </button>
                         </div>

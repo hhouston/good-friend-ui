@@ -21,9 +21,6 @@ import './styles.css'
 import { HeartOutlined, ContainerOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import { typeFromAST } from 'graphql'
-import { GiFlowerPot } from 'react-icons/gi'
-import { FiExternalLink } from 'react-icons/fi'
-import { RiPriceTag3Line } from 'react-icons/ri'
 import AllEventsTable from './AllEventsTable'
 const { Header, Content, Footer, Sider } = Layout
 
@@ -215,7 +212,6 @@ const GiftIdea = () => {
                     <Button
                         className="gift-idea-icon"
                         shape="circle"
-                        icon={<FiExternalLink style={{ fontSize: '14px' }} />}
                         size={18}
                         style={{
                             boxShadow:
@@ -253,7 +249,6 @@ const GiftIdea = () => {
                     <Button
                         className="gift-idea-icon"
                         shape="circle"
-                        icon={<FiExternalLink style={{ fontSize: '14px' }} />}
                         size={18}
                         style={{
                             boxShadow:
@@ -333,15 +328,9 @@ const TableContainer = ({ data }) => {
                         mode="inline"
                         defaultSelectedKeys={['4']}
                     >
-                        <Menu.Item key="1" icon={<FiExternalLink />}>
-                            nav 1
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<FiExternalLink />}>
-                            nav 2
-                        </Menu.Item>
-                        <Menu.Item key="3" icon={<FiExternalLink />}>
-                            nav 3
-                        </Menu.Item>
+                        <Menu.Item key="1">nav 1</Menu.Item>
+                        <Menu.Item key="2">nav 2</Menu.Item>
+                        <Menu.Item key="3">nav 3</Menu.Item>
                     </Menu>
                 </Sider>
 
