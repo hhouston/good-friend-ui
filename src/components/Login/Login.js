@@ -4,6 +4,7 @@ import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
 import { useHistory } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
+import { Button } from 'antd'
 
 const LOG_IN = gql`
     mutation login($credentials: LoginInput!) {
@@ -20,6 +21,8 @@ const Login = () => {
     const history = useHistory()
     const [login] = useMutation(LOG_IN)
     const [credentials, updateUserForm] = useState(formState)
+    const [formErrors, setFormErrors] = useState('')
+    const [loadingState, setLoadingState] = useState(false)
 
     const updateForm = (e) => {
         updateUserForm({
@@ -28,12 +31,20 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = login({
-            variables: { credentials },
-            onCompleted: () => localStorage.setItem('token', data.login),
-        })
+        setLoadingState(true)
+        try {
+            const response = await login({
+                variables: { credentials },
+            })
+            localStorage.setItem('token', response.data.login)
+            history.push('home')
+            setLoadingState(false)
+        } catch (e) {
+            setFormErrors(e.message)
+            setLoadingState(false)
+        }
     }
 
     return (
@@ -65,6 +76,17 @@ const Login = () => {
                         />
                     </div>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
+                        {formErrors ? (
+                            <p
+                                style={{
+                                    color: '#f56565',
+                                    fontSize: '14px',
+                                    margin: '0',
+                                }}
+                            >
+                                Error logging you in
+                            </p>
+                        ) : null}
                         <div className="form">
                             <input
                                 className="form-input"
@@ -91,9 +113,14 @@ const Login = () => {
                             <a className="form-forgot-password" href="#">
                                 Forget Password?
                             </a>
-                            <button className="form-button" type="submit">
-                                Login
-                            </button>
+                            <Button
+                                shape="round"
+                                type="primary"
+                                htmlType="submit"
+                                loading={loadingState}
+                            >
+                                Log in
+                            </Button>
                         </div>
                     </form>
                 </div>

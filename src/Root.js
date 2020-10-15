@@ -6,6 +6,7 @@ import Events from './components/Events'
 import { Login, SignUp } from './components/Login'
 import { PricingCards, Start } from './components/SignUp/'
 import { Account } from './components/MyAccount/'
+import { AboutUs } from './components/AboutUs/'
 // import { Provider } from 'react-redux'
 // think about using apolo-client instead of apollo-boost
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -21,6 +22,7 @@ export const Root = () => {
                     <Route path="/viewAll" component={Events} />
                     <Route path="/pricing" component={PricingCards} />
                     <Route path="/account" component={Account} />
+                    <Route path="/about" component={AboutUs} />
                 </Switch>
             </div>
         )

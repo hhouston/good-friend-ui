@@ -10,7 +10,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import IconButton from '@material-ui/core/IconButton'
 import Love from '../../images/love.svg'
 import { Tabs, Layout } from 'antd'
-import NavBar from '../NavBar'
+import { NavBar } from '../NavBar'
 const { Header, Content, Footer, Sider } = Layout
 
 const { TabPane } = Tabs
@@ -44,7 +44,6 @@ const Events = () => {
 
     return (
         <div>
-            <NavBar />
             <Tabs defaultActiveKey="1" centered>
                 <TabPane tab="All events" key="2">
                     <AllEventsTable data={newData} />
