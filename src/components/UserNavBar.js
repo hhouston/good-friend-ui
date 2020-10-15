@@ -13,8 +13,6 @@ const Navbar = ({ isMobile, isHome }) => {
     const [visible, setVisible] = useState(false)
     const history = useHistory()
 
-    const loggedIn = !!localStorage.getItem('token')
-
     const handleClick = (e) => {
         setCurrent(e.key)
     }
@@ -33,7 +31,10 @@ const Navbar = ({ isMobile, isHome }) => {
     if (!isMobile) {
         return (
             <div className="navbar-wrapper">
-                <div className="logo-wrapper">
+                <div
+                    className="logo-wrapper"
+                    onClick={() => history.push('home')}
+                >
                     <img
                         src={require('../images/geometric-heart-logo.png')}
                         className="logo-image"
@@ -54,24 +55,6 @@ const Navbar = ({ isMobile, isHome }) => {
                     }}
                     theme="dark"
                 >
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="about"
-                    >
-                        About
-                    </Menu.Item>
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="contact"
-                    >
-                        Contact
-                    </Menu.Item>
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="careers"
-                    >
-                        Careers
-                    </Menu.Item>
                     {isHome ? (
                         <Button
                             shape="round"
@@ -80,9 +63,9 @@ const Navbar = ({ isMobile, isHome }) => {
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
                             style={{ border: '2px solid #fff' }}
-                            onClick={() => history.push('login')}
+                            onClick={() => history.push('viewAll')}
                         >
-                            Sign in
+                            Dashboard
                         </Button>
                     ) : (
                         <Button
@@ -91,11 +74,46 @@ const Navbar = ({ isMobile, isHome }) => {
                             type="primary"
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
-                            onClick={() => history.push('login')}
+                            onClick={() => history.push('account')}
                         >
-                            Sign in
+                            Account
                         </Button>
                     )}
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="about"
+                    >
+                        <a href="/pricing">About</a>
+                    </Menu.Item>
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="contact"
+                    >
+                        <a href="/pricing">Contact</a>
+                    </Menu.Item>
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="careers"
+                    >
+                        <a href="/pricing">Careers</a>
+                    </Menu.Item>
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="account"
+                    >
+                        <a href="/account">
+                            <img
+                                className="user-navbar-icon"
+                                style={{
+                                    height: '18px',
+                                    width: '18px',
+                                    marginRight: '6px',
+                                }}
+                                src={require('../images/user_profile.png')}
+                            ></img>
+                            Account
+                        </a>
+                    </Menu.Item>
                 </Menu>
             </div>
         )
@@ -112,11 +130,7 @@ const Navbar = ({ isMobile, isHome }) => {
                     THANK YOU
                 </span>
             </div>
-            <MenuOutlined
-                onClick={showDrawer}
-                style={{ color: '#fff', fontSize: '18px' }}
-                theme="dark"
-            />
+            <MenuOutlined onClick={showDrawer} theme="dark" />
             <Drawer
                 title=" "
                 onClose={onClose}
@@ -141,12 +155,12 @@ const Navbar = ({ isMobile, isHome }) => {
                 <p>Packages</p>
                 <p>About</p>
                 <p>Careers</p>
-                <PrimaryButton
+                <Button
                     type="secondary"
                     style={{ fontWeight: '600', border: '2px solid' }}
                 >
                     Sign In
-                </PrimaryButton>
+                </Button>
             </Drawer>
         </div>
     )

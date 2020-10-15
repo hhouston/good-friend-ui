@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './styles.css'
 import NavBar from '../NavBar'
+import UserNavBar from '../UserNavBar'
 import PersonalGifts from '../PersonalGifts'
 import HowItWorks from '../HowItWorks'
 import FeaturedItem from '../FeaturedItem'
@@ -39,6 +40,8 @@ const Home = () => {
         contentHeight: 0,
         imageLoaded: 0,
     }
+
+    const isLoggedIn = !!localStorage.getItem('token')
 
     const [state, updateState] = useState(initialState)
     const history = useHistory()
@@ -110,62 +113,72 @@ const Home = () => {
             ) : null}
             <div className="header-section">
                 <Header style={{ background: 'transparent', textAlign: 'end' }}>
-                    <NavBar isMobile={isMobile} isHome />
+                    {isLoggedIn ? (
+                        <UserNavBar isMobile={isMobile} isHome />
+                    ) : (
+                        <NavBar isMobile={isMobile} isHome />
+                    )}
                 </Header>
                 <div className="container">
                     <div className="site-layout site-layout-subheader">
                         <div className="main-section">
-                            <div className="subheader">
-                                <Title
-                                    type="primary"
-                                    className="title"
-                                    style={{
-                                        margin: '0',
-                                        fontSize: titleSize,
-                                        color: isMobile ? '#fff' : 'inherit',
-                                    }}
-                                >
-                                    Your personal gift curator for
-                                </Title>
-                                <Typed
-                                    classname="title-typing"
-                                    strings={TYPED_STRINGS}
-                                    typeSpeed={40}
-                                    backSpeed={50}
-                                    loop
-                                    backDelay={1000}
-                                    style={{
-                                        fontSize: titleSize,
-                                        borderBottom: '8px solid #FF3399',
-                                        color: isMobile ? '#fff' : 'inherit',
-                                    }}
-                                ></Typed>
+                            <div className="subheader-text-section">
+                                <div className="subheader">
+                                    <Title
+                                        type="primary"
+                                        className="title"
+                                        style={{
+                                            margin: '0',
+                                            fontSize: titleSize,
+                                            color: isMobile
+                                                ? '#fff'
+                                                : 'inherit',
+                                        }}
+                                    >
+                                        Your personal gift curator for
+                                    </Title>
+                                    <Typed
+                                        classname="title-typing"
+                                        strings={TYPED_STRINGS}
+                                        typeSpeed={40}
+                                        backSpeed={50}
+                                        loop
+                                        backDelay={1000}
+                                        style={{
+                                            fontSize: titleSize,
+                                            borderBottom: '8px solid #FF3399',
+                                            color: isMobile
+                                                ? '#fff'
+                                                : 'inherit',
+                                        }}
+                                    ></Typed>
+                                </div>
+                                <HeaderImages
+                                    isMobile={isMobile}
+                                    isVisible={state.contentInView}
+                                    handleImageLoaded={handleImageLoaded}
+                                />
                             </div>
-                            <HeaderImages
-                                isMobile={isMobile}
-                                isVisible={state.contentInView}
-                                handleImageLoaded={handleImageLoaded}
-                            />
+                            <Button
+                                onClick={() => applyNowClick()}
+                                className="apply-now-button"
+                                type="secondary"
+                                shape="round"
+                                size="large"
+                                onMouseEnter={toggleHover}
+                                onMouseLeave={toggleHover}
+                                style={{
+                                    background:
+                                        'linear-gradient(90deg,#FF3399 0,#FF3399, 76%,#D03AFD',
+                                    color: '#fff',
+                                    border: 'none',
+                                    width: '180px',
+                                    height: '54px',
+                                }}
+                            >
+                                Get started
+                            </Button>
                         </div>
-                        <Button
-                            onClick={() => applyNowClick()}
-                            className="apply-now-button"
-                            type="secondary"
-                            shape="round"
-                            size="large"
-                            onMouseEnter={toggleHover}
-                            onMouseLeave={toggleHover}
-                            style={{
-                                background:
-                                    'linear-gradient(90deg,#FF3399 0,#FF3399, 76%,#D03AFD',
-                                color: '#fff',
-                                border: 'none',
-                                width: '180px',
-                                height: '54px',
-                            }}
-                        >
-                            Apply Now
-                        </Button>
                     </div>
                 </div>
             </div>

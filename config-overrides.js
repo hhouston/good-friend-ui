@@ -17,6 +17,8 @@ module.exports = override(
             '@table-header-bg': '#F5F8FB',
             '@table-header-color': '#ADC0D6',
             '@table-selected-row-color': '#405693',
+            '@font-family': ['Karla', 'sans-serif'],
+            '@font-size-base': '16px',
         },
     })
 )
