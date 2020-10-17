@@ -33,7 +33,7 @@ store.subscribe(() => {
 })
 
 const httpLink = createHttpLink({
-    uri: '/graphql',
+    uri: 'http://localhost:9000/graphql',
 })
 
 const authLink = setContext((_, { headers }) => {

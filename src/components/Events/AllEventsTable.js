@@ -14,6 +14,21 @@ import {
 import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
 import Footer from '../Footer'
+import TableContainer from './TableContainer'
+import { gql, useQuery } from '@apollo/client'
+
+const GET_GIFTS = gql`
+    query Gifts($eventId: ID!) {
+        getGiftsByEventId(eventId: $eventId) {
+          name
+          description
+          price
+          currency
+          url
+          image
+        }
+    }
+`
 
 const { TextArea } = Input
 
@@ -282,151 +297,105 @@ const NotesColumn = () => {
     )
 }
 
-const GiftIdeasColumn = () => {
-    return (
-        <div>
-            <div
-                className="event-card event-card-link"
-                style={{
-                    padding: '0',
-                    flexDirection: 'row',
-                    maxWidth: 'initial',
-                    overflow: 'hidden',
-                }}
-            >
-                <img
-                    src={require('../../images/robes.jpg')}
-                    style={{
-                        maxWidth: '55%',
-                        height: '260px',
-                    }}
-                ></img>
-                <span
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        padding: '24px',
-                    }}
-                >
-                    <span
-                        style={{
-                            color: '#a0aec0',
-                            textTransform: 'uppercase',
-                            letterSpacing: '.1em',
-                        }}
-                    >
-                        Brand name
-                    </span>
-                    <h3
-                        style={{
-                            fontWeight: '700',
-                            fontSize: '20px',
-                            color: '#1a202c',
-                        }}
-                    >
-                        Robes set
-                    </h3>
-                    <span
-                        style={{
-                            color: '#718096',
-                            fontSize: '14px',
-                            maxWidth: '350px',
-                            lineHeight: '20px',
-                        }}
-                    >
-                        New set bathrobes embroidered with any name in your
-                        choice in multiple colors
-                    </span>
-                    <span
-                        style={{
-                            color: '#6C5ED3',
-                            fontWeight: '700',
-                            fontSize: '18px',
-                        }}
-                    >
-                        $59.00
-                    </span>
-                    <div className="gifts-response-container">
-                        <div className="gift-response-item">
-                            <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
-                            <span>Approve</span>
-                        </div>
-                        <div className="gift-response-item">
-                            <EllipsisIcon />
-                            <span>Maybe</span>
-                        </div>
-                        <div className="gift-response-item">
-                            <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
-                            <span>Reject</span>
-                        </div>
-                    </div>
-                </span>
-            </div>
-            <div
-                className="event-card event-card-link"
-                style={{
-                    padding: '0',
-                    flexDirection: 'row',
-                    maxWidth: 'initial',
-                    overflow: 'hidden',
-                }}
-            >
-                <img
-                    src={require('../../images/robes.jpg')}
-                    style={{
-                        maxWidth: '55%',
-                        height: '260px',
-                    }}
-                ></img>
-                <span
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        padding: '24px',
-                    }}
-                >
-                    <span
-                        style={{
-                            color: '#a0aec0',
-                            textTransform: 'uppercase',
-                            letterSpacing: '.1em',
-                        }}
-                    >
-                        Brand name
-                    </span>
-                    <h3
-                        style={{
-                            fontWeight: '700',
-                            fontSize: '20px',
-                            color: '#1a202c',
-                        }}
-                    >
-                        Robes set
-                    </h3>
-                    <span
-                        style={{
-                            color: '#718096',
-                            fontSize: '14px',
-                            maxWidth: '350px',
-                            lineHeight: '20px',
-                        }}
-                    >
-                        New set bathrobes embroidered with any name in your
-                        choice in multiple colors
-                    </span>
-                    <span
-                        style={{
-                            color: '#6C5ED3',
-                            fontWeight: '700',
-                            fontSize: '18px',
-                        }}
-                    >
-                        $59.00
-                    </span>
-                </span>
-            </div>
-        </div>
+const GiftIdeasColumn = ({ eventId }) => {
+  if (!eventId) {
+    return null
+  }
+
+  const { loading, error, data } = useQuery(GET_GIFTS, {
+      variables: { eventId: eventId },
+  })
+    if (loading) return 'loading'
+    if (error) return <p>{error}</p>
+    const { getGiftsByEventId } = data
+    if (!getGiftsByEventId) {
+      return null
+    }
+    return(
+    getGiftsByEventId.map(({ name, description, price, currency, url, image }) => (
+          <div>
+              <div
+                  className="event-card event-card-link"
+                  style={{
+                      padding: '0',
+                      flexDirection: 'row',
+                      maxWidth: 'initial',
+                      overflow: 'hidden',
+                  }}
+              >
+                  <img
+                      src={require('../../images/robes.jpg')}
+                      style={{
+                          maxWidth: '55%',
+                          height: '260px',
+                      }}
+                  ></img>
+                  <span
+                      style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          padding: '24px',
+                          width: '100%'
+                      }}
+                  >
+                      <span
+                          style={{
+                              color: '#a0aec0',
+                              textTransform: 'uppercase',
+                              letterSpacing: '.1em',
+                          }}
+                      >
+                          {"name"}
+                      </span>
+                      <h3
+                          style={{
+                              fontWeight: '700',
+                              fontSize: '20px',
+                              color: '#1a202c',
+                          }}
+                      >
+                          {name}
+                      </h3>
+                      <span
+                          style={{
+                              color: '#718096',
+                              fontSize: '14px',
+                              maxWidth: '350px',
+                              lineHeight: '20px',
+                          }}
+                      >
+                          {description}
+                      </span>
+                      <span
+                          style={{
+                              color: '#6C5ED3',
+                              fontWeight: '700',
+                              fontSize: '18px',
+                          }}
+                      >
+                          $59.00
+                      </span>
+                      <div className="gifts-response-container">
+                          <div className="gift-response-item">
+                              <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
+                              <span>Approve</span>
+                          </div>
+                          <div className="gift-response-item">
+                              <EllipsisIcon />
+                              <span>Maybe</span>
+                          </div>
+                          <div className="gift-response-item">
+                              <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
+                              <span>Reject</span>
+                          </div>
+                      </div>
+                  </span>
+              </div>
+          </div>
+      )
     )
+    )
+    return null
 }
 
 const columns = [
@@ -436,25 +405,26 @@ const columns = [
         key: 'notes',
         width: '40%',
         className: 'notes-column',
+        render: (text, record, index) => {
+          return <NotesColumn/>
+        }
     },
     {
         title: 'Gift ideas',
         dataIndex: 'gifts',
         key: 'gifts',
+        render: (text, record, index) => {
+          return <GiftIdeasColumn eventId={record.id}/>
+        }
     },
 ]
 
-const AllEventsTable = () => {
-    const data = [
-        {
-            notes: <NotesColumn />,
-            gifts: <GiftIdeasColumn />,
-        },
-    ]
+const AllEventsTable = (props) => {
+  console.log(props)
     return (
         <Table
             columns={columns}
-            dataSource={data}
+            dataSource={props.data}
             pagination={false}
             expandable={false}
             style={{ paddingTop: '80px' }}

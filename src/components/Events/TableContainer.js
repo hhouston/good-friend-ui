@@ -306,8 +306,8 @@ const columns = [
 ]
 
 const TableContainer = ({ data }) => {
-    const expandedRowRender = (props) => {
-        return <AllEventsTable />
+    const expandedRowRender = () => {
+        return <AllEventsTable data={data}/>
     }
     return (
         <>

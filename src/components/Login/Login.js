@@ -5,12 +5,7 @@ import GoogleLogin from 'react-google-login'
 import { useHistory } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
 import { Button } from 'antd'
-
-const LOG_IN = gql`
-    mutation login($credentials: LoginInput!) {
-        login(credentials: $credentials)
-    }
-`
+import axios from 'axios'
 
 const formState = {
     email: '',
@@ -19,7 +14,6 @@ const formState = {
 
 const Login = () => {
     const history = useHistory()
-    const [login] = useMutation(LOG_IN)
     const [credentials, updateUserForm] = useState(formState)
     const [formErrors, setFormErrors] = useState('')
     const [loadingState, setLoadingState] = useState(false)
@@ -32,19 +26,22 @@ const Login = () => {
     }
 
     const handleSubmit = async (e) => {
+      const { email, password } = credentials
         e.preventDefault()
         setLoadingState(true)
-        try {
-            const response = await login({
-                variables: { credentials },
-            })
-            localStorage.setItem('token', response.data.login)
+          axios.post('http://localhost:9000/login', {
+            email: email,
+            password: password
+          })
+          .then(({ data }) => {
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('expiresAt', data.expiresAt)
             history.push('home')
+          }, (error) => {
+            console.log(error);
+          });
+            // localStorage.setItem('token', response.token)
             setLoadingState(false)
-        } catch (e) {
-            setFormErrors(e.message)
-            setLoadingState(false)
-        }
     }
 
     return (
