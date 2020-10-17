@@ -10,6 +10,7 @@ import Donations from '../Donations'
 import Footer from '../Footer'
 import HeaderImages from './HeaderImages'
 import { Typography, Button, Layout, Spin } from 'antd'
+import { PricingCards } from '../../components/SignUp'
 
 import { ArrowDownOutlined } from '@ant-design/icons'
 import Typed from 'react-typed'
@@ -207,6 +208,7 @@ const Home = () => {
                 isTablet={isTablet}
             />
             <Donations titleSize={titleTwoSize} />
+            <PricingCards />
             <Footer titleSize={titleTwoSize} />
         </div>
     )

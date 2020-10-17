@@ -42,6 +42,31 @@ const PencilIcon = ({ stroke }) => (
     </svg>
 )
 
+const EllipsisIcon = ({ stroke }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={'#FFA800'}
+        style={{
+            backgroundColor: '#FFF4DD',
+            height: '24px',
+            width: '24px',
+            padding: '4px',
+            borderRadius: '24px',
+            marginRight: '8px',
+            flexShrink: '0',
+        }}
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+        />
+    </svg>
+)
+
 const PlusIcon = (props) => (
     <svg
         style={{
@@ -62,6 +87,55 @@ const PlusIcon = (props) => (
             stroke-linejoin="round"
             stroke-width="2"
             d="M5 13l4 4L19 7"
+        />
+    </svg>
+)
+
+const ThumbsUpIcon = (props) => (
+    <svg
+        style={{
+            backgroundColor: '#C6F6D5',
+            height: '24px',
+            width: '24px',
+            padding: '4px',
+            marginRight: '8px',
+            borderRadius: '24px',
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="#68D391"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+        />
+    </svg>
+)
+
+const ThumbsDownIcon = (props) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={props.stroke}
+        style={{
+            backgroundColor: '#FED7D7',
+            height: props.size,
+            width: props.size,
+            padding: '4px',
+            borderRadius: '24px',
+            marginRight: '8px',
+            flexShrink: '0',
+        }}
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
         />
     </svg>
 )
@@ -212,7 +286,7 @@ const GiftIdeasColumn = () => {
     return (
         <div>
             <div
-                className="event-card"
+                className="event-card event-card-link"
                 style={{
                     padding: '0',
                     flexDirection: 'row',
@@ -272,10 +346,24 @@ const GiftIdeasColumn = () => {
                     >
                         $59.00
                     </span>
+                    <div className="gifts-response-container">
+                        <div className="gift-response-item">
+                            <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
+                            <span>Approve</span>
+                        </div>
+                        <div className="gift-response-item">
+                            <EllipsisIcon />
+                            <span>Maybe</span>
+                        </div>
+                        <div className="gift-response-item">
+                            <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
+                            <span>Reject</span>
+                        </div>
+                    </div>
                 </span>
             </div>
             <div
-                className="event-card"
+                className="event-card event-card-link"
                 style={{
                     padding: '0',
                     flexDirection: 'row',

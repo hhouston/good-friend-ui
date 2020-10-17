@@ -8,8 +8,14 @@ import './index.css'
 import Root from './Root'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+} from '@apollo/client'
 import { createUploadLink } from 'apollo-upload-client'
+import { setContext } from '@apollo/client/link/context'
 
 import { loadState, saveState } from './localStorage'
 
@@ -26,15 +32,27 @@ store.subscribe(() => {
     saveState(store.getState())
 })
 
+const httpLink = createHttpLink({
+    uri: '/graphql',
+})
+
+const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token')
+    // return the headers to the context so httpLink can read them
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    }
+})
+
 const createApolloClient = (cache = {}) =>
     new ApolloClient({
         ssrMode: typeof window !== 'undefined',
         cache: new InMemoryCache().restore(cache),
-        link: createUploadLink({
-            // uri: 'https://api.thankyougift.io/graphql',
-            uri: 'http://localhost:9000/graphql',
-            cache: new InMemoryCache(),
-        }),
+        link: authLink.concat(httpLink),
     })
 
 const client = createApolloClient()
