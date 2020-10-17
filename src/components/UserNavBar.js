@@ -83,7 +83,7 @@ const Navbar = ({ isMobile, isHome }) => {
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="about"
                     >
-                        <a href="/pricing">About</a>
+                        <a href="/about">About</a>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}

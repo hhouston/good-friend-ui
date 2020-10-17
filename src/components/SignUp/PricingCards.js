@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { Typography, Button } from 'antd'
 import './styles.css'
+
+const { Title } = Typography
 
 const CheckIcon = () => (
     <svg
@@ -8,7 +10,7 @@ const CheckIcon = () => (
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="currentColor"
+        stroke="#6B46C1"
     >
         <path
             stroke-linecap="round"
@@ -38,39 +40,16 @@ const Arrow = () => (
 
 const PricingCards = () => {
     return (
-        <div className="pricing-component">
-            <h3 className="pricing-title">Pricing</h3>
-            <div className="pricing-container">
-                <div className="event-card pricing-card">
-                    <div className="pricing-header pricing-free">
-                        <h3 className="card-title-pricing title-free">
-                            First gift!
-                        </h3>
-                        <p className="card-pricing-description description-free">
-                            Bunc id tincidunt duis faucibus urna adipiscing. Id
-                            lorem diam.
-                        </p>
-                        <div class="price-text price-text-free">
-                            $0 <span class="month-span">/mo</span>
-                        </div>
-                    </div>
-                    <div className="pricing-details">
-                        <ul className="pricing-list">
-                            <li className="pricing-list-item">
-                                <CheckIcon />
-                                <span>Lorem ipsum dolor sit amet</span>
-                            </li>
-                            <li className="pricing-list-item">
-                                <CheckIcon />
-                                <span>Lorem ipsum dolor sit amet</span>
-                            </li>
-                            <li className="pricing-list-item">
-                                <CheckIcon />
-                                <span>Lorem ipsum dolor sit amet</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div className="pricing-container">
+            <Title
+                type="secondary"
+                level={2}
+                className="subtitle"
+                style={{ fontSize: '38px' }}
+            >
+                Pricing
+            </Title>
+            <div className="pricing-component">
                 <div className="event-card pricing-card">
                     <div className="pricing-header">
                         <h3 className="card-title-pricing">Basic</h3>
@@ -97,8 +76,12 @@ const PricingCards = () => {
                                 <span>Lorem ipsum dolor sit amet</span>
                             </li>
                         </ul>
+                        <a href="#" className="price-button">
+                            Select plan
+                        </a>
                     </div>
                 </div>
+
                 <div className="event-card pricing-card">
                     <div className="pricing-header">
                         <h3 className="card-title-pricing">VIP</h3>
@@ -129,13 +112,46 @@ const PricingCards = () => {
                                 <span>Lorem ipsum dolor sit amet</span>
                             </li>
                         </ul>
+                        <a href="#" className="price-button">
+                            Select plan
+                        </a>
+                    </div>
+                </div>
+
+                <div className="event-card pricing-card">
+                    <div className="pricing-header pricing-free">
+                        <h3 className="card-title-pricing title-free">
+                            First gift!
+                        </h3>
+                        <p className="card-pricing-description description-free">
+                            Bunc id tincidunt duis faucibus urna adipiscing. Id
+                            lorem diam.
+                        </p>
+                        <div class="price-text price-text-free">
+                            $0 <span class="month-span">/mo</span>
+                        </div>
+                    </div>
+                    <div className="pricing-details">
+                        <ul className="pricing-list">
+                            <li className="pricing-list-item">
+                                <CheckIcon />
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </li>
+                            <li className="pricing-list-item">
+                                <CheckIcon />
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </li>
+                            <li className="pricing-list-item">
+                                <CheckIcon />
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </li>
+                        </ul>
+                        <a href="#" className="price-button button-free">
+                            Select plan
+                        </a>
                     </div>
                 </div>
             </div>
-            <a href="/signup" className="price-button get-started-button">
-                Get started now
-                <Arrow />
-            </a>
         </div>
     )
 }

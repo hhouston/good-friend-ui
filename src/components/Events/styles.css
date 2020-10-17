@@ -159,3 +159,14 @@
     margin: 0;
     width: 88%;
 }
+
+.gifts-response-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.gift-response-item {
+    display: flex;
+    align-items: center;
+}
