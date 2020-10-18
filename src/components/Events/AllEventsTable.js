@@ -223,6 +223,7 @@ const NotesColumn = () => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
+                width: '500px'
             }}
         >
             <div
@@ -400,16 +401,6 @@ const GiftIdeasColumn = ({ eventId }) => {
 
 const columns = [
     {
-        title: 'Notes',
-        dataIndex: 'notes',
-        key: 'notes',
-        width: '40%',
-        className: 'notes-column',
-        render: (text, record, index) => {
-          return <NotesColumn/>
-        }
-    },
-    {
         title: 'Gift ideas',
         dataIndex: 'gifts',
         key: 'gifts',
@@ -420,8 +411,9 @@ const columns = [
 ]
 
 const AllEventsTable = (props) => {
-  console.log(props)
     return (
+      <div className="events-container">
+      <NotesColumn/>
         <Table
             columns={columns}
             dataSource={props.data}
@@ -429,6 +421,7 @@ const AllEventsTable = (props) => {
             expandable={false}
             style={{ paddingTop: '80px' }}
         />
+        </div>
     )
 }
 

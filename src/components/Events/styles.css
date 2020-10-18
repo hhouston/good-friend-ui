@@ -1,3 +1,9 @@
+.events-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .row-sub-list {
     list-style-type: none;
 }

@@ -17,7 +17,7 @@ export const Root = () => {
     const SubRoutes = () => {
         return (
             <div>
-                <NavBar />
+                <NavBar home={false}/>
                 <Switch>
                     <Route path="/viewAll" component={Events} />
                     <Route path="/pricing" component={PricingCards} />
