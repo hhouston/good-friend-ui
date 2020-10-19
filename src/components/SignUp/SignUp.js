@@ -72,21 +72,10 @@ const SignUp = (props) => {
         {
             key: 2,
             title: '',
-            content: (
-                <StepTwo
-                    isMobile={isMobile}
-                    next={handleNext}
-                    updateForm={updateForm}
-                />
-            ),
-        },
-        {
-            key: 3,
-            title: '',
             content: <StepThree isMobile={isMobile} updateForm={updateForm} />,
         },
         {
-            key: 4,
+            key: 3,
             title: '',
             content: <StepFour />,
         },

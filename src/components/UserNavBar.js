@@ -53,7 +53,7 @@ const Navbar = ({ isMobile, isHome }) => {
                         zIndex: '30',
                         background: 'none',
                     }}
-                    theme="dark"
+                    theme={isHome ? 'dark' : 'light'}
                 >
                     {isHome ? (
                         <Button

@@ -79,12 +79,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 24px 24px 24px;
+    margin: 0 24px 24px 0;
     box-shadow: 31px 31px 64px 0 rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     padding: 24px;
     transition: 300ms ease;
-    max-width: 300px;
 }
 
 .pricing-card {

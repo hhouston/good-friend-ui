@@ -1,7 +1,8 @@
 .events-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .row-sub-list {
@@ -163,7 +164,6 @@
 
 .ant-table-wrapper {
     margin: 0;
-    width: 88%;
 }
 
 .gifts-response-container {

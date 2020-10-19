@@ -306,64 +306,40 @@ const columns = [
 ]
 
 const TableContainer = ({ data }) => {
-    const expandedRowRender = () => {
-        return <AllEventsTable data={data}/>
+    const expandedRowRender = (props) => {
+        return <AllEventsTable data={props} />
     }
     return (
         <>
-            <Layout>
-                <Sider
-                    breakpoint="lg"
-                    collapsedWidth="0"
-                    onBreakpoint={(broken) => {
-                        console.log(broken)
-                    }}
-                    onCollapse={(collapsed, type) => {
-                        console.log(collapsed, type)
-                    }}
-                >
-                    <div className="logo" />
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                        defaultSelectedKeys={['4']}
-                    >
-                        <Menu.Item key="1">nav 1</Menu.Item>
-                        <Menu.Item key="2">nav 2</Menu.Item>
-                        <Menu.Item key="3">nav 3</Menu.Item>
-                    </Menu>
-                </Sider>
-
-                <Table
-                    pagination={false}
-                    style={{
-                        color: '#405693',
-                        boxShadow:
-                            '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-                        borderRadius: '12px',
-                        margin: '0 auto',
-                        marginTop: '40px',
-                    }}
-                    columns={columns}
-                    expandable={{
-                        expandedRowRender,
-                        expandIcon: ({ expanded, onExpand, record }) => (
-                            <IconButton aria-label="expand row" size="small">
-                                {expanded ? (
-                                    <KeyboardArrowUpIcon
-                                        onClick={(e) => onExpand(record, e)}
-                                    />
-                                ) : (
-                                    <div onClick={(e) => onExpand(record, e)}>
-                                        <KeyboardArrowDownIcon />
-                                    </div>
-                                )}
-                            </IconButton>
-                        ),
-                    }}
-                    dataSource={data}
-                />
-            </Layout>
+            <Table
+                pagination={false}
+                style={{
+                    color: '#405693',
+                    boxShadow:
+                        '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    borderRadius: '12px',
+                    margin: '0 auto',
+                    marginTop: '40px',
+                }}
+                columns={columns}
+                expandable={{
+                    expandedRowRender,
+                    expandIcon: ({ expanded, onExpand, record }) => (
+                        <IconButton aria-label="expand row" size="small">
+                            {expanded ? (
+                                <KeyboardArrowUpIcon
+                                    onClick={(e) => onExpand(record, e)}
+                                />
+                            ) : (
+                                <div onClick={(e) => onExpand(record, e)}>
+                                    <KeyboardArrowDownIcon />
+                                </div>
+                            )}
+                        </IconButton>
+                    ),
+                }}
+                dataSource={data}
+            />
         </>
     )
 }

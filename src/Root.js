@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from './components/NavBar'
+import UserNavBar from './components/UserNavBar'
 import Home from './components/Home'
 // import Start from './components/SignUp'
 import Events from './components/Events'
@@ -14,10 +15,11 @@ import { Switch, Route } from 'react-router'
 import { connect } from 'react-redux'
 
 export const Root = () => {
+    const loggedIn = !!localStorage.getItem('token')
     const SubRoutes = () => {
         return (
             <div>
-                <NavBar home={false}/>
+                <UserNavBar home={false} />
                 <Switch>
                     <Route path="/viewAll" component={Events} />
                     <Route path="/pricing" component={PricingCards} />
