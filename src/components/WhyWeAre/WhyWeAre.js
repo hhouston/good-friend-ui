@@ -18,15 +18,12 @@ const WhyWeAre = ({ titleSize, isTablet, isMobile }) => {
                         Why We Are
                     </Title>
                     <p className="why-text">
-                        Building and maintaining relationships with loved ones
-                        are already hard and gift buying can be stressful.
-                        Pushing off Christmas shopping can lead to a surge in
-                        price for popular items, not to mention the rush
-                        shipping fees. On top of that, it’s also h ard to keep
-                        track of what kids like these days. That’s where our
-                        personal gift curator can help. Our team of professional
-                        gift curators will help ensure you pick out the best
-                        gift possible so you never show up empty-handed.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
+                        in porttitor ex, non ultrices purus. Curabitur et
+                        commodo nulla. Donec viverra gravida orci, sit amet
+                        molestie odio mattis a. Nulla vestibulum blandit metus
+                        eu maximus. Vestibulum ante ipsum primis in faucibus
                     </p>
                 </div>
                 {isTablet ? (

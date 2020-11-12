@@ -23,11 +23,12 @@ const Donations = ({ titleSize }) => {
                         Donations
                     </Title>
                     <p className="donations-text">
-                        Want to pay back to society? Thank You makes it easy to
-                        support causes important to you. Help light up someone’s
-                        life by sending them a gift. With each gift you donate,
-                        Thank you will match the proceeds up to 1$. (We respect
-                        your privacy and send gifts anonymously).
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
+                        in porttitor ex, non ultrices purus. Curabitur et
+                        commodo nulla. Donec viverra gravida orci, sit amet
+                        molestie odio mattis a. Nulla vestibulum blandit metus
+                        eu maximus. Vestibulum ante ipsum primis in faucibus
                     </p>
                     <img
                         src={require('../../images/cropped-blob.png')}

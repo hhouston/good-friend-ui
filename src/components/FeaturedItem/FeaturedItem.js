@@ -18,12 +18,9 @@ const FeaturedItem = ({ titleSize }) => {
                         Featured Item
                     </Title>
                     <p className="featured-item-text">
-                        Are you out of gift ideas ? Excited about the next - gen
-                        gaming consoles? How about the new iPhone? Apply for our
-                        featured gift service and we will handle everything from
-                        the preorder to waiting outside of the Best Buy (or
-                        Apple) store to make sure you get the first batch of
-                        devices.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
+                        in porttitor ex, non ultrices purus.
                     </p>
                 </div>
                 <img

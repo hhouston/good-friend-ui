@@ -12,14 +12,14 @@ const StepOne = () => {
                         <PrimaryButton
                             style={{
                                 fontWeight: '700',
-                                fontFamily: 'Karla, sans-serif',
+                                fontFamily: 'Karla, sans-serif'
                             }}
                         >
                             Step 1
                         </PrimaryButton>
                         <p className="step-text">
-                            Select a gift package that fits your needs and we
-                            will pair you up with a suitable gift curator.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Nunc porttitor vulputate sem vel facilisis.
                         </p>
                     </div>
                     <img

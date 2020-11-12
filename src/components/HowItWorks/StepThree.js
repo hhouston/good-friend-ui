@@ -12,14 +12,14 @@ const StepThree = () => {
                         <PrimaryButton
                             style={{
                                 fontWeight: '700',
-                                fontFamily: 'Karla, sans-serif',
+                                fontFamily: 'Karla, sans-serif'
                             }}
                         >
                             Step 3
                         </PrimaryButton>
                         <p className="step-text">
-                            Your personal gift curator will help with the gift
-                            and wrap selection for your loved ones.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Nunc porttitor vulputate sem vel facilisis.
                         </p>
                     </div>
                     <img
