@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './styles.css'
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
+import { verifyGoogleToken, verifyFacebookToken } from './verify.js'
 import { useHistory } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
 import { Button } from 'antd'
@@ -30,8 +31,9 @@ const Login = () => {
         e.preventDefault()
         setLoadingState(true)
           axios.post('http://localhost:9000/login', {
-            email: email,
-            password: password
+            email,
+            password,
+            type: 'email'
           })
           .then(({ data }) => {
             localStorage.setItem('token', data.token)
@@ -68,8 +70,9 @@ const Login = () => {
                         <GoogleLogin
                             clientId="597333182306-go3i72bhh1jklcuigsfg30tm1h43rd8d.apps.googleusercontent.com"
                             buttonText="CONTINUE WITH GOOGLE"
-                            onSuccess={(resp) => console.log(resp)}
-                            onFailure={() => console.log('google success')}
+                            scope='profile email'
+                            onSuccess={(resp) => verifyGoogleToken(resp) }
+                            onFailure={() => console.log('google fail')}
                         />
                     </div>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
