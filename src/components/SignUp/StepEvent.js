@@ -77,16 +77,6 @@ const StepEvent = () => {
                     <PlusIcon />
                     <h3 className="add-new-event">Add a new event</h3>
                 </div>
-                <div
-                    className="event-card"
-                    style={{ borderRadius: '16px', overflow: 'hidden' }}
-                >
-                    <img
-                        src={require('../../images/abstract.png')}
-                        style={{ backgroundSize: 'contain', width: '180px' }}
-                    ></img>
-                    <Title style={{ fontSize: '24px' }}>Anniversary</Title>
-                </div>
             </div>
             <div
                 ref={cardsRef}
