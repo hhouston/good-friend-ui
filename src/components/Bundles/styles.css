@@ -1,0 +1,18 @@
+.bundles {
+    display: flex;
+    align-items: center;
+    margin-top: 96px;
+    padding-top: 64px;
+}
+
+.bundles-content {
+    padding: 0 24px 0 48px;
+}
+
+.bundles-image {
+    width: 70%;
+}
+
+.bundles-paragraph {
+    color: #6d7084;
+}

@@ -10,18 +10,18 @@ import {
     Typography,
     DatePicker,
     InputNumber,
-    Icon,
+    Icon
 } from 'antd'
 
 const { Title } = Typography
 
 const layout = {
     labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
+    wrapperCol: { span: 16 }
 }
 
 const config = {
-    rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+    rules: [{ type: 'object', required: true, message: 'Please select time!' }]
 }
 
 const dateFormat = 'MM/DD/YYYY'
@@ -50,7 +50,7 @@ const SignUp = ({ next, updateForm }) => {
     }
 
     return (
-        <div className="steps-content" style={{ textAlign: 'left' }}>
+        <div>
             <Title level={2} className="subtitle">
                 Email and date of upcoming event
             </Title>

@@ -6,6 +6,10 @@
     margin-top: 80px;
 }
 
+.my-account {
+    width: 100%;
+}
+
 .account-form {
     width: 100%;
     display: flex;

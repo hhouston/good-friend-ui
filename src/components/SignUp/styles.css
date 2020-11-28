@@ -75,15 +75,19 @@
 }
 
 .event-card {
+    position: relative;
     font-family: 'Karla', sans-serif;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
     margin: 0 24px 24px 0;
-    box-shadow: 31px 31px 64px 0 rgba(0, 0, 0, 0.05);
-    border-radius: 16px;
-    padding: 24px;
-    transition: 300ms ease;
+    box-shadow: 0 10px 15px -3px rgba(233, 234, 241, 1),
+        0 4px 6px -2px rgba(233, 234, 241, 0.5);
+    border-radius: 0.5em;
+    transition: transform 300ms ease;
+    text-align: center;
+    border: 2px solid #fff;
 }
 
 .pricing-card {
@@ -168,7 +172,7 @@
 }
 
 .event-card-active {
-    border: 2px solid;
+    border: 2px solid rgba(43, 19, 125, 1);
 }
 
 .event-card:hover {
@@ -182,12 +186,12 @@
 .card-image {
     width: 180px;
     object-fit: contain;
-    padding: 16px;
+    padding: 0 16px;
     object-fit: contain;
 }
 
 .card-title {
-    margin: 18px 0;
+    margin: 24px 0;
     font-size: 18px;
     line-height: 1.4;
     font-weight: 700;
@@ -247,8 +251,8 @@
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 32px 64px rgba(43, 43, 82, 0.24);
-    -webkit-transition: all 300ms ease;
-    transition: all 300ms ease;
+    -webkit-transition: translateY 300ms ease;
+    transition: translateY 300ms ease;
     color: #111;
     font-size: 16px;
     font-weight: 700;
@@ -333,4 +337,124 @@
 .notes-column {
     vertical-align: baseline;
     margin-top: 80px;
+}
+
+.MuiStepConnector-lineVertical {
+    min-height: 100% !important;
+}
+
+.MuiStepConnector-line {
+    border-color: #2b137d !important;
+}
+.MuiStepLabel-label {
+    color: rgba(0, 0, 0, 0.05);
+}
+.MuiStepLabel-label.MuiStepLabel-active {
+    color: rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+.MuiStepLabel-label.MuiStepLabel-completed {
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 500;
+}
+
+.active-step-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.step-bundle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bundle-cards {
+    display: flex;
+}
+
+.bundle-card {
+    width: 220px;
+    padding: 16px;
+}
+
+.bundle-card-content {
+    position: relative;
+    width: 18rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0;
+    transition: transform 300ms ease;
+}
+.bundle-card-content:hover {
+    transform: translateY(-8px);
+}
+
+.bundle-card-img {
+    padding: 16px;
+    object-fit: contain;
+}
+
+.bundle-card-subheader {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.bundle-card-button {
+    width: 300px;
+    font-weight: bold;
+    margin: 0 16px;
+}
+
+.signup-buttons {
+    display: flex;
+    margin-top: 64px;
+    align-self: center;
+}
+
+.button-next {
+    color: #fff;
+    background-color: #2b137d;
+}
+
+.button-previous {
+    border: 2px solid #2b137d;
+    color: #2b137d;
+    background: #fff;
+}
+
+.signup-active-icon {
+    background-color: #2b137d;
+    height: 20px;
+    width: 20px;
+    border-radius: 24px;
+    padding: 4px;
+    color: #fff;
+    margin: 12px;
+}
+
+.new-event-pill {
+    display: flex;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdf2f8;
+    padding: 16px;
+    margin: 0 8px;
+    font-size: 14px;
+}
+
+.add-new-event {
+    color: rgb(255, 51, 153);
+    margin: 0 8px;
 }
