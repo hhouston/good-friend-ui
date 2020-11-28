@@ -23,14 +23,15 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
                         Personal Gifts
                     </Title>
                     <p className="personal-gifts-text">
-                        Keeping a strong connection with your loved ones is
-                        important. Go the extra mile to show your love with our
-                        unique tailored gifts. Our personal gift curators will
-                        suggest suitable gift ideas and deliver the perfect gift
-                        for any occasion at the perfect time.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
+                        in porttitor ex, non ultrices purus. Curabitur et
+                        commodo nulla. Donec viverra gravida orci, sit amet
+                        molestie odio mattis a. Nulla vestibulum blandit metus
+                        eu maximus. Vestibulum ante ipsum primis in faucibus
                     </p>
                     <p className="personal-gifts-subtext">
-                        Will ensure you never show up empty handed
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
                 <img

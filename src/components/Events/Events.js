@@ -46,6 +46,9 @@ const Events = () => {
                 <TabPane tab="Active events" key="1">
                     <TableContainer data={newData} />
                 </TabPane>
+                <TabPane tab="Past events" key="2">
+                    <TableContainer data={newData} />
+                </TabPane>
             </Tabs>
         </div>
     )

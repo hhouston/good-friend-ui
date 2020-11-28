@@ -10,7 +10,7 @@ import axios from 'axios'
 
 const formState = {
     email: '',
-    password: '',
+    password: ''
 }
 
 const Login = () => {
@@ -22,28 +22,32 @@ const Login = () => {
     const updateForm = (e) => {
         updateUserForm({
             ...credentials,
-            [e.target.name]: e.target.value.trim(),
+            [e.target.name]: e.target.value.trim()
         })
     }
 
     const handleSubmit = async (e) => {
-      const { email, password } = credentials
+        const { email, password } = credentials
         e.preventDefault()
         setLoadingState(true)
-          axios.post('http://localhost:9000/login', {
-            email,
-            password,
-            type: 'email'
-          })
-          .then(({ data }) => {
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('expiresAt', data.expiresAt)
-            history.push('home')
-          }, (error) => {
-            console.log(error);
-          });
-            // localStorage.setItem('token', response.token)
-            setLoadingState(false)
+        axios
+            .post('http://localhost:9000/login', {
+                email,
+                password,
+                type: 'email'
+            })
+            .then(
+                ({ data }) => {
+                    localStorage.setItem('token', data.token)
+                    localStorage.setItem('expiresAt', data.expiresAt)
+                    history.push('home')
+                },
+                (error) => {
+                    console.log(error)
+                }
+            )
+        // localStorage.setItem('token', response.token)
+        setLoadingState(false)
     }
 
     return (
@@ -52,36 +56,13 @@ const Login = () => {
                 <div className="login">
                     <h3 className="login-greeting">Welcome back</h3>
                     <p className="login-caption">Login or create account</p>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            flexDirection: 'column',
-                        }}
-                    >
-                        <FacebookLogin
-                            appId="1066802667123134"
-                            autoLoad={false}
-                            fields="name,email,picture"
-                            onClick={() => console.log('clicked')}
-                            callback={(resp) => console.log(resp)}
-                            cssClass="my-facebook-button-class"
-                        />
-                        <GoogleLogin
-                            clientId="597333182306-go3i72bhh1jklcuigsfg30tm1h43rd8d.apps.googleusercontent.com"
-                            buttonText="CONTINUE WITH GOOGLE"
-                            scope='profile email'
-                            onSuccess={(resp) => verifyGoogleToken(resp) }
-                            onFailure={() => console.log('google fail')}
-                        />
-                    </div>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
                         {formErrors ? (
                             <p
                                 style={{
                                     color: '#f56565',
                                     fontSize: '14px',
-                                    margin: '0',
+                                    margin: '0'
                                 }}
                             >
                                 Error logging you in

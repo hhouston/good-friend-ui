@@ -17,17 +17,14 @@ const StepTwo = () => {
                         <PrimaryButton
                             style={{
                                 fontWeight: '700',
-                                fontFamily: 'Karla, sans-serif',
+                                fontFamily: 'Karla, sans-serif'
                             }}
                         >
                             Step 2
                         </PrimaryButton>
                         <p className="step-text step-content-text-two">
-                            Select the type of event (like birthday,
-                            anniversary, graduation, etc.) the date of a gift
-                            delivery, your gift price range, any info you'd like
-                            to have on the recipient. Your personal curator with
-                            handle the rest.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Nunc porttitor vulputate sem vel facilisis.
                         </p>
                     </div>
                 </div>

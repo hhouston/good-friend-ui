@@ -10,6 +10,7 @@ import {
     Avatar,
     Input,
     Button,
+    Typography,
 } from 'antd'
 import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
@@ -20,15 +21,17 @@ import { gql, useQuery } from '@apollo/client'
 const GET_GIFTS = gql`
     query Gifts($eventId: ID!) {
         getGiftsByEventId(eventId: $eventId) {
-          name
-          description
-          price
-          currency
-          url
-          image
+            name
+            description
+            price
+            currency
+            url
+            image
         }
     }
 `
+
+const { Title } = Typography
 
 const { TextArea } = Input
 
@@ -223,7 +226,8 @@ const NotesColumn = () => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: '500px'
+                maxWidth: '40%',
+                padding: '24px',
             }}
         >
             <div
@@ -298,105 +302,156 @@ const NotesColumn = () => {
     )
 }
 
-const GiftIdeasColumn = ({ eventId }) => {
-  if (!eventId) {
-    return null
-  }
+const GiftIdeasColumn = ({ gifts }) => {
+    console.log(gifts)
+    if (!gifts.length) {
+        return (
+            <div
+                className="event-card event-card-link"
+                style={{
+                    padding: '0',
+                    flexDirection: 'row',
 
-  const { loading, error, data } = useQuery(GET_GIFTS, {
-      variables: { eventId: eventId },
-  })
-    if (loading) return 'loading'
-    if (error) return <p>{error}</p>
-    const { getGiftsByEventId } = data
-    if (!getGiftsByEventId) {
-      return null
+                    overflow: 'hidden',
+                }}
+            >
+                <img
+                    src={require('../../images/project.svg')}
+                    style={{
+                        height: '260px',
+                        width: '260px',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                    }}
+                ></img>
+                <span
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '24px',
+                        width: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        minWidth: '500px',
+                    }}
+                >
+                    <h3
+                        style={{
+                            fontWeight: '700',
+                            fontSize: '20px',
+                            color: '#1a202c',
+                        }}
+                    >
+                        No gifts yet!
+                    </h3>
+                    <span
+                        style={{
+                            color: '#718096',
+                            fontSize: '14px',
+                            lineHeight: '20px',
+                        }}
+                    >
+                        Add some now
+                    </span>
+                </span>
+            </div>
+        )
     }
-    return(
-    getGiftsByEventId.map(({ name, description, price, currency, url, image }) => (
-          <div>
-              <div
-                  className="event-card event-card-link"
-                  style={{
-                      padding: '0',
-                      flexDirection: 'row',
-                      maxWidth: 'initial',
-                      overflow: 'hidden',
-                  }}
-              >
-                  <img
-                      src={require('../../images/robes.jpg')}
-                      style={{
-                          maxWidth: '55%',
-                          height: '260px',
-                      }}
-                  ></img>
-                  <span
-                      style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          padding: '24px',
-                          width: '100%'
-                      }}
-                  >
-                      <span
-                          style={{
-                              color: '#a0aec0',
-                              textTransform: 'uppercase',
-                              letterSpacing: '.1em',
-                          }}
-                      >
-                          {"name"}
-                      </span>
-                      <h3
-                          style={{
-                              fontWeight: '700',
-                              fontSize: '20px',
-                              color: '#1a202c',
-                          }}
-                      >
-                          {name}
-                      </h3>
-                      <span
-                          style={{
-                              color: '#718096',
-                              fontSize: '14px',
-                              maxWidth: '350px',
-                              lineHeight: '20px',
-                          }}
-                      >
-                          {description}
-                      </span>
-                      <span
-                          style={{
-                              color: '#6C5ED3',
-                              fontWeight: '700',
-                              fontSize: '18px',
-                          }}
-                      >
-                          $59.00
-                      </span>
-                      <div className="gifts-response-container">
-                          <div className="gift-response-item">
-                              <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
-                              <span>Approve</span>
-                          </div>
-                          <div className="gift-response-item">
-                              <EllipsisIcon />
-                              <span>Maybe</span>
-                          </div>
-                          <div className="gift-response-item">
-                              <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
-                              <span>Reject</span>
-                          </div>
-                      </div>
-                  </span>
-              </div>
-          </div>
-      )
+
+    const GiftComponent = () =>
+        gifts.map(({ name, description, price, currency, url, image }) => (
+            <a href={url}>
+                <div
+                    className="event-card event-card-link"
+                    style={{
+                        padding: '0',
+                        flexDirection: 'row',
+
+                        overflow: 'hidden',
+                    }}
+                >
+                    <img
+                        src={image}
+                        style={{
+                            height: '260px',
+                            width: '260px',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                        }}
+                    ></img>
+                    <span
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            padding: '24px',
+                            width: '100%',
+                        }}
+                    >
+                        <h3
+                            style={{
+                                fontWeight: '700',
+                                fontSize: '20px',
+                                color: '#1a202c',
+                            }}
+                        >
+                            {name}
+                        </h3>
+                        <span
+                            style={{
+                                color: '#718096',
+                                fontSize: '14px',
+                                lineHeight: '20px',
+                            }}
+                        >
+                            {description}
+                        </span>
+                        <span
+                            style={{
+                                color: '#6C5ED3',
+                                fontWeight: '700',
+                                fontSize: '18px',
+                            }}
+                        >
+                            ${price}
+                        </span>
+                        <div className="gifts-response-container">
+                            <div className="gift-response-item">
+                                <ThumbsUpIcon
+                                    size={'24px'}
+                                    stroke={'#667EEA'}
+                                />
+                                <span>Approve</span>
+                            </div>
+                            <div className="gift-response-item">
+                                <EllipsisIcon />
+                                <span>Maybe</span>
+                            </div>
+                            <div className="gift-response-item">
+                                <ThumbsDownIcon
+                                    size={'24px'}
+                                    stroke={'#F56565'}
+                                />
+                                <span>Reject</span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </a>
+        ))
+    return (
+        <div>
+            <h3
+                style={{
+                    fontSize: '20px',
+                    fontWeight: '700',
+                    color: 'rgb(108, 94, 211)',
+                }}
+            >
+                Gift ideas
+            </h3>
+            <GiftComponent />
+        </div>
     )
-    )
-    return null
 }
 
 const columns = [
@@ -405,22 +460,27 @@ const columns = [
         dataIndex: 'gifts',
         key: 'gifts',
         render: (text, record, index) => {
-          return <GiftIdeasColumn eventId={record.id}/>
-        }
+            return <GiftIdeasColumn eventId={record.id} />
+        },
     },
 ]
 
-const AllEventsTable = (props) => {
+const AllEventsTable = ({ data: { id } }) => {
+    const response = useQuery(GET_GIFTS, {
+        variables: { eventId: id },
+    })
+    if (response.loading) return 'loading'
+    if (response.error) return <p>{response.error}</p>
+    const { getGiftsByEventId } = response.data
+    if (!getGiftsByEventId) {
+        return null
+    }
     return (
-      <div className="events-container">
-      <NotesColumn/>
-        <Table
-            columns={columns}
-            dataSource={props.data}
-            pagination={false}
-            expandable={false}
-            style={{ paddingTop: '80px' }}
-        />
+        <div className="events-container">
+            <NotesColumn />
+            <div>
+                <GiftIdeasColumn gifts={response.data.getGiftsByEventId} />
+            </div>
         </div>
     )
 }
