@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './styles.css'
 import { UserOutlined } from '@ant-design/icons'
 
-import { Form, Input, Button, Typography, Select } from 'antd'
+import { Input, Button, Typography, Select } from 'antd'
 
 const { Title } = Typography
 
@@ -37,6 +37,9 @@ const StepLovedOne = ({ ref }) => {
 
     return (
         <div style={{ width: '100%' }} ref={ref}>
+            <Title level={2} className="subtitle">
+                Some basic details about your loved one
+            </Title>
             <form className="account-form-wrapper">
                 <div className="account-form">
                     <div className="account-input-container">
@@ -72,6 +75,20 @@ const StepLovedOne = ({ ref }) => {
                             required
                         />
                     </div>
+                </div>
+                <div className="account-input-container">
+                    <label className="account-form-label" htmlFor="gender">
+                        Gender
+                    </label>
+                    <Select
+                        style={{ width: 200, borderRadius: '8px' }}
+                        placeholder="Gender"
+                    >
+                        <Option value="female">Female</Option>
+                        <Option value="male">Male</Option>
+                        <Option value="non-binary">Non-binary</Option>
+                        <Option value="other">Prefer not to say</Option>
+                    </Select>
                 </div>
                 <div className="account-input-container">
                     <TextArea

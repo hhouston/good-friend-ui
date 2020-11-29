@@ -253,11 +253,12 @@ const SignUp = () => {
         root: {
             width: '100%',
             display: 'flex',
-            height: '100%'
+            minHeight: '100%'
         },
         stepper: {
             background: '#EEF2FF',
-            padding: '48px'
+            padding: '48px',
+            height: '100vh'
         },
         button: {
             marginTop: theme.spacing(1),
