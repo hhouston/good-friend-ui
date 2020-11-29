@@ -27,6 +27,9 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
             }}
             ref={ref}
         >
+            <Title level={2} className="subtitle">
+                What event are you shopping for?
+            </Title>
             <div className="cards-wrapper">
                 <EventCard
                     key={'anniversary'}

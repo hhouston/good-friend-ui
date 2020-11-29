@@ -52,7 +52,7 @@ const StepBundle = () => {
 
     return (
         <div className="step-bundle">
-            <Title className="subtitle">What are you shopping for?</Title>
+            <Title className="subtitle">Select a bundle</Title>
             <div className="bundle-cards">
                 {options.map((option, i) => (
                     <EventCard

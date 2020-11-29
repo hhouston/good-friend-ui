@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import StepThree from './StepThree'
 import StepLovedOne from './StepLovedOne'
 import { Typography } from 'antd'
@@ -30,8 +30,8 @@ const StepEvent = () => {
     const [step, setStep] = useState(1)
     const [events, updateEvents] = useState([])
 
-    const cardsRef = useRef(null)
-    const formRef = useRef(null)
+    const eventFormRef = useRef(null)
+    const eventCardsRef = useRef(null)
 
     const getDimensions = (ele) => {
         const { height } = ele.getBoundingClientRect()
@@ -53,40 +53,34 @@ const StepEvent = () => {
     }
 
     return (
-        <div
-            style={{
-                overflowY: 'scroll'
-            }}
-        >
-            <Title className="subtitle" style={{ textAlign: 'center' }}>
-                Details about loved one
+        <div className="step-event">
+            <Title className="subtitle" style={{ margin: '0' }}>
+                Loved ones
             </Title>
-            <div
-                style={{
-                    height: '40vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}
-            >
-                <div
-                    className="new-event-pill"
-                    onClick={() => scrollTo(cardsRef.current)}
-                >
-                    <PlusIcon />
-                    <h3 className="add-new-event">Add a new event</h3>
+            <p className="signup-step-paragraph">
+                Add the different events you're shopping for, along with some
+                basic details about each person
+            </p>
+            <div>
+                <div className="all-events-add">
+                    <div
+                        className="new-event-pill"
+                        onClick={() => scrollTo(eventFormRef.current)}
+                    >
+                        <PlusIcon />
+                        <h3 className="add-new-event">Add a new event</h3>
+                    </div>
                 </div>
-            </div>
-            <div
-                ref={cardsRef}
-                style={{ height: '60vh' }}
-                onClick={() => scrollTo(formRef.current)}
-            >
-                <StepThree />
-            </div>
-            <div ref={formRef} style={{ height: '40vh' }}>
-                <StepLovedOne />
+
+                <div
+                    ref={eventFormRef}
+                    onClick={() => scrollTo(eventCardsRef.current)}
+                >
+                    <StepThree />
+                </div>
+                <div ref={eventCardsRef}>
+                    <StepLovedOne />
+                </div>
             </div>
         </div>
     )
