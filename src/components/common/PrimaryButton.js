@@ -8,7 +8,7 @@ const PrimaryButton = ({
     className = null,
     children,
     type,
-    style,
+    style
 }) => {
     return (
         <Button
@@ -21,13 +21,13 @@ const PrimaryButton = ({
                           backgroundColor: '#fff',
                           color: '#FF3399',
                           borderColor: '#FF3399',
-                          ...style,
+                          ...style
                       }
                     : {
                           backgroundColor: '#FF3399',
                           color: '#fff',
                           borderColor: '#FF3399',
-                          ...style,
+                          ...style
                       }
             }
         >

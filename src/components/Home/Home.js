@@ -42,7 +42,7 @@ const Home = () => {
         scrollTop: 0,
         contentInView: false,
         contentHeight: 0,
-        imageLoaded: 0,
+        imageLoaded: 0
     }
 
     const isLoggedIn = !!localStorage.getItem('token')
@@ -56,12 +56,12 @@ const Home = () => {
     const handleImageLoaded = () => {
         updateState((prevState) => ({
             ...prevState,
-            imageLoaded: prevState.imageLoaded + 1,
+            imageLoaded: prevState.imageLoaded + 1
         }))
     }
 
     const [getTeams, { loading, data }] = useLazyQuery(GET_TEAMS, {
-        onCompleted: () => console.log(data),
+        onCompleted: () => console.log(data)
     })
 
     const applyNowClick = () => {
@@ -77,7 +77,7 @@ const Home = () => {
             const offset = top + state.scrollTop - 120
             updateState((prevState) => ({
                 ...prevState,
-                contentHeight: offset,
+                contentHeight: offset
             }))
         }
         findContentHeight()
@@ -89,7 +89,7 @@ const Home = () => {
             updateState((prevState) => ({
                 ...prevState,
                 scrollTop: e.target.documentElement.scrollTop,
-                contentInView: e.target.documentElement.scrollTop >= top,
+                contentInView: e.target.documentElement.scrollTop >= top
             }))
         }
         window.addEventListener('scroll', onScroll)
@@ -134,9 +134,7 @@ const Home = () => {
                                         style={{
                                             margin: '0',
                                             fontSize: titleSize,
-                                            color: isMobile
-                                                ? '#fff'
-                                                : 'inherit',
+                                            color: isMobile ? '#fff' : 'inherit'
                                         }}
                                     >
                                         Your personal gift curator for
@@ -151,9 +149,7 @@ const Home = () => {
                                         style={{
                                             fontSize: titleSize,
                                             borderBottom: '8px solid #FF3399',
-                                            color: isMobile
-                                                ? '#fff'
-                                                : 'inherit',
+                                            color: isMobile ? '#fff' : 'inherit'
                                         }}
                                     ></Typed>
                                 </div>
@@ -177,7 +173,7 @@ const Home = () => {
                                     color: '#fff',
                                     border: 'none',
                                     width: '180px',
-                                    height: '54px',
+                                    height: '54px'
                                 }}
                             >
                                 Get started
@@ -195,7 +191,7 @@ const Home = () => {
                     ghost
                     style={{
                         boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                        color: '#2b137d',
+                        color: '#2b137d'
                     }}
                 >
                     <ArrowDownOutlined />

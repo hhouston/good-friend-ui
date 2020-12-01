@@ -10,7 +10,7 @@ import {
     Avatar,
     Input,
     Button,
-    Typography,
+    Typography
 } from 'antd'
 import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
@@ -48,7 +48,7 @@ const PencilIcon = ({ stroke }) => (
             padding: '4px',
             borderRadius: '24px',
             marginRight: '8px',
-            flexShrink: '0',
+            flexShrink: '0'
         }}
     >
         <path
@@ -73,7 +73,7 @@ const EllipsisIcon = ({ stroke }) => (
             padding: '4px',
             borderRadius: '24px',
             marginRight: '8px',
-            flexShrink: '0',
+            flexShrink: '0'
         }}
     >
         <path
@@ -93,7 +93,7 @@ const PlusIcon = (props) => (
             width: '24px',
             padding: '4px',
             marginRight: '8px',
-            borderRadius: '24px',
+            borderRadius: '24px'
         }}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -117,7 +117,7 @@ const ThumbsUpIcon = (props) => (
             width: '24px',
             padding: '4px',
             marginRight: '8px',
-            borderRadius: '24px',
+            borderRadius: '24px'
         }}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -146,7 +146,7 @@ const ThumbsDownIcon = (props) => (
             padding: '4px',
             borderRadius: '24px',
             marginRight: '8px',
-            flexShrink: '0',
+            flexShrink: '0'
         }}
     >
         <path
@@ -171,7 +171,7 @@ const CancelIcon = (props) => (
             padding: '4px',
             borderRadius: '24px',
             marginRight: '8px',
-            flexShrink: '0',
+            flexShrink: '0'
         }}
     >
         <path
@@ -190,7 +190,7 @@ const OpenNoteFooter = ({ onClick }) => {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                paddingTop: '16px',
+                paddingTop: '16px'
             }}
         >
             <span
@@ -198,7 +198,7 @@ const OpenNoteFooter = ({ onClick }) => {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    padding: '0 4px',
+                    padding: '0 4px'
                 }}
             >
                 <PlusIcon size={'24px'} stroke={'#667EEA'} />
@@ -209,7 +209,7 @@ const OpenNoteFooter = ({ onClick }) => {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    padding: '0 4px',
+                    padding: '0 4px'
                 }}
             >
                 <CancelIcon size={'24px'} stroke={'#F56565'} />
@@ -227,7 +227,7 @@ const NotesColumn = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 maxWidth: '40%',
-                padding: '24px',
+                padding: '24px'
             }}
         >
             <div
@@ -235,28 +235,28 @@ const NotesColumn = () => {
                 style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    alignItems: 'center',
+                    alignItems: 'center'
                 }}
             >
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        width: '100%',
+                        width: '100%'
                     }}
                 >
                     <span
                         style={{
                             display: 'flex',
                             flexDirection: 'row',
-                            justifyContent: 'space-between',
+                            justifyContent: 'space-between'
                         }}
                     >
                         <h3
                             style={{
                                 fontSize: '20px',
                                 fontWeight: '700',
-                                color: 'rgb(108, 94, 211)',
+                                color: 'rgb(108, 94, 211)'
                             }}
                         >
                             Notes
@@ -266,7 +266,7 @@ const NotesColumn = () => {
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                color: 'rgb(113, 128, 150)',
+                                color: 'rgb(113, 128, 150)'
                             }}
                         >
                             <PencilIcon />
@@ -312,7 +312,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                     padding: '0',
                     flexDirection: 'row',
 
-                    overflow: 'hidden',
+                    overflow: 'hidden'
                 }}
             >
                 <img
@@ -321,7 +321,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                         height: '260px',
                         width: '260px',
                         objectFit: 'cover',
-                        objectPosition: 'center',
+                        objectPosition: 'center'
                     }}
                 ></img>
                 <span
@@ -332,14 +332,14 @@ const GiftIdeasColumn = ({ gifts }) => {
                         width: '100%',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        minWidth: '500px',
+                        minWidth: '500px'
                     }}
                 >
                     <h3
                         style={{
                             fontWeight: '700',
                             fontSize: '20px',
-                            color: '#1a202c',
+                            color: '#1a202c'
                         }}
                     >
                         No gifts yet!
@@ -348,7 +348,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                         style={{
                             color: '#718096',
                             fontSize: '14px',
-                            lineHeight: '20px',
+                            lineHeight: '20px'
                         }}
                     >
                         Add some now
@@ -367,7 +367,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                         padding: '0',
                         flexDirection: 'row',
 
-                        overflow: 'hidden',
+                        overflow: 'hidden'
                     }}
                 >
                     <img
@@ -376,7 +376,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                             height: '260px',
                             width: '260px',
                             objectFit: 'cover',
-                            objectPosition: 'center',
+                            objectPosition: 'center'
                         }}
                     ></img>
                     <span
@@ -384,14 +384,14 @@ const GiftIdeasColumn = ({ gifts }) => {
                             display: 'flex',
                             flexDirection: 'column',
                             padding: '24px',
-                            width: '100%',
+                            width: '100%'
                         }}
                     >
                         <h3
                             style={{
                                 fontWeight: '700',
                                 fontSize: '20px',
-                                color: '#1a202c',
+                                color: '#1a202c'
                             }}
                         >
                             {name}
@@ -400,7 +400,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                             style={{
                                 color: '#718096',
                                 fontSize: '14px',
-                                lineHeight: '20px',
+                                lineHeight: '20px'
                             }}
                         >
                             {description}
@@ -409,7 +409,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                             style={{
                                 color: '#6C5ED3',
                                 fontWeight: '700',
-                                fontSize: '18px',
+                                fontSize: '18px'
                             }}
                         >
                             ${price}
@@ -444,7 +444,7 @@ const GiftIdeasColumn = ({ gifts }) => {
                 style={{
                     fontSize: '20px',
                     fontWeight: '700',
-                    color: 'rgb(108, 94, 211)',
+                    color: 'rgb(108, 94, 211)'
                 }}
             >
                 Gift ideas
@@ -461,13 +461,13 @@ const columns = [
         key: 'gifts',
         render: (text, record, index) => {
             return <GiftIdeasColumn eventId={record.id} />
-        },
-    },
+        }
+    }
 ]
 
 const AllEventsTable = ({ data: { id } }) => {
     const response = useQuery(GET_GIFTS, {
-        variables: { eventId: id },
+        variables: { eventId: id }
     })
     if (response.loading) return 'loading'
     if (response.error) return <p>{response.error}</p>

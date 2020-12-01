@@ -10,7 +10,7 @@ import {
     Avatar,
     Input,
     Button,
-    Layout,
+    Layout
 } from 'antd'
 
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
@@ -85,7 +85,7 @@ const Loved = () => {
         <div
             style={{
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: 'row'
             }}
         >
             <img
@@ -110,19 +110,19 @@ const CalendarDate = ({ date, type }) => {
         colors = {
             primary: '#E0F3F4',
             secondary: '#469696',
-            image: <GraduationIcon stroke={'#469696'} />,
+            image: <GraduationIcon stroke={'#469696'} />
         }
     } else if (type === 'BIRTHDAY') {
         colors = {
             primary: '#FFF2F0',
             secondary: '#FF3825',
-            image: <BirthdayIcon stroke="#FF3825" />,
+            image: <BirthdayIcon stroke="#FF3825" />
         }
     } else {
         colors = {
             primary: '#FED6ED',
             secondary: '#C93E8C',
-            image: <GiftIcon stroke="#C93E8C" />,
+            image: <GiftIcon stroke="#C93E8C" />
         }
     }
     return (
@@ -132,7 +132,7 @@ const CalendarDate = ({ date, type }) => {
                     className="calendar"
                     style={{
                         backgroundColor: colors['primary'],
-                        position: 'relative',
+                        position: 'relative'
                     }}
                 >
                     <span
@@ -145,7 +145,7 @@ const CalendarDate = ({ date, type }) => {
                             height: '7px',
                             borderRadius: ' 0 0 10px 10px',
                             backgroundColor: colors['primary'],
-                            opacity: '50%',
+                            opacity: '50%'
                         }}
                     ></span>
                     <p
@@ -166,7 +166,7 @@ const CalendarDate = ({ date, type }) => {
                         style={{
                             fontSize: '16px',
                             fontWeight: '500',
-                            margin: '0',
+                            margin: '0'
                         }}
                     >
                         {event}
@@ -191,7 +191,7 @@ const GiftIdea = () => {
                         fontSize: '14px',
                         margin: '0',
                         color: '#667eea',
-                        fontWeight: '500',
+                        fontWeight: '500'
                     }}
                 >
                     Titlelist clubs
@@ -202,7 +202,7 @@ const GiftIdea = () => {
                             color: '#404346',
                             margin: '0',
                             fontSize: '16px',
-                            fontWeight: '600',
+                            fontWeight: '600'
                         }}
                     >
                         $129.00
@@ -216,7 +216,7 @@ const GiftIdea = () => {
                         style={{
                             boxShadow:
                                 '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06',
-                            border: 'none',
+                            border: 'none'
                         }}
                     />
                     <a style={{ color: '#718096' }}>See more</a>
@@ -228,7 +228,7 @@ const GiftIdea = () => {
                         fontSize: '14px',
                         margin: '0',
                         color: '#667eea',
-                        fontWeight: '500',
+                        fontWeight: '500'
                     }}
                 >
                     Golf bag
@@ -239,7 +239,7 @@ const GiftIdea = () => {
                             color: '#404346',
                             margin: '0',
                             fontSize: '16px',
-                            fontWeight: '600',
+                            fontWeight: '600'
                         }}
                     >
                         $110.00
@@ -253,7 +253,7 @@ const GiftIdea = () => {
                         style={{
                             boxShadow:
                                 '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06',
-                            border: 'none',
+                            border: 'none'
                         }}
                     />
                     <a style={{ color: '#718096' }}>See more</a>
@@ -270,25 +270,25 @@ const columns = [
         key: 'calendar',
         render: (text, record) => (
             <CalendarDate date={record.date} type={record.type} />
-        ),
+        )
     },
     {
         title: 'Loved one',
         dataIndex: 'loved',
         key: 'loved',
-        render: (text, record) => <Loved />,
+        render: (text, record) => <Loved />
     },
     {
         title: 'Date',
         dataIndex: 'date',
         key: 'date',
-        render: (text) => moment.unix(text / 1000).format('DD MMM YYYY'),
+        render: (text) => moment.unix(text / 1000).format('DD MMM YYYY')
     },
 
     {
         title: 'Status',
         key: 'tags',
-        render: () => <Tag color={'volcano'}>New</Tag>,
+        render: () => <Tag color={'volcano'}>New</Tag>
     },
     {
         title: 'Action',
@@ -301,8 +301,8 @@ const columns = [
                 </a>
                 <a style={{ color: '#1890ff', fontSize: '14px' }}>Edit</a>
             </Space>
-        ),
-    },
+        )
+    }
 ]
 
 const TableContainer = ({ data }) => {
@@ -319,7 +319,7 @@ const TableContainer = ({ data }) => {
                         '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
                     borderRadius: '12px',
                     margin: '0 auto',
-                    marginTop: '40px',
+                    marginTop: '40px'
                 }}
                 columns={columns}
                 expandable={{
@@ -336,7 +336,7 @@ const TableContainer = ({ data }) => {
                                 </div>
                             )}
                         </IconButton>
-                    ),
+                    )
                 }}
                 dataSource={data}
             />

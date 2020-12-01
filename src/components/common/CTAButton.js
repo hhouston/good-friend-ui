@@ -7,7 +7,7 @@ const CTAButton = ({
     className,
     onMouseEnter,
     onMouseLeave,
-    children,
+    children
 }) => {
     return (
         <Button
@@ -21,7 +21,7 @@ const CTAButton = ({
                 color: '#fff',
                 border: 'none',
                 width: '180px',
-                height: '54px',
+                height: '54px'
             }}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}

@@ -8,7 +8,7 @@ class EnsureLoggedInContainer extends React.Component {
         super(props)
 
         this.state = {
-            isLoggedIn: 'pending',
+            isLoggedIn: 'pending'
         }
     }
     componentDidMount() {
@@ -18,7 +18,7 @@ class EnsureLoggedInContainer extends React.Component {
             const decoded = jsonwebtoken.decode(token, { complete: true })
             const tokenExp = decoded.payload.exp
             this.setState({
-                isLoggedIn: new Date().getTime() / 1000 < tokenExp,
+                isLoggedIn: new Date().getTime() / 1000 < tokenExp
             })
         } else {
             this.setState({ isLoggedIn: false })

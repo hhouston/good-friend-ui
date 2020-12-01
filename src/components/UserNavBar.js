@@ -51,7 +51,7 @@ const Navbar = ({ isMobile, isHome }) => {
                     style={{
                         borderBottom: 'none',
                         zIndex: '30',
-                        background: 'none',
+                        background: 'none'
                     }}
                     theme={isHome ? 'dark' : 'light'}
                 >
@@ -107,7 +107,7 @@ const Navbar = ({ isMobile, isHome }) => {
                                 style={{
                                     height: '18px',
                                     width: '18px',
-                                    marginRight: '6px',
+                                    marginRight: '6px'
                                 }}
                                 src={require('../images/user_profile.png')}
                             ></img>
@@ -140,10 +140,10 @@ const Navbar = ({ isMobile, isHome }) => {
                     lineHeight: '3.5',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
+                    alignItems: 'center'
                 }}
                 headerStyle={{
-                    borderBottom: 'none',
+                    borderBottom: 'none'
                 }}
             >
                 <img
@@ -168,7 +168,7 @@ const Navbar = ({ isMobile, isHome }) => {
 
 Navbar.defaultProps = {
     isMobile: false,
-    isHome: false,
+    isHome: false
 }
 
 export default Navbar

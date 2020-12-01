@@ -43,7 +43,7 @@ export const Root = () => {
 }
 
 const mapStateToProps = (state) => ({
-    ...state,
+    ...state
 })
 
 export default connect(mapStateToProps)(Root)

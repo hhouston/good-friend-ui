@@ -5,17 +5,17 @@ export const CLEAR_CART = 'CLEAR_CART'
 
 export const setCurrentPlayer = (player) => ({
     type: SET_PLAYER,
-    player,
+    player
 })
 
 export const addItemToCart = (photoId) => ({
     type: ADD_ITEM_TO_CART,
-    photoId,
+    photoId
 })
 
 export const removeItemFromCart = (photoId) => ({
     type: REMOVE_ITEM_FROM_CART,
-    photoId,
+    photoId
 })
 
 export const clearCart = () => ({ type: CLEAR_CART })

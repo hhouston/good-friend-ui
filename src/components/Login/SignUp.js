@@ -14,7 +14,7 @@ const Login = () => {
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
-                            flexDirection: 'column',
+                            flexDirection: 'column'
                         }}
                     >
                         <FacebookLogin

@@ -16,12 +16,12 @@ class CheckoutFormContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    ...state,
+    ...state
 })
 
 const mapDispatchToProps = (dispatch) => ({
     removeItemFromCart: (photoId) => dispatch(removeItemFromCart(photoId)),
-    clearCart: () => dispatch(clearCart()),
+    clearCart: () => dispatch(clearCart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StripeProviderForm)

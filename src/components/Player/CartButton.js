@@ -6,7 +6,7 @@ class CartButton extends Component {
         super(props)
 
         this.state = {
-            added: false,
+            added: false
         }
 
         this.handleAddClick = this.handleAddClick.bind(this)

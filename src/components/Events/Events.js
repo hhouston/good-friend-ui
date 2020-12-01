@@ -29,7 +29,7 @@ const GET_EVENTS = gql`
 const mapKey = (data) => {
     return data.map((item) => ({
         ...item,
-        key: item.id,
+        key: item.id
     }))
 }
 

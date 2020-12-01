@@ -15,7 +15,7 @@ const AboutUs = () => {
                         color: 'rgba(60, 13, 153, 0.5)',
                         letterSpacing: '2px',
                         fontSize: '16px',
-                        marginTop: '6rem',
+                        marginTop: '6rem'
                     }}
                 >
                     ABOUT US
@@ -27,7 +27,7 @@ const AboutUs = () => {
                     style={{
                         fontSize: '38px',
                         margin: '0',
-                        marginBottom: '2rem',
+                        marginBottom: '2rem'
                     }}
                 >
                     Our Mission
@@ -60,7 +60,7 @@ const AboutUs = () => {
                     color: 'rgba(60, 13, 153, 0.5)',
                     letterSpacing: '2px',
                     fontSize: '16px',
-                    marginTop: '6rem',
+                    marginTop: '6rem'
                 }}
             >
                 MEET OUR LOCAL ARTISTS
@@ -72,7 +72,7 @@ const AboutUs = () => {
                 style={{
                     fontSize: '38px',
                     margin: '0',
-                    marginBottom: '2rem',
+                    marginBottom: '2rem'
                 }}
             >
                 Partnerships

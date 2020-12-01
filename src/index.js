@@ -12,7 +12,7 @@ import {
     ApolloClient,
     InMemoryCache,
     ApolloProvider,
-    createHttpLink,
+    createHttpLink
 } from '@apollo/client'
 import { createUploadLink } from 'apollo-upload-client'
 import { setContext } from '@apollo/client/link/context'
@@ -44,8 +44,8 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : '',
-        },
+            authorization: token ? `Bearer ${token}` : ''
+        }
     }
 })
 
@@ -53,7 +53,7 @@ const createApolloClient = (cache = {}) =>
     new ApolloClient({
         ssrMode: typeof window !== 'undefined',
         cache: new InMemoryCache().restore(cache),
-        link: authLink.concat(httpLink),
+        link: authLink.concat(httpLink)
     })
 
 const client = createApolloClient()

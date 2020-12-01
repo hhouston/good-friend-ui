@@ -4,20 +4,20 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
         showModal() {
             this.setState({
-                visible: true,
+                visible: true
             })
         }
 
         handleOk() {
             this.setState({
                 ModalText: 'Verifying...',
-                confirmLoading: true,
+                confirmLoading: true
             })
 
             setTimeout(() => {
                 this.setState({
                     visible: false,
-                    confirmLoading: false,
+                    confirmLoading: false
                 })
                 this.props.history.push('/photos')
             }, 2000)
@@ -25,7 +25,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 
         handleCancel = () => {
             this.setState({
-                visible: false,
+                visible: false
             })
         }
         render() {
@@ -48,9 +48,9 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                     {
                                         required: true,
                                         message:
-                                            'Please input the title of collection!',
-                                    },
-                                ],
+                                            'Please input the title of collection!'
+                                    }
+                                ]
                             })(<Input />)}
                         </Form.Item>
 

@@ -4,7 +4,7 @@ export const TYPED_STRINGS = [
     'Christmas',
     'flowers',
     'graduation',
-    'chocolates',
+    'chocolates'
 ]
 
 export const typeMap = {
@@ -15,5 +15,5 @@ export const typeMap = {
     BABY_SHOWER: 'Baby Shower',
     MOTHERS_DAY: "Mother's Day",
     FATHERS_DAY: "Father's Day",
-    OTHER: 'Other',
+    OTHER: 'Other'
 }

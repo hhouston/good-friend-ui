@@ -28,14 +28,14 @@ const EditForm = ({
     onClick,
     updateFormData,
     formData,
-    userId,
+    userId
     // refetch,
 }) => {
     const [updateForm, { refetch }] = useMutation(UPDATE_USER)
     const updateEntry = (e) => {
         updateFormData({
             ...formData,
-            [e.target.name]: e.target.value.trim(),
+            [e.target.name]: e.target.value.trim()
         })
     }
 
@@ -44,10 +44,10 @@ const EditForm = ({
             variables: {
                 user: {
                     id: userId,
-                    fields: formData,
-                },
+                    fields: formData
+                }
             },
-            onCompleted: () => refetch(),
+            onCompleted: () => refetch()
         })
         onClick()
     }
@@ -207,14 +207,14 @@ const ViewForm = ({ firstName, lastName, email, phone, address, onClick }) => {
 
 ViewForm.defaultProps = {
     phoneNumber: '',
-    address: '',
+    address: ''
 }
 
 const Account = ({ editMode }) => {
     const [isEditing, setIsEditing] = useState(editMode)
     const [updatedUserInput, setUpdatedUserInput] = useState({})
     const { loading, error, data, refetch } = useQuery(GET_USER, {
-        variables: { email: 'bronwyn@gmail.com' },
+        variables: { email: 'bronwyn@gmail.com' }
     })
 
     if (loading) return 'loading'
@@ -241,7 +241,7 @@ const Account = ({ editMode }) => {
 }
 
 Account.defaultProps = {
-    editMode: false,
+    editMode: false
 }
 
 export default Account
