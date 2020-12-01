@@ -471,7 +471,7 @@
 }
 
 .all-events-add {
-    padding: 64px 0;
+    padding: 64px 0 0;
 }
 
 .signup-step-paragraph {
@@ -480,4 +480,10 @@
     line-height: 1.4;
     letter-spacing: -0.02em;
     color: #2b137d;
+}
+
+.event-form {
+    display: flex;
+    text-align: left;
+    padding: 24px 0;
 }

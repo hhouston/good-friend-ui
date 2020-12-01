@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react'
+import { map, pipe, pick } from 'ramda'
 import StepThree from './StepThree'
 import StepLovedOne from './StepLovedOne'
-import { Typography } from 'antd'
+import { Typography, Button } from 'antd'
+import { gql, useMutation } from '@apollo/client'
+
+import { ADD_EVENT_WITH_FRIEND } from '../../mutations/createEvent'
 
 const { Title } = Typography
 
@@ -26,9 +30,15 @@ const PlusIcon = (props) => (
     </svg>
 )
 
-const StepEvent = () => {
-    const [step, setStep] = useState(1)
-    const [events, updateEvents] = useState([])
+const StepEvent = ({
+    handleBack,
+    handleNext,
+    userId,
+    addFriendToForm,
+    signUpForm,
+    updateSignUpForm
+}) => {
+    const [addEvent, { data }] = useMutation(ADD_EVENT_WITH_FRIEND)
 
     const eventFormRef = useRef(null)
     const eventCardsRef = useRef(null)
@@ -52,35 +62,61 @@ const StepEvent = () => {
         })
     }
 
+    const handleSubmit = async () => {
+        const { input, friends } = signUpForm
+        console.log('input-----', input)
+        const data = await addEvent({
+            variables: { input, friends }
+        })
+        handleNext()
+    }
+
     return (
         <div className="step-event">
-            <Title className="subtitle" style={{ margin: '0' }}>
-                Loved ones
-            </Title>
+            <Title className="subtitle">Loved ones</Title>
             <p className="signup-step-paragraph">
                 Add the different events you're shopping for, along with some
                 basic details about each person
             </p>
             <div>
-                <div className="all-events-add">
-                    <div
-                        className="new-event-pill"
-                        onClick={() => scrollTo(eventFormRef.current)}
-                    >
-                        <PlusIcon />
-                        <h3 className="add-new-event">Add a new event</h3>
-                    </div>
-                </div>
-
-                <div
-                    ref={eventFormRef}
-                    onClick={() => scrollTo(eventCardsRef.current)}
-                >
-                    <StepThree />
+                <div ref={eventFormRef}>
+                    <StepThree
+                        signUpForm={signUpForm}
+                        updateSignUpForm={updateSignUpForm}
+                        scrollToNextSection={() =>
+                            scrollTo(eventCardsRef.current)
+                        }
+                    />
                 </div>
                 <div ref={eventCardsRef}>
-                    <StepLovedOne />
+                    <StepLovedOne
+                        addFriendToForm={addFriendToForm}
+                        handleSubmit={handleSubmit}
+                        handleBack={handleBack}
+                        handleNext={handleNext}
+                    />
                 </div>
+            </div>
+            <div className="signup-buttons">
+                <Button
+                    shape="round"
+                    type="secondary"
+                    size="large"
+                    onClick={handleBack}
+                    className="bundle-card-button"
+                >
+                    Previous
+                </Button>
+                <Button
+                    shape="round"
+                    type="primary"
+                    size="large"
+                    className="bundle-card-button"
+                    onClick={handleSubmit}
+                    disabled={!signUpForm.friends.length}
+                >
+                    Next
+                </Button>
             </div>
         </div>
     )

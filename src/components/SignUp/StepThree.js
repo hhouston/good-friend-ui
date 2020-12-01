@@ -1,20 +1,60 @@
 import React, { useState } from 'react'
+import moment from 'moment'
+
 import './styles.css'
 import EventCard from './EventCard'
 import StepLovedOne from './StepLovedOne'
 
-import { Typography } from 'antd'
+import { Typography, DatePicker, Input, Button } from 'antd'
+import { types } from '../../utils/constants'
 
 const { Title } = Typography
 
-const StepThree = ({ isMobile, updateForm, ref }) => {
+const StepThree = ({
+    isMobile,
+    ref,
+    scrollToNextSection,
+    updateSignUpForm,
+    signUpForm
+}) => {
     const [selected, setSelected] = useState(null)
+
+    const dateFormat = 'MM/DD/YYYY'
+
     const handleSelect = (title) => {
         if (title === selected) {
             setSelected(null)
         } else {
             setSelected(title)
+            updateSignUpForm((prevState) => ({
+                ...prevState,
+                input: {
+                    ...prevState.input,
+                    type: title
+                }
+            }))
+            scrollToNextSection()
         }
+    }
+
+    const handleDateChange = (e) => {
+        updateSignUpForm((prevState) => ({
+            ...prevState,
+            input: {
+                ...prevState.input,
+                date: e.valueOf().toString()
+            }
+        }))
+    }
+
+    const updateEntry = (e) => {
+        updateSignUpForm({
+            ...signUpForm,
+            input: {
+                ...signUpForm.input,
+                title: e.target.value
+            }
+        })
     }
 
     const cardSize = isMobile ? 'small' : 'default'
@@ -23,17 +63,50 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                padding: '64px 0'
             }}
             ref={ref}
         >
             <Title level={2} className="subtitle">
-                What event are you shopping for?
+                Event details
             </Title>
+            <div className="event-form">
+                <div className="account-input-container">
+                    <label className="account-form-label" htmlFor="name">
+                        Name of event
+                    </label>
+                    <Input
+                        name="title"
+                        className="account-form-input"
+                        type="text"
+                        placeholder="Event name"
+                        style={{ width: '300px' }}
+                        aria-label="Title"
+                        value={signUpForm.input.title}
+                        onChange={updateEntry}
+                        // onBlur={handleBlur}
+                        // required
+                    />
+                </div>
+                <div className="account-input-container">
+                    <label className="account-form-label" htmlFor="name">
+                        Date of event
+                    </label>
+                    <DatePicker
+                        defaultValue={moment()}
+                        format={dateFormat}
+                        allowClear={false}
+                        size="large"
+                        style={{ width: '300px' }}
+                        onChange={handleDateChange}
+                    />
+                </div>
+            </div>
             <div className="cards-wrapper">
                 <EventCard
                     key={'anniversary'}
-                    title="Anniversary"
+                    title={'ANNIVERSARY'}
                     imgUrl={require('../../images/love.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -41,7 +114,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'birthday'}
-                    title="Birthday"
+                    title="BIRTHDAY"
                     imgUrl={require('../../images/birthday.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -49,7 +122,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'graduation'}
-                    title="Graduation"
+                    title="GRADUATION"
                     imgUrl={require('../../images/graduation.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -57,7 +130,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'baby'}
-                    title="Baby shower"
+                    title="BABY_SHOWER"
                     imgUrl={require('../../images/baby.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -65,7 +138,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'mother'}
-                    title="Mother's Day"
+                    title="MOTHERS_DAY"
                     imgUrl={require('../../images/mother.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -73,7 +146,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'father'}
-                    title="Father's Day"
+                    title="FATHERS_DAY"
                     imgUrl={require('../../images/father.svg')}
                     handleSelect={handleSelect}
                     selected={selected}
@@ -81,7 +154,7 @@ const StepThree = ({ isMobile, updateForm, ref }) => {
                 />
                 <EventCard
                     key={'wedding'}
-                    title="Wedding"
+                    title="WEDDING"
                     imgUrl={require('../../images/wedding.svg')}
                     handleSelect={handleSelect}
                     selected={selected}

@@ -11,6 +11,15 @@
     width: 100%;
 }
 
+.outer-div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .account-form {
     width: 100%;
     display: flex;

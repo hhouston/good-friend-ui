@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import './styles.css'
 import { UserOutlined } from '@ant-design/icons'
 
-import { Input, Button, Typography, Select } from 'antd'
+import { Input, Typography, Select } from 'antd'
+import { formatMs } from '@material-ui/core'
+import { PrimaryButton } from '../common'
 
 const { Title } = Typography
 
@@ -12,31 +14,48 @@ const { TextArea } = Input
 
 const initialState = {
     name: '',
-    age: '',
+    age: null,
     gender: '',
     interests: ''
 }
 
-const StepLovedOne = ({ ref }) => {
+const StepLovedOne = ({
+    ref,
+    addFriendToForm,
+    handleSubmit,
+    handleBack,
+    handleNext
+}) => {
     const [formData, updateFormData] = useState(initialState)
 
     const updateEntry = (e) => {
-        console.log(e)
+        const { value, type } = e.target
         updateFormData({
             ...formData,
-            [e.target.name]: e.target.value.trim()
+            [e.target.name]: type === 'number' ? parseInt(value) : value
         })
     }
 
-    const handleSelect = (value) => {
+    const handleTextAreaChange = (e) => {
+        updateFormData({
+            ...formData,
+            interests: e.target.value.trim()
+        })
+    }
+
+    const handleSelectChange = (value) => {
         updateFormData({
             ...formData,
             gender: value
         })
     }
 
+    const saveFriend = () => {
+        addFriendToForm(formData)
+    }
+
     return (
-        <div style={{ width: '100%' }} ref={ref}>
+        <div style={{ width: '100%', padding: '64px 0' }} ref={ref}>
             <Title level={2} className="subtitle">
                 Some basic details about your loved one
             </Title>
@@ -67,7 +86,7 @@ const StepLovedOne = ({ ref }) => {
                         <input
                             name="age"
                             className="account-form-input"
-                            type="text"
+                            type="number"
                             placeholder="Age"
                             aria-label="Age"
                             value={formData.age}
@@ -83,10 +102,10 @@ const StepLovedOne = ({ ref }) => {
                     <Select
                         style={{ width: 200, borderRadius: '8px' }}
                         placeholder="Gender"
+                        onChange={handleSelectChange}
                     >
                         <Option value="female">Female</Option>
                         <Option value="male">Male</Option>
-                        <Option value="non-binary">Non-binary</Option>
                         <Option value="other">Prefer not to say</Option>
                     </Select>
                 </div>
@@ -94,9 +113,11 @@ const StepLovedOne = ({ ref }) => {
                     <TextArea
                         rows={8}
                         placeholder="Hobbies, interests, dislikes, etc!"
+                        onChange={handleTextAreaChange}
                     />
                 </div>
             </form>
+            <PrimaryButton onClick={saveFriend}>Save</PrimaryButton>
         </div>
     )
 }

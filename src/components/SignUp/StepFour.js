@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Lottie from 'react-lottie'
 import animationData from '../../giftData.json'
 import { Typography } from 'antd'
+import { useHistory } from 'react-router-dom'
 
 const { Title } = Typography
 
 function StepFour() {
+    const history = useHistory()
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -14,6 +16,12 @@ function StepFour() {
             preserveAspectRatio: 'xMidYMid slice'
         }
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            history.push('/viewAll')
+        }, 3000)
+    })
 
     return (
         <div>

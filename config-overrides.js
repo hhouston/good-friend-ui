@@ -14,6 +14,7 @@ module.exports = override(
             '@heading-color': '#2b137d',
             '@text-color': '#4a5568',
             '@heading-1-size': 'ceil(@font-size-base * 3.4)',
+            '@typography-title-margin-bottom': '16px',
             '@table-header-bg': '#F5F8FB',
             '@table-header-color': '#ADC0D6',
             '@table-selected-row-color': '#405693',

@@ -16,20 +16,45 @@ import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
 import Footer from '../Footer'
 import TableContainer from './TableContainer'
-import { gql, useQuery } from '@apollo/client'
+import { gql, useQuery, useMutation } from '@apollo/client'
 
 const GET_GIFTS = gql`
-    query Gifts($eventId: ID!) {
-        getGiftsByEventId(eventId: $eventId) {
+    query getFriendAndEvent($friendId: ID!, $eventId: ID!) {
+        getFriendById(friendId: $friendId) {
             name
-            description
-            price
-            currency
+            interests
+            age
+            gender
+        }
+        getGiftsByEventId(eventId: $eventId) {
+            id
+            eventId
+            userId
+            name
+            type
             url
-            image
         }
     }
 `
+
+const UPDATE_USER = gql`
+    mutation updateFriend($input: UpdateFriendInput!) {
+        updateFriend(friend: $input)
+    }
+`
+
+// const GET_GIFTS = gql`
+//     query Gifts($eventId: ID!) {
+//         getGiftsByEventId(eventId: $eventId) {
+//             name
+//             description
+//             price
+//             currency
+//             url
+//             image
+//         }
+//     }
+// `
 
 const { Title } = Typography
 
@@ -183,7 +208,7 @@ const CancelIcon = (props) => (
     </svg>
 )
 
-const OpenNoteFooter = ({ onClick }) => {
+const OpenNoteFooter = ({ onClick, saveNote }) => {
     return (
         <div
             style={{
@@ -194,7 +219,7 @@ const OpenNoteFooter = ({ onClick }) => {
             }}
         >
             <span
-                onClick={onClick}
+                onClick={saveNote}
                 style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -219,14 +244,35 @@ const OpenNoteFooter = ({ onClick }) => {
     )
 }
 
-const NotesColumn = () => {
+const NotesColumn = ({ notes, friendId }) => {
     const [open, setOpen] = React.useState(false)
+    const [state, updateState] = useState(notes)
+
+    const [updateUser] = useMutation(UPDATE_USER, {})
+
+    const updateNotes = (e) => {
+        updateState(e.target.value)
+    }
+
+    const saveNote = async () => {
+        setOpen(false)
+
+        updateUser({
+            variables: {
+                input: {
+                    id: friendId,
+                    fields: {
+                        interests: state
+                    }
+                }
+            }
+        })
+    }
     return (
         <div
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                maxWidth: '40%',
                 padding: '24px'
             }}
         >
@@ -235,7 +281,10 @@ const NotesColumn = () => {
                 style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: '16px 16px 64px',
+                    minWidth: '400px',
+                    width: 'initial'
                 }}
             >
                 <div
@@ -276,25 +325,18 @@ const NotesColumn = () => {
                     {open ? (
                         <TextArea
                             style={{ color: '#555' }}
-                            autoSize
-                            value={
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                            }
+                            rows={8}
+                            value={state}
+                            onChange={updateNotes}
                         ></TextArea>
                     ) : (
-                        <span style={{ color: '#555' }}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Lorem
-                            ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
-                        </span>
+                        <span style={{ color: '#555' }}>{state}</span>
                     )}
                     <Collapse in={open}>
-                        <OpenNoteFooter onClick={() => setOpen(false)} />
+                        <OpenNoteFooter
+                            onClick={() => setOpen(false)}
+                            saveNote={saveNote}
+                        />
                     </Collapse>
                 </div>
             </div>
@@ -302,185 +344,133 @@ const NotesColumn = () => {
     )
 }
 
-const GiftIdeasColumn = ({ gifts }) => {
-    console.log(gifts)
-    if (!gifts.length) {
-        return (
-            <div
-                className="event-card event-card-link"
-                style={{
-                    padding: '0',
-                    flexDirection: 'row',
+// const columns = [
+//     {
+//         title: 'Gift ideas',
+//         dataIndex: 'gifts',
+//         key: 'gifts',
+//         render: (text, record, index) => {
+//             return <GiftIdeasColumn eventId={record.id} />
+//         }
+//     }
+// ]
 
-                    overflow: 'hidden'
-                }}
-            >
-                <img
-                    src={require('../../images/project.svg')}
-                    style={{
-                        height: '260px',
-                        width: '260px',
-                        objectFit: 'cover',
-                        objectPosition: 'center'
-                    }}
-                ></img>
-                <span
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        padding: '24px',
-                        width: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        minWidth: '500px'
-                    }}
-                >
-                    <h3
-                        style={{
-                            fontWeight: '700',
-                            fontSize: '20px',
-                            color: '#1a202c'
-                        }}
-                    >
-                        No gifts yet!
-                    </h3>
-                    <span
-                        style={{
-                            color: '#718096',
-                            fontSize: '14px',
-                            lineHeight: '20px'
-                        }}
-                    >
-                        Add some now
-                    </span>
-                </span>
-            </div>
-        )
-    }
+//     const GiftComponent = () =>
+//         gifts.map(({ name, description, price, currency, url, image }) => (
+//             <a href={url}>
+//                 <div
+//                     className="event-card event-card-link"
+//                     style={{
+//                         padding: '0',
+//                         flexDirection: 'row',
 
-    const GiftComponent = () =>
-        gifts.map(({ name, description, price, currency, url, image }) => (
-            <a href={url}>
-                <div
-                    className="event-card event-card-link"
-                    style={{
-                        padding: '0',
-                        flexDirection: 'row',
+//                         overflow: 'hidden'
+//                     }}
+//                 >
+//                     <img
+//                         src={image}
+//                         style={{
+//                             height: '260px',
+//                             width: '260px',
+//                             objectFit: 'cover',
+//                             objectPosition: 'center'
+//                         }}
+//                     ></img>
+//                     <span
+//                         style={{
+//                             display: 'flex',
+//                             flexDirection: 'column',
+//                             padding: '24px',
+//                             width: '100%'
+//                         }}
+//                     >
+//                         <h3
+//                             style={{
+//                                 fontWeight: '700',
+//                                 fontSize: '20px',
+//                                 color: '#1a202c'
+//                             }}
+//                         >
+//                             {name}
+//                         </h3>
+//                         <span
+//                             style={{
+//                                 color: '#718096',
+//                                 fontSize: '14px',
+//                                 lineHeight: '20px'
+//                             }}
+//                         >
+//                             {description}
+//                         </span>
+//                         <span
+//                             style={{
+//                                 color: '#6C5ED3',
+//                                 fontWeight: '700',
+//                                 fontSize: '18px'
+//                             }}
+//                         >
+//                             ${price}
+//                         </span>
+//                         <div className="gifts-response-container">
+//                             <div className="gift-response-item">
+//                                 <ThumbsUpIcon
+//                                     size={'24px'}
+//                                     stroke={'#667EEA'}
+//                                 />
+//                                 <span>Approve</span>
+//                             </div>
+//                             <div className="gift-response-item">
+//                                 <EllipsisIcon />
+//                                 <span>Maybe</span>
+//                             </div>
+//                             <div className="gift-response-item">
+//                                 <ThumbsDownIcon
+//                                     size={'24px'}
+//                                     stroke={'#F56565'}
+//                                 />
+//                                 <span>Reject</span>
+//                             </div>
+//                         </div>
+//                     </span>
+//                 </div>
+//             </a>
+//         ))
+//     return (
+//         <div>
+//             <h3
+//                 style={{
+//                     fontSize: '20px',
+//                     fontWeight: '700',
+//                     color: 'rgb(108, 94, 211)'
+//                 }}
+//             >
+//                 Gift ideas
+//             </h3>
+//             <GiftComponent />
+//         </div>
+//     )
+// }
 
-                        overflow: 'hidden'
-                    }}
-                >
-                    <img
-                        src={image}
-                        style={{
-                            height: '260px',
-                            width: '260px',
-                            objectFit: 'cover',
-                            objectPosition: 'center'
-                        }}
-                    ></img>
-                    <span
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            padding: '24px',
-                            width: '100%'
-                        }}
-                    >
-                        <h3
-                            style={{
-                                fontWeight: '700',
-                                fontSize: '20px',
-                                color: '#1a202c'
-                            }}
-                        >
-                            {name}
-                        </h3>
-                        <span
-                            style={{
-                                color: '#718096',
-                                fontSize: '14px',
-                                lineHeight: '20px'
-                            }}
-                        >
-                            {description}
-                        </span>
-                        <span
-                            style={{
-                                color: '#6C5ED3',
-                                fontWeight: '700',
-                                fontSize: '18px'
-                            }}
-                        >
-                            ${price}
-                        </span>
-                        <div className="gifts-response-container">
-                            <div className="gift-response-item">
-                                <ThumbsUpIcon
-                                    size={'24px'}
-                                    stroke={'#667EEA'}
-                                />
-                                <span>Approve</span>
-                            </div>
-                            <div className="gift-response-item">
-                                <EllipsisIcon />
-                                <span>Maybe</span>
-                            </div>
-                            <div className="gift-response-item">
-                                <ThumbsDownIcon
-                                    size={'24px'}
-                                    stroke={'#F56565'}
-                                />
-                                <span>Reject</span>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-            </a>
-        ))
-    return (
-        <div>
-            <h3
-                style={{
-                    fontSize: '20px',
-                    fontWeight: '700',
-                    color: 'rgb(108, 94, 211)'
-                }}
-            >
-                Gift ideas
-            </h3>
-            <GiftComponent />
-        </div>
-    )
-}
+const AllEventsTable = (props) => {
+    const friendId = props.data.recipientIds[0]
+    const eventId = props.data.id
 
-const columns = [
-    {
-        title: 'Gift ideas',
-        dataIndex: 'gifts',
-        key: 'gifts',
-        render: (text, record, index) => {
-            return <GiftIdeasColumn eventId={record.id} />
-        }
-    }
-]
-
-const AllEventsTable = ({ data: { id } }) => {
-    const response = useQuery(GET_GIFTS, {
-        variables: { eventId: id }
+    const { loading, error, data } = useQuery(GET_GIFTS, {
+        variables: { friendId: friendId, eventId: eventId }
     })
-    if (response.loading) return 'loading'
-    if (response.error) return <p>{response.error}</p>
-    const { getGiftsByEventId } = response.data
-    if (!getGiftsByEventId) {
-        return null
-    }
+
+    if (loading) return 'loading'
+    if (error) return <p>{error}</p>
+    console.log(data)
+
+    const notes = data.getFriendById.interests
+    // const { getGiftsByEventId } = response.data
+    // if (!getGiftsByEventId) {
+    //     return null
+    // }
     return (
         <div className="events-container">
-            <NotesColumn />
-            <div>
-                <GiftIdeasColumn gifts={response.data.getGiftsByEventId} />
-            </div>
+            <NotesColumn notes={notes} friendId={friendId} />
         </div>
     )
 }
