@@ -31,7 +31,8 @@ const Login = () => {
         e.preventDefault()
         setLoadingState(true)
         axios
-            .post('http://localhost:9000/login', {
+            .post('https://api.thankyougift.io/login', {
+            // .post('http://localhost:9000/login', {
                 email,
                 password,
                 type: 'email'

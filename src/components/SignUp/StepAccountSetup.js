@@ -75,7 +75,8 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const result = await axios.post(
-            'http://localhost:9000/signup',
+            // 'http://localhost:9000/signup',
+            'https://api.thankyougift.io/signup',
             formData
         )
         console.log(result)
