@@ -6,8 +6,8 @@ import PersonalGifts from '../PersonalGifts'
 import HowItWorks from '../HowItWorks'
 import FeaturedItem from '../FeaturedItem'
 import WhyWeAre from '../WhyWeAre'
-import Testimonials from '../Testimonials'
-import Experts from '../Experts'
+// import Testimonials from '../Testimonials'
+// import Experts from '../Experts'
 import Donations from '../Donations'
 import Footer from '../Footer'
 import HeaderImages from './HeaderImages'
@@ -211,8 +211,6 @@ const Home = () => {
                 isTablet={isTablet}
             />
             <Shipping />
-            <Testimonials />
-            <Experts />
             <Donations titleSize={titleTwoSize} />
             <Footer titleSize={titleTwoSize} />
         </div>

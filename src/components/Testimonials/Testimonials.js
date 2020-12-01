@@ -6,7 +6,7 @@ import './styles.css'
 
 const { Title } = Typography
 
-const Shipping = () => (
+const Testimonials = () => (
     <div className="sustainable-shipping">
         <img
             src={require('../../images/sustainable-shipping.svg')}
@@ -19,7 +19,7 @@ const Shipping = () => (
                 className="subtitle"
                 style={{ color: '#fff' }}
             >
-                Sustainable Shipping
+                Sustainable Testimonials
             </Title>
             <p className="shipping-paragraph">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -34,4 +34,4 @@ const Shipping = () => (
     </div>
 )
 
-export default Shipping
+export default Testimonials

@@ -1,1 +1,1 @@
-export { default as Experts } from './Experts'
+export { default as Testimonials } from './Testimonials'
