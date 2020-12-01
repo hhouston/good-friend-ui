@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import './styles.css'
 
-import { Typography } from 'antd'
+import { Typography, Button } from 'antd'
 import { PrimaryButton } from '../common'
 import EventCard from './EventCard'
 
@@ -26,7 +26,7 @@ const CheckIcon = () => (
     </svg>
 )
 
-const StepBundle = () => {
+const StepBundle = ({ handleBack, handleNext }) => {
     const [selected, setSelected] = useState(null)
     const handleSelect = (index) => {
         if (index === selected) {
@@ -37,32 +37,58 @@ const StepBundle = () => {
     }
     const options = [
         {
-            title: 'Expert help for upcoming events',
+            title: 'MANY',
             imgUrl: require('../../images/expert-selection.png')
         },
         {
-            title: 'Christmas bundle',
+            title: 'CHRISTMAS',
             imgUrl: require('../../images/christmas-card.png')
         },
         {
-            title: 'Just trying it out!',
+            title: 'TRIAL',
             imgUrl: require('../../images/trial-gift.png')
         }
     ]
 
+    const handleSubmit = (e) => {
+        handleNext()
+    }
+
     return (
-        <div className="step-bundle">
-            <Title className="subtitle">Select a bundle</Title>
-            <div className="bundle-cards">
-                {options.map((option, i) => (
-                    <EventCard
-                        imgUrl={option.imgUrl}
-                        title={option.title}
-                        selected={selected}
-                        handleSelect={handleSelect}
-                        className="bundle-card"
-                    />
-                ))}
+        <div className="outer-div">
+            <div className="step-bundle">
+                <Title className="subtitle">Select a bundle</Title>
+                <div className="bundle-cards">
+                    {options.map((option, i) => (
+                        <EventCard
+                            imgUrl={option.imgUrl}
+                            title={option.title}
+                            selected={selected}
+                            handleSelect={handleSelect}
+                            className="bundle-card"
+                        />
+                    ))}
+                </div>
+            </div>
+            <div className="signup-buttons">
+                <Button
+                    shape="round"
+                    type="secondary"
+                    size="large"
+                    onClick={handleBack}
+                    className="bundle-card-button"
+                >
+                    Previous
+                </Button>
+                <Button
+                    shape="round"
+                    type="primary"
+                    size="large"
+                    className="bundle-card-button"
+                    onClick={handleSubmit}
+                >
+                    Next
+                </Button>
             </div>
         </div>
     )

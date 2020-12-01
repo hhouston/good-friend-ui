@@ -10,7 +10,8 @@ import {
     Avatar,
     Input,
     Button,
-    Layout
+    Layout,
+    Typography
 } from 'antd'
 
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
@@ -25,6 +26,8 @@ import AllEventsTable from './AllEventsTable'
 const { Header, Content, Footer, Sider } = Layout
 
 const { TextArea } = Input
+
+const { Title } = Typography
 
 const BirthdayIcon = (props) => (
     <svg
@@ -79,6 +82,14 @@ const GiftIcon = (props) => (
         />
     </svg>
 )
+
+const EventTitle = ({ text }) => {
+    return (
+        <Title level={2} style={{ fontSize: '18px', color: '#4a5568' }}>
+            {text}
+        </Title>
+    )
+}
 
 const Loved = () => {
     return (
@@ -265,18 +276,18 @@ const GiftIdea = () => {
 
 const columns = [
     {
+        title: 'Event title',
+        dataIndex: 'title',
+        key: 'title',
+        render: (text, record) => <EventTitle record={record} text={text} />
+    },
+    {
         title: 'Event',
         dataIndex: 'calendar',
         key: 'calendar',
         render: (text, record) => (
             <CalendarDate date={record.date} type={record.type} />
         )
-    },
-    {
-        title: 'Loved one',
-        dataIndex: 'loved',
-        key: 'loved',
-        render: (text, record) => <Loved />
     },
     {
         title: 'Date',
@@ -288,7 +299,7 @@ const columns = [
     {
         title: 'Status',
         key: 'tags',
-        render: () => <Tag color={'volcano'}>New</Tag>
+        render: (text, record) => <Tag color={'volcano'}>New</Tag>
     },
     {
         title: 'Action',

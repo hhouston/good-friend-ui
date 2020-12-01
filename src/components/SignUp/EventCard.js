@@ -3,6 +3,7 @@ import './styles.css'
 import classNames from 'classnames'
 
 import { Typography } from 'antd'
+import { typeMap } from '../../utils/constants'
 
 const { Title } = Typography
 
@@ -44,7 +45,9 @@ const EventCard = ({
         >
             {selected === title && <CheckIcon />}
             <img className="card-image" src={imgUrl} />
-            <h3 className={classNames('card-title', className)}>{title}</h3>
+            <h3 className={classNames('card-title', className)}>
+                {typeMap[title]}
+            </h3>
         </div>
     )
 }
