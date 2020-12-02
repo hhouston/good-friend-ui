@@ -33,8 +33,8 @@ store.subscribe(() => {
 })
 
 const httpLink = createHttpLink({
-    // uri: 'http://localhost:9000/graphql'
-    uri: 'https://api.thankyougift.io/graphql'
+    uri: 'http://localhost:9000/graphql'
+    // uri: 'https://api.thankyougift.io/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {

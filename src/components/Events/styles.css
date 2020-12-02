@@ -176,3 +176,53 @@
     display: flex;
     align-items: center;
 }
+
+.people-card {
+    position: relative;
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px 24px 0;
+    box-shadow: 0 10px 15px -3px rgba(233, 234, 241, 1),
+        0 4px 6px -2px rgba(233, 234, 241, 0.5);
+    border-radius: 0.5em;
+    text-align: center;
+    padding: 24px;
+    width: 260px;
+}
+
+.people-card-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.people-card-img {
+    object-fit: contain;
+    height: 40px;
+}
+
+.people-card-name {
+    margin: 0;
+    font-family: 'Vollkorn', serif;
+    font-weight: 500;
+    color: #2a2c44;
+}
+
+.people-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-container {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.people-detail {
+    line-height: 1px;
+    margin-left: 4px;
+}
