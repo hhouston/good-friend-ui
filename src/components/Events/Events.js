@@ -11,6 +11,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Love from '../../images/love.svg'
 import { Tabs, Layout } from 'antd'
 import { NavBar } from '../NavBar'
+import PeopleTable from './PeopleTable'
+import CalendarView from './CalendarView'
 const { Header, Content, Footer, Sider } = Layout
 
 const { TabPane } = Tabs
@@ -49,8 +51,14 @@ const Events = () => {
     return (
         <div>
             <Tabs defaultActiveKey="1" centered>
-                <TabPane tab="Past events" key="1">
+                <TabPane tab="Events" key="1">
                     <TableContainer data={newData} />
+                </TabPane>
+                <TabPane tab="People" key="2">
+                    <PeopleTable userId={userId} />
+                </TabPane>
+                <TabPane tab="Calendar" key="3">
+                    <CalendarView data={data} />
                 </TabPane>
             </Tabs>
         </div>
