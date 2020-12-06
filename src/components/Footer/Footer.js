@@ -38,8 +38,7 @@ const Footer = () => {
                 <Title type="primary" level={3} className="subtitle">
                     Contact
                 </Title>
-                <p className="footer-text">thankyouapp@gmail.com</p>
-                <p className="footer-text">+0123 0258 123</p>
+                <p className="footer-text">support@thankyougift.io</p>
                 <p className="footer-text">Strasse PLZ ORT Land</p>
             </div>
         </div>
