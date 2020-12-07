@@ -60,6 +60,9 @@ const Navbar = ({ isMobile, isHome }) => {
                     <Menu.Item className={'navbar-item'} key="contact">
                         Contact
                     </Menu.Item>
+                    <Menu.Item className={'navbar-item'} key="blog">
+                        Blog
+                    </Menu.Item>
                     {isHome ? (
                         <Button
                             shape="round"
@@ -125,9 +128,9 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <p>Pricing Page</p>
-                <p>Packages</p>
                 <p>About</p>
+                <p>Contact</p>
+                <p>Blog</p>
                 <PrimaryButton
                     onClick={() => history.push('login')}
                     type="secondary"

@@ -89,7 +89,13 @@ const Navbar = ({ isMobile, isHome }) => {
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="contact"
                     >
-                        <a href="/pricing">Contact</a>
+                        <a href="/contact">Contact</a>
+                    </Menu.Item>
+                    <Menu.Item
+                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
+                        key="blog"
+                    >
+                        <a href="/blog">Blog</a>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
@@ -150,7 +156,8 @@ const Navbar = ({ isMobile, isHome }) => {
                     alt=""
                 />
                 <a href="/about">About</a>
-                <a href="/pricing">Contact</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog">Contact</a>
                 <a href="/account">Account</a>
                 <PrimaryButton
                     onClick={() => history.push('viewAll')}
