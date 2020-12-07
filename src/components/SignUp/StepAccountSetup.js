@@ -74,8 +74,7 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('-----------', process.env);
-        const backendUrl = process.env.NODE_ENV == 'production' ? 'https://api.thankyougift.io/graphql' : 'http://localhost:9000/graphql'
+        const backendUrl = process.env.NODE_ENV == 'production' ? 'https://api.thankyougift.io/signup' : 'http://localhost:9000/signup'
 
         const result = await axios.post(
           backendUrl,
