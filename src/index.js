@@ -33,13 +33,14 @@ store.subscribe(() => {
 })
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:9000/graphql'
+    uri: process.env.NODE_ENV == 'production' ? 'http://api.thankyougift.io/graphql' : 'http://localhost:9000/graphql'
     // uri: 'https://api.thankyougift.io/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
     const token = localStorage.getItem('token')
+    console.log('-----------', process.env);
     // return the headers to the context so httpLink can read them
     return {
         headers: {

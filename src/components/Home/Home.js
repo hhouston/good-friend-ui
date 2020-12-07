@@ -7,7 +7,8 @@ import HowItWorks from '../HowItWorks'
 import FeaturedItem from '../FeaturedItem'
 import WhyWeAre from '../WhyWeAre'
 // import Testimonials from '../Testimonials'
-// import Experts from '../Experts'
+import { Experts } from '../Experts'
+import Donations from '../Donations'
 import Footer from '../Footer'
 import HeaderImages from './HeaderImages'
 import { Typography, Button, Layout, Spin } from 'antd'
@@ -62,8 +63,7 @@ const Home = () => {
     })
 
     const applyNowClick = () => {
-        getTeams()
-        history.push('/signup')
+      history.push('/signup')
     }
 
     const contentRef = useRef(null)
@@ -201,6 +201,11 @@ const Home = () => {
             <HowItWorks titleSize={titleTwoSize} />
             <FeaturedItem titleSize={titleTwoSize} />
             <WhyWeAre
+                titleSize={titleTwoSize}
+                isMobile={isMobile}
+                isTablet={isTablet}
+            />
+          <Experts
                 titleSize={titleTwoSize}
                 isMobile={isMobile}
                 isTablet={isTablet}
