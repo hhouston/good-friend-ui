@@ -63,8 +63,7 @@ const Home = () => {
     })
 
     const applyNowClick = () => {
-        getTeams()
-        history.push('/signup')
+      history.push('/signup')
     }
 
     const contentRef = useRef(null)
@@ -206,7 +205,11 @@ const Home = () => {
                 isMobile={isMobile}
                 isTablet={isTablet}
             />
-            <Experts />
+          <Experts
+                titleSize={titleTwoSize}
+                isMobile={isMobile}
+                isTablet={isTablet}
+            />
             <Footer titleSize={titleTwoSize} />
         </div>
     )
