@@ -25,11 +25,7 @@ export const useIsTablet = () => {
     const [isTablet, setIsTablet] = useState(false)
 
     useWindowResize(() =>
-        setIsTablet(
-            window &&
-                window.matchMedia(`(min-width: 768px) and (max-width: 1012px)`)
-                    .matches
-        )
+        setIsTablet(window && window.matchMedia(`(max-width: 1012px)`).matches)
     )
     return isTablet
 }

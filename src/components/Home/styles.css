@@ -154,6 +154,9 @@
 }
 
 @media (max-width: 767px) {
+    .subheader-text-section {
+        flex-direction: column;
+    }
     .subheader {
         max-width: 90%;
     }

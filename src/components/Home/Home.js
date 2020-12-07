@@ -8,12 +8,9 @@ import FeaturedItem from '../FeaturedItem'
 import WhyWeAre from '../WhyWeAre'
 // import Testimonials from '../Testimonials'
 // import Experts from '../Experts'
-import Donations from '../Donations'
 import Footer from '../Footer'
 import HeaderImages from './HeaderImages'
 import { Typography, Button, Layout, Spin } from 'antd'
-import { PricingCards } from '../../components/SignUp'
-import { Shipping } from '../../components/Shipping'
 
 import { ArrowDownOutlined } from '@ant-design/icons'
 import Typed from 'react-typed'
@@ -191,10 +188,12 @@ const Home = () => {
                     ghost
                     style={{
                         boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                        color: '#2b137d'
+                        color: '#2b137d',
+                        height: '60px',
+                        width: '60px'
                     }}
                 >
-                    <ArrowDownOutlined />
+                    <ArrowDownOutlined style={{ fontSize: '24px' }} />
                 </Button>
             </div>
 
@@ -206,8 +205,6 @@ const Home = () => {
                 isMobile={isMobile}
                 isTablet={isTablet}
             />
-            <Shipping />
-            <Donations titleSize={titleTwoSize} />
             <Footer titleSize={titleTwoSize} />
         </div>
     )
