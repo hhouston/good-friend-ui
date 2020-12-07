@@ -7,7 +7,8 @@ import HowItWorks from '../HowItWorks'
 import FeaturedItem from '../FeaturedItem'
 import WhyWeAre from '../WhyWeAre'
 // import Testimonials from '../Testimonials'
-// import Experts from '../Experts'
+import { Experts } from '../Experts'
+import Donations from '../Donations'
 import Footer from '../Footer'
 import HeaderImages from './HeaderImages'
 import { Typography, Button, Layout, Spin } from 'antd'
@@ -205,6 +206,7 @@ const Home = () => {
                 isMobile={isMobile}
                 isTablet={isTablet}
             />
+            <Experts />
             <Footer titleSize={titleTwoSize} />
         </div>
     )

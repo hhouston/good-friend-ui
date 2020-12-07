@@ -8,10 +8,6 @@ const { Title } = Typography
 
 const Experts = () => (
     <div className="sustainable-shipping">
-        <img
-            src={require('../../images/sustainable-shipping.svg')}
-            className="shipping-image"
-        ></img>
         <div className="shipping-content">
             <Title
                 type="secondary"
