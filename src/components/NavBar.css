@@ -97,3 +97,12 @@
         padding: 64px 24px !important;
     }
 }
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item {
+    border-bottom: 2px solid transparent;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+    background-color: transparent !important;
+    border-bottom: 2px solid #2b137d;
+}

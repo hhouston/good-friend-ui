@@ -33,6 +33,9 @@ const GET_GIFTS = gql`
             name
             type
             url
+            image
+            price
+            description
         }
     }
 `
@@ -284,7 +287,8 @@ const NotesColumn = ({ notes, friendId }) => {
                     alignItems: 'center',
                     padding: '16px 16px 64px',
                     minWidth: '400px',
-                    width: 'initial'
+                    width: 'initial',
+                    background: '#fff'
                 }}
             >
                 <div
@@ -355,86 +359,94 @@ const NotesColumn = ({ notes, friendId }) => {
 //     }
 // ]
 
-//     const GiftComponent = () =>
-//         gifts.map(({ name, description, price, currency, url, image }) => (
-//             <a href={url}>
-//                 <div
-//                     className="event-card event-card-link"
-//                     style={{
-//                         padding: '0',
-//                         flexDirection: 'row',
-
-//                         overflow: 'hidden'
-//                     }}
-//                 >
-//                     <img
-//                         src={image}
-//                         style={{
-//                             height: '260px',
-//                             width: '260px',
-//                             objectFit: 'cover',
-//                             objectPosition: 'center'
-//                         }}
-//                     ></img>
-//                     <span
-//                         style={{
-//                             display: 'flex',
-//                             flexDirection: 'column',
-//                             padding: '24px',
-//                             width: '100%'
-//                         }}
-//                     >
-//                         <h3
-//                             style={{
-//                                 fontWeight: '700',
-//                                 fontSize: '20px',
-//                                 color: '#1a202c'
-//                             }}
-//                         >
-//                             {name}
-//                         </h3>
-//                         <span
-//                             style={{
-//                                 color: '#718096',
-//                                 fontSize: '14px',
-//                                 lineHeight: '20px'
-//                             }}
-//                         >
-//                             {description}
-//                         </span>
-//                         <span
-//                             style={{
-//                                 color: '#6C5ED3',
-//                                 fontWeight: '700',
-//                                 fontSize: '18px'
-//                             }}
-//                         >
-//                             ${price}
-//                         </span>
-//                         <div className="gifts-response-container">
-//                             <div className="gift-response-item">
-//                                 <ThumbsUpIcon
-//                                     size={'24px'}
-//                                     stroke={'#667EEA'}
-//                                 />
-//                                 <span>Approve</span>
-//                             </div>
-//                             <div className="gift-response-item">
-//                                 <EllipsisIcon />
-//                                 <span>Maybe</span>
-//                             </div>
-//                             <div className="gift-response-item">
-//                                 <ThumbsDownIcon
-//                                     size={'24px'}
-//                                     stroke={'#F56565'}
-//                                 />
-//                                 <span>Reject</span>
-//                             </div>
-//                         </div>
-//                     </span>
-//                 </div>
-//             </a>
-//         ))
+const GiftComponent = ({ gifts }) => {
+    return gifts.map(({ name, description, price, currency, url, image }) => (
+        <div className="present-idea">
+            <div className="present-idea-image-wrapper">
+                <img className="present-idea-img" src={image}></img>
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: '24px'
+                }}
+            >
+                <a href={url}>
+                    <span
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                paddingBottom: '24px'
+                            }}
+                        >
+                            <h3
+                                style={{
+                                    fontWeight: '700',
+                                    fontSize: '20px',
+                                    color: '#1a202c',
+                                    margin: '0'
+                                }}
+                            >
+                                {name}
+                            </h3>
+                            <Button
+                                style={{
+                                    color: 'rgb(108, 94, 211)',
+                                    backgroundColor: '#EEF2FF',
+                                    border: 'none',
+                                    fontWeight: '600',
+                                    fontSize: '14px'
+                                }}
+                            >
+                                Go to link
+                            </Button>
+                        </div>
+                        <span
+                            style={{
+                                color: '#718096',
+                                fontSize: '14px',
+                                lineHeight: '20px'
+                            }}
+                        >
+                            {description}
+                        </span>
+                        <span
+                            style={{
+                                color: '#6C5ED3',
+                                fontWeight: '700',
+                                fontSize: '18px'
+                            }}
+                        >
+                            ${price}
+                        </span>
+                    </span>
+                </a>
+                <div className="gifts-response-container">
+                    <div className="gift-response-item">
+                        <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
+                        <span>Approve</span>
+                    </div>
+                    <div className="gift-response-item">
+                        <EllipsisIcon />
+                        <span>Maybe</span>
+                    </div>
+                    <div className="gift-response-item">
+                        <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
+                        <span>Reject</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    ))
+}
 //     return (
 //         <div>
 //             <h3
@@ -461,16 +473,23 @@ const AllEventsTable = (props) => {
 
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
-    console.log(data)
 
     const notes = data.getFriendById.interests
     // const { getGiftsByEventId } = response.data
     // if (!getGiftsByEventId) {
     //     return null
     // }
+    const gifts = data.getGiftsByEventId
     return (
         <div className="events-container">
-            <NotesColumn notes={notes} friendId={friendId} />
+            <NotesColumn
+                notes={notes}
+                friendId={friendId}
+                style={{ maxWidth: '50%' }}
+            />
+            <div style={{ maxWidth: '50%' }}>
+                <GiftComponent gifts={gifts} />
+            </div>
         </div>
     )
 }

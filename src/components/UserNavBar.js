@@ -71,12 +71,12 @@ const Navbar = ({ isMobile, isHome }) => {
                         <Button
                             shape="round"
                             size="default"
-                            type="primary"
+                            type="secondary"
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
-                            onClick={() => history.push('account')}
+                            onClick={() => history.push('viewAll')}
                         >
-                            Account
+                            Dashboard
                         </Button>
                     )}
                     <Menu.Item
@@ -90,12 +90,6 @@ const Navbar = ({ isMobile, isHome }) => {
                         key="contact"
                     >
                         <a href="/pricing">Contact</a>
-                    </Menu.Item>
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="careers"
-                    >
-                        <a href="/pricing">Careers</a>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
@@ -130,7 +124,11 @@ const Navbar = ({ isMobile, isHome }) => {
                     THANK YOU
                 </span>
             </div>
-            <MenuOutlined onClick={showDrawer} theme="dark" />
+            <MenuOutlined
+                onClick={showDrawer}
+                theme="dark"
+                style={{ color: '#fff', fontSize: '18px' }}
+            />
             <Drawer
                 title=" "
                 onClose={onClose}
@@ -151,16 +149,16 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <p>Pricing Page</p>
-                <p>Packages</p>
-                <p>About</p>
-                <p>Careers</p>
-                <Button
+                <a href="/about">About</a>
+                <a href="/pricing">Contact</a>
+                <a href="/account">Account</a>
+                <PrimaryButton
+                    onClick={() => history.push('viewAll')}
                     type="secondary"
                     style={{ fontWeight: '600', border: '2px solid' }}
                 >
-                    Sign In
-                </Button>
+                    Dashboard
+                </PrimaryButton>
             </Drawer>
         </div>
     )

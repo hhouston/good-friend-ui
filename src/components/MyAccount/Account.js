@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import './styles.css'
 import PropTypes from 'prop-types'
 import { Button } from 'antd'
 
 const GET_USER = gql`
-    query getUserByEmail($email: String!) {
-        getUserByEmail(email: $email) {
+    query getUserById($userId: ID!) {
+        getUserById(userId: $userId) {
             id
             firstName
             lastName
             email
+            password
+            phone
+            zipCode
         }
     }
 `
@@ -21,17 +24,28 @@ const UPDATE_USER = gql`
     }
 `
 
+const UPDATE_PASSWORD = gql`
+    mutation resetPassword($input: ResetPasswordInput!) {
+        resetPassword(user: $input)
+    }
+`
+
 const EditForm = ({
     firstName,
     lastName,
     email,
+    phone,
+    zipCode,
     onClick,
     updateFormData,
     formData,
     userId
-    // refetch,
 }) => {
-    const [updateForm, { refetch }] = useMutation(UPDATE_USER)
+    const [updateForm] = useMutation(UPDATE_USER, {
+        refetchQueries: [{ query: GET_USER, variables: { userId } }],
+        awaitRefetchQueries: true
+    })
+
     const updateEntry = (e) => {
         updateFormData({
             ...formData,
@@ -39,15 +53,14 @@ const EditForm = ({
         })
     }
 
-    const submitForm = () => {
-        const data = updateForm({
+    const submitForm = async () => {
+        await updateForm({
             variables: {
                 user: {
                     id: userId,
                     fields: formData
                 }
-            },
-            onCompleted: () => refetch()
+            }
         })
         onClick()
     }
@@ -97,13 +110,14 @@ const EditForm = ({
                             Email
                         </label>
                         <input
+                            disabled
                             name="email"
                             className="account-form-input"
                             type="email"
                             placeholder={email}
                             aria-label="Email"
                             value={formData.email}
-                            onChange={updateEntry}
+                            // onChange={updateEntry}
                         />
                     </div>
                     <div className="account-input-container">
@@ -111,7 +125,7 @@ const EditForm = ({
                             Phone number
                         </label>
                         <input
-                            id="phone"
+                            name="phone"
                             className="account-form-input"
                             type="text"
                             placeholder="Phone number"
@@ -123,35 +137,88 @@ const EditForm = ({
                 </div>
                 <div className="account-form">
                     <div className="account-input-container">
-                        <label className="account-form-label" htmlFor="address">
-                            Home address
+                        <label className="account-form-label" htmlFor="zipCode">
+                            Zip code
                         </label>
                         <input
-                            name="address"
+                            name="zipCode"
                             className="account-form-input"
                             type="text"
-                            placeholder="Address"
-                            aria-label="Address"
-                            value={formData.address}
+                            placeholder="Zip code"
+                            aria-label="Zip code"
+                            value={formData.zipCode}
                             onChange={updateEntry}
                         />
                     </div>
                 </div>
-                <Button
-                    shape="round"
-                    type="secondary"
-                    className="my-account-button"
-                    size="large"
-                    onClick={submitForm}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        padding: '0 12px'
+                    }}
                 >
-                    Save changes
-                </Button>
+                    <Button
+                        shape="round"
+                        type="secondary"
+                        className="my-account-button"
+                        size="large"
+                        onClick={submitForm}
+                    >
+                        Save changes
+                    </Button>
+                </div>
             </form>
         </div>
     )
 }
 
-const ViewForm = ({ firstName, lastName, email, phone, address, onClick }) => {
+const ViewForm = ({
+    firstName,
+    lastName,
+    email,
+    phone,
+    zipCode,
+    onClick,
+    userId,
+    changePassword,
+    setChangePassword
+}) => {
+    const [passwordForm, updatePasswordForm] = useState({
+        newPassword: '',
+        newPasswordConfirm: ''
+    })
+    const [errors, setErrors] = useState(null)
+    const [updatePassword] = useMutation(UPDATE_PASSWORD)
+
+    const updateEntry = (e) => {
+        updatePasswordForm({
+            ...passwordForm,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const saveNewPassword = async () => {
+        if (!changePassword) {
+            setChangePassword(true)
+            return
+        }
+        const { newPassword, newPasswordConfirm } = passwordForm
+        if (newPassword !== newPasswordConfirm) {
+            setErrors(`Passwords don't match!`)
+        } else {
+            await updatePassword({
+                variables: {
+                    input: {
+                        userId,
+                        password: newPassword
+                    }
+                }
+            })
+            setErrors(null)
+            setChangePassword(false)
+        }
+    }
     return (
         <div className="my-account">
             <div className="account-form-wrapper">
@@ -185,21 +252,79 @@ const ViewForm = ({ firstName, lastName, email, phone, address, onClick }) => {
                 </div>
                 <div className="account-form">
                     <div className="account-input-container">
-                        <span className="account-form-label" for="address">
-                            Home address
+                        <span className="account-form-label" for="zipCode">
+                            Zip code
                         </span>
-                        <div className="account-entry">{address}</div>
+                        <div className="account-entry">{zipCode}</div>
                     </div>
                 </div>
-                <Button
-                    shape="round"
-                    type="primary"
-                    className="my-account-button"
-                    size="large"
-                    onClick={onClick}
+                {changePassword && (
+                    <div className="account-form">
+                        <div className="account-input-container">
+                            <span className="account-form-label">
+                                New Password
+                            </span>
+                            {errors && (
+                                <p
+                                    style={{
+                                        color: '#f56565',
+                                        fontSize: '14px',
+                                        margin: '0'
+                                    }}
+                                >
+                                    {errors}
+                                </p>
+                            )}
+
+                            <div style={{ display: 'flex' }}>
+                                <input
+                                    name="newPassword"
+                                    className="account-form-input"
+                                    placeholder="New password"
+                                    type="password"
+                                    aria-label="First name"
+                                    style={{ margin: '0 12px' }}
+                                    onChange={updateEntry}
+                                />
+                                <input
+                                    name="newPasswordConfirm"
+                                    className="account-form-input"
+                                    type="password"
+                                    aria-label="First name"
+                                    placeholder="Confirm new password"
+                                    style={{ margin: '0 12px' }}
+                                    onChange={updateEntry}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                )}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '0 12px'
+                    }}
                 >
-                    Edit
-                </Button>
+                    <Button
+                        shape="round"
+                        type="secondary"
+                        className="my-account-button"
+                        size="large"
+                        onClick={saveNewPassword}
+                    >
+                        {changePassword ? 'Save password' : 'Change password'}
+                    </Button>
+                    <Button
+                        shape="round"
+                        type="primary"
+                        className="my-account-button"
+                        size="large"
+                        onClick={onClick}
+                    >
+                        Edit
+                    </Button>
+                </div>
             </div>
         </div>
     )
@@ -207,33 +332,51 @@ const ViewForm = ({ firstName, lastName, email, phone, address, onClick }) => {
 
 ViewForm.defaultProps = {
     phoneNumber: '',
-    address: ''
+    zipCode: ''
 }
 
 const Account = ({ editMode }) => {
+    const userId = localStorage.getItem('userId')
     const [isEditing, setIsEditing] = useState(editMode)
     const [updatedUserInput, setUpdatedUserInput] = useState({})
+    const [changePassword, setChangePassword] = useState(false)
     const { loading, error, data, refetch } = useQuery(GET_USER, {
-        variables: { email: 'bronwyn@gmail.com' }
+        variables: { userId }
     })
+
+    useEffect(() => {
+        if (loading === false && data) {
+            setUpdatedUserInput({
+                firstName: data.getUserById.firstName,
+                lastName: data.getUserById.lastName,
+                phone: data.getUserById.phone,
+                zipCode: data.getUserById.zipCode
+            })
+        }
+    }, [loading, data])
 
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
 
+    console.log(data)
+
     if (!isEditing) {
         return (
             <ViewForm
-                {...data.getUserByEmail}
+                {...data.getUserById}
+                userId={data.getUserById.id}
+                changePassword={changePassword}
+                setChangePassword={setChangePassword}
                 onClick={() => setIsEditing(!isEditing)}
             />
         )
     }
     return (
         <EditForm
-            {...data.getUserByEmail}
+            {...data.getUserById}
             onClick={() => setIsEditing(!isEditing)}
             formData={updatedUserInput}
-            userId={data.getUserByEmail.id}
+            userId={data.getUserById.id}
             updateFormData={setUpdatedUserInput}
             refetch={refetch}
         />

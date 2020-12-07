@@ -54,23 +54,11 @@ const Navbar = ({ isMobile, isHome }) => {
                     }}
                     theme="dark"
                 >
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="about"
-                    >
+                    <Menu.Item className={'navbar-item'} key="about">
                         About
                     </Menu.Item>
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="contact"
-                    >
+                    <Menu.Item className={'navbar-item'} key="contact">
                         Contact
-                    </Menu.Item>
-                    <Menu.Item
-                        className={isHome ? 'navbar-item-light' : 'navbar-item'}
-                        key="careers"
-                    >
-                        Careers
                     </Menu.Item>
                     {isHome ? (
                         <Button
@@ -140,8 +128,8 @@ const Navbar = ({ isMobile, isHome }) => {
                 <p>Pricing Page</p>
                 <p>Packages</p>
                 <p>About</p>
-                <p>Careers</p>
                 <PrimaryButton
+                    onClick={() => history.push('login')}
                     type="secondary"
                     style={{ fontWeight: '600', border: '2px solid' }}
                 >

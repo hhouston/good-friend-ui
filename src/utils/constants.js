@@ -15,8 +15,5 @@ export const typeMap = {
     BABY_SHOWER: 'Baby Shower',
     MOTHERS_DAY: "Mother's Day",
     FATHERS_DAY: "Father's Day",
-    CHRISTMAS: 'Christmas Bundle',
-    MANY: 'Expert help for upcoming events',
-    TRIAL: 'Just trying it out!',
     OTHER: 'Other'
 }

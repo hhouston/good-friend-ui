@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .row-sub-list {
@@ -189,7 +189,28 @@
     border-radius: 0.5em;
     text-align: center;
     padding: 24px;
-    width: 260px;
+}
+
+.people-card-small {
+    display: inline-flex;
+    flex-direction: column;
+    font-family: 'Karla', sans-serif;
+    align-items: center;
+    margin: 0 24px 24px;
+    box-shadow: 0 10px 15px -3px rgba(233, 234, 241, 1),
+        0 4px 6px -2px rgba(233, 234, 241, 0.5);
+    border-radius: 0.5em;
+    padding: 24px;
+    transition: transform 300ms ease;
+    border: 2px solid #fff;
+}
+
+.people-card-small:hover {
+    transform: translateY(-8px);
+}
+
+.people-card-small-active {
+    border: 2px solid rgba(43, 19, 125, 1);
 }
 
 .people-card-heading {
@@ -214,6 +235,7 @@
 .people-details {
     display: flex;
     flex-direction: column;
+    padding-left: 24px;
 }
 
 .icon-container {
@@ -223,6 +245,31 @@
 }
 
 .people-detail {
-    line-height: 1px;
+    text-align: left;
+    line-height: 24px;
     margin-left: 4px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    color: #656565;
+    margin-bottom: 0;
+}
+
+.present-idea {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    display: flex;
+    margin-bottom: 48px;
+}
+
+.present-idea-image-wrapper {
+    padding: 16px;
+}
+
+.present-idea-img {
+    height: 260px;
+    width: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 8px;
 }

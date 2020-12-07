@@ -85,7 +85,7 @@ const GiftIcon = (props) => (
 
 const EventTitle = ({ text }) => {
     return (
-        <Title level={2} style={{ fontSize: '18px', color: '#4a5568' }}>
+        <Title level={2} style={{ fontSize: '16px', color: '#4a5568' }}>
             {text}
         </Title>
     )
@@ -293,6 +293,8 @@ const columns = [
         title: 'Date',
         dataIndex: 'date',
         key: 'date',
+        sorter: (a, b) => a.date - b.date,
+        defaultSortOrder: 'ascend',
         render: (text) => moment.unix(text / 1000).format('DD MMM YYYY')
     },
 
@@ -317,6 +319,7 @@ const columns = [
 ]
 
 const TableContainer = ({ data }) => {
+    console.log(data)
     const expandedRowRender = (props) => {
         return <AllEventsTable data={props} />
     }
