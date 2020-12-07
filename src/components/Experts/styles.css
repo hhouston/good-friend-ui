@@ -18,3 +18,61 @@
 .shipping-paragraph {
     color: #fff;
 }
+
+.curators-wrapper {
+    background: #f9fafb;
+}
+
+.curator-cards {
+    overflow-x: scroll;
+    display: flex;
+    z-index: 1;
+    width: 100%;
+    padding: 48px;
+}
+
+.curator-cards::after {
+    height: 0;
+    background: transparent;
+}
+
+.cutrator-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.curator-card {
+    display: flex;
+    box-shadow: 0 10px 15px -3px rgba(233, 234, 241, 1),
+        0 4px 6px -2px rgba(233, 234, 241, 0.5);
+    border-radius: 0.5em;
+    background: #fff;
+    padding: 32px 8px 32px 40px;
+    min-width: 600px;
+    margin: 0 48px;
+}
+
+.curator-title {
+    margin: 0;
+    color: #374151;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.curator-img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.curator-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    width: 100%;
+}
+
+.curator-areas {
+    display: inline-block;
+    padding: 0 4px;
+}
