@@ -33,7 +33,7 @@ store.subscribe(() => {
 })
 
 const httpLink = createHttpLink({
-    uri: process.env.NODE_ENV == 'production' ? 'http://api.thankyougift.io/graphql' : 'http://localhost:9000/graphql'
+    uri: process.env.NODE_ENV == 'production' ? 'https://api.thankyougift.io/graphql' : 'http://localhost:9000/graphql'
     // uri: 'https://api.thankyougift.io/graphql'
 })
 
