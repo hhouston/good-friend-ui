@@ -30,8 +30,10 @@ const Login = () => {
         const { email, password } = credentials
         e.preventDefault()
         setLoadingState(true)
+        const backendUrl = process.env.NODE_ENV == 'production' ? 'http://api.thankyougift.io/graphql' : 'http://localhost:9000/graphql'
+
         axios
-            .post('https://api.thankyougift.io/login', {
+            .post(backendUrl, {
             // .post('http://localhost:9000/login', {
                 email,
                 password,
