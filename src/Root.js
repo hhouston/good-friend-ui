@@ -8,6 +8,7 @@ import { Login, SignUp } from './components/Login'
 import { PricingCards, Start } from './components/SignUp/'
 import { Account } from './components/MyAccount/'
 import { AboutUs } from './components/AboutUs/'
+import { Blog } from './components/Blog/'
 // import { Provider } from 'react-redux'
 // think about using apolo-client instead of apollo-boost
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -22,9 +23,10 @@ export const Root = () => {
                 <UserNavBar home={false} />
                 <Switch>
                     <Route path="/viewAll" component={Events} />
-                    <Route path="/pricing" component={PricingCards} />
-                    <Route path="/account" component={Account} />
+                    <Route path="/contact" component={PricingCards} />
                     <Route path="/about" component={AboutUs} />
+                    <Route path="/blog" component={Blog} />
+                    <Route path="/account" component={Account} />
                 </Switch>
             </div>
         )

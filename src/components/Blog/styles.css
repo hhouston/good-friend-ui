@@ -1,0 +1,32 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.blog-description {
+    display: flex;
+}
+
+.blog-text {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
+    padding: 0 2rem;
+}
+
+.artist-card {
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 24px 24px 24px;
+    border-radius: 8px;
+    padding: 24px;
+    transition: 300ms ease;
+    max-width: 300px;
+    box-shadow: 0 10px 15px -3px rgba(210, 210, 245, 0.2),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
