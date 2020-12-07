@@ -131,7 +131,7 @@ const Home = () => {
                                         style={{
                                             margin: '0',
                                             fontSize: titleSize,
-                                            color: isMobile ? '#fff' : 'inherit'
+                                            color: isMobile ? '#fff' : '#2A2C44'
                                         }}
                                     >
                                         Your personal gift curator for
@@ -146,7 +146,7 @@ const Home = () => {
                                         style={{
                                             fontSize: titleSize,
                                             borderBottom: '8px solid #FF3399',
-                                            color: isMobile ? '#fff' : 'inherit'
+                                            color: isMobile ? '#fff' : '#2A2C44'
                                         }}
                                     ></Typed>
                                 </div>

@@ -71,7 +71,7 @@ const Navbar = ({ isMobile, isHome }) => {
                         <Button
                             shape="round"
                             size="default"
-                            type="primary"
+                            type="secondary"
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
                             onClick={() => history.push('viewAll')}

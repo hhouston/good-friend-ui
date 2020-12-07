@@ -6,6 +6,14 @@ export const CREATE_EVENT = gql`
     }
 `
 
+export const ADD_EVENT = gql`
+    mutation addEvent($event: EventInput!) {
+        addEvent(event: $event) {
+            id
+        }
+    }
+`
+
 export const ADD_EVENT_WITH_FRIEND = gql`
     mutation addEvent($input: EventInput!, $friends: [FriendInput]) {
         addEvent(event: $input) {
@@ -16,3 +24,7 @@ export const ADD_EVENT_WITH_FRIEND = gql`
         }
     }
 `
+
+// for mutating event, if we add a recipient to an event, send all recipient ids
+// not just the new one
+// to remove someone, send all the of recipient ids you want. Delete from frontend and send new list

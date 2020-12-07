@@ -23,7 +23,8 @@ module.exports = override(
             '@border-color-base': '#e2e8f0',
             '@select-item-selected-bg': '#EEF2FF',
             '@border-radius-base': '8px',
-            '@select-dropdown-height': '40px'
+            '@select-dropdown-height': '40px',
+            '@item-active-bg': '#EEF2FF'
         }
     })
 )

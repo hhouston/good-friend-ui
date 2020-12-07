@@ -14,31 +14,20 @@ import {
 } from 'antd'
 import { gql, useQuery } from '@apollo/client'
 import PeopleCard from './PeopleCard'
-const GET_FRIENDS = gql`
-    query getFriendsByUserId($userId: ID!) {
-        getFriendsByUserId(userId: $userId) {
-            name
-            interests
-            age
-            gender
-        }
-    }
-`
 
 const { Title } = Typography
 
 const { TextArea } = Input
 
-const PeopleTable = ({ userId }) => {
-    const { loading, error, data } = useQuery(GET_FRIENDS, {
+const PeopleTable = ({ userId, getFriendsQuery }) => {
+    const { loading, error, data } = useQuery(getFriendsQuery, {
         variables: { userId }
     })
 
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
-    console.log(data)
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             {data.getFriendsByUserId.map((person, index) => (
                 <PeopleCard {...person} key={index} />
             ))}

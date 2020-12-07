@@ -34,7 +34,6 @@ const CalendarView = ({ data }) => {
             </div>
         ) : null
     }
-    console.log(data)
     return (
         <Calendar
             dateCellRender={dateCellRender}

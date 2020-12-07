@@ -16,7 +16,7 @@ const formState = {
 const Login = () => {
     const history = useHistory()
     const [credentials, updateUserForm] = useState(formState)
-    const [formErrors, setFormErrors] = useState('')
+    const [formErrors, setFormErrors] = useState(null)
     const [loadingState, setLoadingState] = useState(false)
 
     const updateForm = (e) => {
@@ -38,6 +38,10 @@ const Login = () => {
             })
             .then(
                 ({ data }) => {
+                    if (data.error) {
+                        setFormErrors(data.error)
+                        return
+                    }
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('expiresAt', data.expiresAt)
                     history.push('home')
@@ -57,7 +61,7 @@ const Login = () => {
                     <h3 className="login-greeting">Welcome back</h3>
                     <p className="login-caption">Login or create account</p>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
-                        {formErrors ? (
+                        {formErrors && (
                             <p
                                 style={{
                                     color: '#f56565',
@@ -65,9 +69,9 @@ const Login = () => {
                                     margin: '0'
                                 }}
                             >
-                                Error logging you in
+                                {formErrors}
                             </p>
-                        ) : null}
+                        )}
                         <div className="form">
                             <input
                                 className="form-input"
