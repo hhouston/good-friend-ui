@@ -5,6 +5,7 @@ import { Tabs, Button, Modal } from 'antd'
 import PeopleTable from './PeopleTable'
 import CalendarView from './CalendarView'
 import { PlusOutlined } from '@ant-design/icons'
+import AddNewIcon from './AddNewIcon'
 
 import EventFormModal from './EventFormModal'
 import FriendFormModal from './FriendFormModal'
@@ -49,23 +50,6 @@ const GET_FRIENDS = gql`
         }
     }
 `
-
-const AddNewIcon = ({ color }) => (
-    <svg
-        stroke={color}
-        fill="none"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ width: '20px', height: '20px', marginRight: '4px' }}
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-        />
-    </svg>
-)
 
 const Events = () => {
     const [isEventModalVisible, setIsEventModalVisible] = useState(false)

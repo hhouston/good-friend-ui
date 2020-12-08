@@ -1,22 +1,12 @@
 import React, { useState } from 'react'
 import './styles.css'
-import {
-    Table,
-    Tag,
-    Badge,
-    Menu,
-    Dropdown,
-    Space,
-    Avatar,
-    Input,
-    Button,
-    Typography
-} from 'antd'
+import { Modal, Input, Button, Typography } from 'antd'
 import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
 import Footer from '../Footer'
 import TableContainer from './TableContainer'
 import { gql, useQuery, useMutation } from '@apollo/client'
+import AddNewIcon from './AddNewIcon'
 
 const GET_GIFTS = gql`
     query getFriendAndEvent($friendId: ID!, $eventId: ID!) {
@@ -45,19 +35,11 @@ const UPDATE_USER = gql`
         updateFriend(friend: $input)
     }
 `
-
-// const GET_GIFTS = gql`
-//     query Gifts($eventId: ID!) {
-//         getGiftsByEventId(eventId: $eventId) {
-//             name
-//             description
-//             price
-//             currency
-//             url
-//             image
-//         }
-//     }
-// `
+const ADD_GIFT_IDEA = gql`
+    mutation addGift($input: GiftInput!) {
+        addGift(gift: $input)
+    }
+`
 
 const { Title } = Typography
 
@@ -211,6 +193,27 @@ const CancelIcon = (props) => (
     </svg>
 )
 
+const ArrowIcon = () => (
+    <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="#818CF8"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{
+            height: '14px',
+            width: '14px'
+        }}
+    >
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+        />
+    </svg>
+)
+
 const OpenNoteFooter = ({ onClick, saveNote }) => {
     return (
         <div
@@ -276,7 +279,9 @@ const NotesColumn = ({ notes, friendId }) => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '24px'
+                padding: '24px',
+                maxWidth: '50%',
+                width: '100%'
             }}
         >
             <div
@@ -309,7 +314,7 @@ const NotesColumn = ({ notes, friendId }) => {
                             style={{
                                 fontSize: '20px',
                                 fontWeight: '700',
-                                color: 'rgb(108, 94, 211)'
+                                color: 'rgb(67, 56, 202)'
                             }}
                         >
                             Notes
@@ -348,120 +353,281 @@ const NotesColumn = ({ notes, friendId }) => {
     )
 }
 
-// const columns = [
-//     {
-//         title: 'Gift ideas',
-//         dataIndex: 'gifts',
-//         key: 'gifts',
-//         render: (text, record, index) => {
-//             return <GiftIdeasColumn eventId={record.id} />
-//         }
-//     }
-// ]
+const GiftIcon = () => (
+    <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="rgb(102, 126, 234)"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{
+            background: '#E0E7FF',
+            borderRadius: '50%',
+            height: '32px',
+            width: '32px',
+            padding: '4px',
+            marginRight: '8px'
+        }}
+    >
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+        />
+    </svg>
+)
 
-const GiftComponent = ({ gifts }) => {
-    return gifts.map(({ name, description, price, currency, url, image }) => (
-        <div className="present-idea">
-            <div className="present-idea-image-wrapper">
-                <img className="present-idea-img" src={image}></img>
-            </div>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '24px'
-                }}
-            >
-                <a href={url}>
-                    <span
+const GiftComponent = ({ gifts, eventId, addGiftIdea }) => {
+    const [confirmLoading, setConfirmLoading] = useState(false)
+    const [isModalVisible, setIsModalVisible] = useState(false)
+    const [formData, updateFormData] = useState({
+        name: '',
+        url: '',
+        eventId
+    })
+
+    const openModal = () => {
+        setIsModalVisible(true)
+    }
+
+    const handleSubmit = async () => {
+        await addGiftIdea({
+            variables: { input: formData }
+        })
+    }
+
+    const handleOk = async () => {
+        setConfirmLoading(true)
+        await handleSubmit()
+        setIsModalVisible(false)
+        setConfirmLoading(false)
+    }
+
+    const handleCancel = () => {
+        setIsModalVisible(false)
+    }
+
+    const updateEntry = (e) => {
+        updateFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    return (
+        <div>
+            <div>
+                <Modal
+                    visible={isModalVisible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    width={800}
+                    confirmLoading={confirmLoading}
+                >
+                    <form>
+                        <div className="account-form">
+                            <div className="account-input-container">
+                                <label
+                                    className="account-form-label"
+                                    htmlFor="name"
+                                >
+                                    Name
+                                </label>
+                                <input
+                                    name="name"
+                                    className="account-form-input"
+                                    type="text"
+                                    placeholder="Name"
+                                    aria-label="name"
+                                    value={formData.name}
+                                    onChange={updateEntry}
+                                    required
+                                />
+                            </div>
+                            <div className="account-input-container">
+                                <label
+                                    className="account-form-label"
+                                    htmlFor="url"
+                                >
+                                    Link to item
+                                </label>
+                                <input
+                                    name="url"
+                                    className="account-form-input"
+                                    type="text"
+                                    placeholder="Url"
+                                    aria-label="Url"
+                                    value={formData.url}
+                                    onChange={updateEntry}
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </Modal>
+                <div
+                    onClick={openModal}
+                    style={{
+                        display: 'flex',
+                        background: '#EEF2FF',
+                        borderRadius: '8px',
+                        color: '#4338CA',
+                        padding: '16px',
+                        alignItems: 'center',
+                        maxWidth: '200px',
+                        marginBottom: '16px'
+                    }}
+                >
+                    <AddNewIcon
+                        color="#fff"
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column'
+                            width: '24px',
+                            height: '24px',
+                            marginRight: '4px',
+                            background: '#4338CA',
+                            borderRadius: '6px',
+                            border: '1px solid #A5B4FC',
+                            padding: '2px'
+                        }}
+                    />
+                    <p
+                        style={{
+                            margin: '0',
+                            fontSize: '15px',
+                            marginLeft: '8px',
+                            fontWeight: '500'
                         }}
                     >
-                        <div
+                        Add gift idea
+                    </p>
+                </div>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {gifts.map((gift) => (
+                    <GiftIdeaItem {...gift} />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+const GiftIdeaItem = ({ name, description, price, currency, url, image }) => {
+    if (image) {
+        return (
+            <div className="present-idea">
+                <div className="present-idea-image-wrapper">
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        <img className="present-idea-img" src={image}></img>
+                    </a>
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '24px',
+                        width: '100%'
+                    }}
+                >
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        <span
                             style={{
                                 display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                paddingBottom: '24px'
+                                flexDirection: 'column'
                             }}
                         >
-                            <h3
+                            <div
                                 style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingBottom: '24px'
+                                }}
+                            >
+                                <h3
+                                    style={{
+                                        fontWeight: '700',
+                                        fontSize: '20px',
+                                        color: '#1a202c',
+                                        margin: '0'
+                                    }}
+                                >
+                                    {name}
+                                </h3>
+                                <Button
+                                    style={{
+                                        color: 'rgb(108, 94, 211)',
+                                        backgroundColor: '#EEF2FF',
+                                        border: 'none',
+                                        fontWeight: '600',
+                                        fontSize: '14px'
+                                    }}
+                                >
+                                    Curated
+                                </Button>
+                            </div>
+                            <span
+                                style={{
+                                    color: '#718096',
+                                    fontSize: '14px',
+                                    lineHeight: '20px'
+                                }}
+                            >
+                                {description}
+                            </span>
+                            <span
+                                style={{
+                                    color: '#6C5ED3',
                                     fontWeight: '700',
-                                    fontSize: '20px',
-                                    color: '#1a202c',
-                                    margin: '0'
+                                    fontSize: '18px'
                                 }}
                             >
-                                {name}
-                            </h3>
-                            <Button
-                                style={{
-                                    color: 'rgb(108, 94, 211)',
-                                    backgroundColor: '#EEF2FF',
-                                    border: 'none',
-                                    fontWeight: '600',
-                                    fontSize: '14px'
-                                }}
-                            >
-                                Go to link
-                            </Button>
+                                ${price}
+                            </span>
+                        </span>
+                    </a>
+                    <div className="gifts-response-container">
+                        <div className="gift-response-item">
+                            <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
+                            <span>Approve</span>
                         </div>
-                        <span
-                            style={{
-                                color: '#718096',
-                                fontSize: '14px',
-                                lineHeight: '20px'
-                            }}
-                        >
-                            {description}
-                        </span>
-                        <span
-                            style={{
-                                color: '#6C5ED3',
-                                fontWeight: '700',
-                                fontSize: '18px'
-                            }}
-                        >
-                            ${price}
-                        </span>
-                    </span>
-                </a>
-                <div className="gifts-response-container">
-                    <div className="gift-response-item">
-                        <ThumbsUpIcon size={'24px'} stroke={'#667EEA'} />
-                        <span>Approve</span>
-                    </div>
-                    <div className="gift-response-item">
-                        <EllipsisIcon />
-                        <span>Maybe</span>
-                    </div>
-                    <div className="gift-response-item">
-                        <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
-                        <span>Reject</span>
+                        <div className="gift-response-item">
+                            <EllipsisIcon />
+                            <span>Maybe</span>
+                        </div>
+                        <div className="gift-response-item">
+                            <ThumbsDownIcon size={'24px'} stroke={'#F56565'} />
+                            <span>Reject</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        )
+    }
+    return (
+        <div
+            className="event-card"
+            style={{ background: '#fff', flexShrink: '0' }}
+        >
+            <a href={url}>
+                <GiftIcon />
+                <div>
+                    <p>{name}</p>
+                    <span
+                        style={{
+                            color: '#818CF8',
+                            fontSize: '14px',
+                            fontWeight: '500'
+                        }}
+                    >
+                        {'Added by you'}
+                    </span>
+                </div>
+                <ArrowIcon />
+            </a>
         </div>
-    ))
+    )
 }
-//     return (
-//         <div>
-//             <h3
-//                 style={{
-//                     fontSize: '20px',
-//                     fontWeight: '700',
-//                     color: 'rgb(108, 94, 211)'
-//                 }}
-//             >
-//                 Gift ideas
-//             </h3>
-//             <GiftComponent />
-//         </div>
-//     )
-// }
 
 const AllEventsTable = (props) => {
     const friendId = props.data.recipientIds[0]
@@ -471,24 +637,35 @@ const AllEventsTable = (props) => {
         variables: { friendId: friendId, eventId: eventId }
     })
 
+    const [addGiftIdea] = useMutation(ADD_GIFT_IDEA, {
+        refetchQueries: [
+            {
+                query: GET_GIFTS,
+                variables: { friendId: friendId, eventId: eventId }
+            }
+        ],
+        awaitRefetchQueries: true
+    })
+
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
 
     const notes = data.getFriendById.interests
-    // const { getGiftsByEventId } = response.data
-    // if (!getGiftsByEventId) {
-    //     return null
-    // }
+
     const gifts = data.getGiftsByEventId
+    console.log(gifts)
+    const sortedGifts = gifts
+        .slice()
+        .sort((a, b) => (!!a.image && !b.image ? -1 : 1))
     return (
-        <div className="events-container">
-            <NotesColumn
-                notes={notes}
-                friendId={friendId}
-                style={{ maxWidth: '50%' }}
-            />
-            <div style={{ maxWidth: '50%' }}>
-                <GiftComponent gifts={gifts} />
+        <div style={{ display: 'flex' }}>
+            <NotesColumn notes={notes} friendId={friendId} />
+            <div style={{ maxWidth: '50%', width: '100%', padding: '24px' }}>
+                <GiftComponent
+                    gifts={sortedGifts}
+                    eventId={eventId}
+                    addGiftIdea={addGiftIdea}
+                />
             </div>
         </div>
     )

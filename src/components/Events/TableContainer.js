@@ -302,24 +302,10 @@ const columns = [
         title: 'Status',
         key: 'tags',
         render: (text, record) => <Tag color={'volcano'}>New</Tag>
-    },
-    {
-        title: 'Action',
-        dataIndex: '',
-        key: 'x',
-        render: () => (
-            <Space size="middle">
-                <a style={{ color: '#1890ff', fontSize: '14px' }}>
-                    Request curator
-                </a>
-                <a style={{ color: '#1890ff', fontSize: '14px' }}>Edit</a>
-            </Space>
-        )
     }
 ]
 
 const TableContainer = ({ data }) => {
-    console.log(data)
     const expandedRowRender = (props) => {
         return <AllEventsTable data={props} />
     }

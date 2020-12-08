@@ -24,8 +24,6 @@ const FriendFormModal = ({
     userId,
     friendsMutation
 }) => {
-    console.log(friendsMutation)
-
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [formData, updateFormData] = useState(initialState)
 

@@ -71,7 +71,8 @@ const ChooseFriendFormModal = ({
                 style={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    flexWrap: 'wrap'
+                    flexWrap: 'wrap',
+                    padding: '16px 0'
                 }}
             >
                 <div
