@@ -143,7 +143,7 @@ const Experts = ({ titleSize, isTablet, isMobile }) => {
                     className="subtitle"
                     style={{ fontSize: titleSize, textAlign: 'center' }}
                 >
-                    Our Curators
+                    Who We Are
                 </Title>
                 <div className="curator-cards">
                     {curators.map((curator, i) => (
