@@ -332,16 +332,16 @@ const ViewForm = ({
                     >
                         Edit
                     </Button>
-                    <Button
-                        shape="round"
-                        type="primary"
-                        className="my-account-button"
-                        size="large"
-                        onClick={() => onClickLogout()}
-                    >
-                        Logout
-                    </Button>
                 </div>
+                <Button
+                    shape="round"
+                    type="primary"
+                    className="my-account-button"
+                    size="large"
+                    onClick={() => onClickLogout()}
+                >
+                    Logout
+                </Button>
             </div>
         </div>
     )
