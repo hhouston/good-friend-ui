@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, Button } from 'antd'
+import { Typography, Button, Form, Input } from 'antd'
 import axios from 'axios'
 
 const { Title } = Typography
@@ -12,75 +12,28 @@ const initialForm = {
 }
 
 const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
+    const [form] = Form.useForm()
+
     const [formData, updateFormData] = useState(initialForm)
     const [errors, setErrors] = React.useState({})
 
     const [touched, setTouched] = React.useState({})
-
-    const nameValidation = (fieldName, fieldValue) => {
-        if (fieldValue.trim() === '') {
-            return `${fieldName} is required`
-        }
-        if (/[^a-zA-Z -]/.test(fieldValue)) {
-            return 'Invalid characters'
-        }
-        return null
-    }
-    const emailValidation = (email) => {
-        if (
-            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                email
-            )
-        ) {
-            return null
-        }
-        if (email.trim() === '') {
-            return 'Email is required'
-        }
-        return 'Please enter a valid email'
-    }
-
-    const validate = {
-        firstName: (name) => nameValidation('firstName', name),
-        lastName: (name) => nameValidation('lastName', name),
-        email: emailValidation
-    }
 
     const updateEntry = (e) => {
         updateFormData({
             ...formData,
             [e.target.name]: e.target.value.trim()
         })
-        setTouched({
-            ...touched,
-            [e.target.name]: true
-        })
-    }
-    const handleBlur = (evt) => {
-        const { name, value } = evt.target
-
-        // remove whatever error was there previously
-        const { [name]: removedError, ...rest } = errors
-
-        // check for a new error
-        const error = validate[name](value)
-
-        // // validate the field if the value has been touched
-        setErrors({
-            ...rest,
-            ...(error && { [name]: touched[name] && error })
-        })
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const backendUrl = process.env.NODE_ENV == 'production' ? 'https://api.thankyougift.io/signup' : 'http://localhost:9000/signup'
+        const backendUrl =
+            process.env.NODE_ENV == 'production'
+                ? 'https://api.thankyougift.io/signup'
+                : 'http://localhost:9000/signup'
 
-        const result = await axios.post(
-          backendUrl,
-          formData
-        )
-        console.log(result)
+        const result = await axios.post(backendUrl, formData)
         if (!result.data.error) {
             const {
                 data: { userId, token, expiresAt }
@@ -95,9 +48,12 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                     userId: userId
                 }
             }))
-            console.log(result)
             handleNext()
         }
+    }
+
+    const onValuesChange = (changed, all) => {
+        console.log(all)
     }
     return (
         <div className="outer-div">
@@ -105,7 +61,11 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                 <Title className="subtitle" style={{ textAlign: 'center' }}>
                     Let's get some basic info
                 </Title>
-                <form className="account-form-wrapper">
+                <Form
+                    className="account-form-wrapper"
+                    initialValues={formData}
+                    onValuesChange={onValuesChange}
+                >
                     <div className="account-form">
                         <div className="account-input-container">
                             <label
@@ -114,17 +74,18 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             >
                                 First name
                             </label>
-                            <input
+                            <Form.Item
+                                style={{ padding: '8px' }}
                                 name="firstName"
-                                className="account-form-input"
-                                type="text"
-                                placeholder="First name"
-                                aria-label="First name"
-                                value={formData.firstName}
-                                onChange={updateEntry}
-                                onBlur={handleBlur}
-                                required
-                            />
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'First name is required'
+                                    }
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
                         </div>
                         <div className="account-input-container">
                             <label
@@ -133,17 +94,18 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             >
                                 Last name
                             </label>
-                            <input
+                            <Form.Item
+                                style={{ padding: '8px' }}
                                 name="lastName"
-                                className="account-form-input"
-                                type="text"
-                                placeholder="Last name"
-                                aria-label="Last name"
-                                value={formData.lastName}
-                                onChange={updateEntry}
-                                onBlur={handleBlur}
-                                required
-                            />
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Last name is required'
+                                    }
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
                         </div>
                     </div>
                     <div className="account-form">
@@ -154,33 +116,38 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             >
                                 Password
                             </label>
-                            <input
+                            <Form.Item
+                                style={{ padding: '8px' }}
                                 name="password"
-                                className="account-form-input"
-                                type="password"
-                                placeholder="password"
-                                aria-label="password"
-                                value={formData.password}
-                                onChange={updateEntry}
-                            />
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please create a password'
+                                    }
+                                ]}
+                            >
+                                <Input.Password />
+                            </Form.Item>
                         </div>
                         <div className="account-input-container">
                             <label className="account-form-label" for="email">
                                 Email
                             </label>
-                            <input
+                            <Form.Item
+                                style={{ padding: '8px' }}
                                 name="email"
-                                className="account-form-input"
-                                type="email"
-                                placeholder="email"
-                                aria-label="Email"
-                                value={formData.email}
-                                onChange={updateEntry}
-                                onBlur={handleBlur}
-                            />
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Email is required'
+                                    }
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
                         </div>
                     </div>
-                </form>
+                </Form>
             </div>
             <Button
                 shape="round"

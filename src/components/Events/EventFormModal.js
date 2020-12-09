@@ -4,7 +4,6 @@ import LovedOneFormModal from './LovedOneFormModal'
 import EventDetailsFormModal from './EventDetailsFormModal'
 import ChooseFriendFormModal from './ChooseFriendFormModal'
 import { gql, useMutation, useQuery } from '@apollo/client'
-import { ADD_EVENT, ADD_EVENT_WITH_FRIEND } from '../../mutations/createEvent'
 import moment from 'moment'
 
 const { Step } = Steps
@@ -21,7 +20,13 @@ const GET_FRIENDS = gql`
     }
 `
 
-const EventFormModal = ({ isModalVisible, setIsModalVisible, userId }) => {
+const EventFormModal = ({
+    isModalVisible,
+    setIsModalVisible,
+    userId,
+    addEvent,
+    addEventWithFriend
+}) => {
     const initialState = {
         type: '',
         date: null,
@@ -44,11 +49,6 @@ const EventFormModal = ({ isModalVisible, setIsModalVisible, userId }) => {
     )
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [previousStep, setPreviousStep] = useState(0)
-
-    const [addEvent, addEventResponse] = useMutation(ADD_EVENT)
-    const [addEventWithFriend, addEventWithFriendResponse] = useMutation(
-        ADD_EVENT_WITH_FRIEND
-    )
 
     const friendsResponse = useQuery(GET_FRIENDS, {
         variables: { userId }
@@ -113,6 +113,8 @@ const EventFormModal = ({ isModalVisible, setIsModalVisible, userId }) => {
                 setStep={setStep}
                 setPreviousStep={setPreviousStep}
                 step={step}
+                loading={confirmLoading}
+                handleOk={handleOk}
             />
         )
     }
@@ -122,9 +124,9 @@ const EventFormModal = ({ isModalVisible, setIsModalVisible, userId }) => {
             visible={isModalVisible}
             onOk={handleOk}
             onCancel={handleCancel}
-            okButtonProps={{ disabled: step < 2 }}
             width={800}
             confirmLoading={confirmLoading}
+            footer={null}
         >
             <EventFormModal />
             <Steps progressDot current={step} size="small">

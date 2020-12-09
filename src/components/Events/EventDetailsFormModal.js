@@ -11,7 +11,9 @@ const EventDetailsFormModal = ({
     previousStep,
     setStep,
     step,
-    setPreviousStep
+    setPreviousStep,
+    loading,
+    handleOk
 }) => {
     const dateFormat = 'MM/DD/YYYY'
 
@@ -109,9 +111,10 @@ const EventDetailsFormModal = ({
                     shape="round"
                     block
                     style={{ margin: '0 8px' }}
-                    disabled
+                    loading={loading}
+                    onClick={handleOk}
                 >
-                    Next
+                    Save
                 </Button>
             </div>
         </div>

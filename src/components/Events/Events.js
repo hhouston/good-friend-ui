@@ -11,6 +11,8 @@ import EventFormModal from './EventFormModal'
 import FriendFormModal from './FriendFormModal'
 import { set } from 'lodash'
 
+import { ADD_EVENT, ADD_EVENT_WITH_FRIEND } from '../../mutations/createEvent'
+
 const { TabPane } = Tabs
 
 const GET_EVENTS = gql`
@@ -63,6 +65,15 @@ const Events = () => {
         awaitRefetchQueries: true
     })
 
+    const [addEvent] = useMutation(ADD_EVENT, {
+        refetchQueries: [{ query: GET_EVENTS, variables: { userId } }],
+        awaitRefetchQueries: true
+    })
+    const [addEventWithFriend] = useMutation(ADD_EVENT_WITH_FRIEND, {
+        refetchQueries: [{ query: GET_EVENTS, variables: { userId } }],
+        awaitRefetchQueries: true
+    })
+
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
 
@@ -82,6 +93,8 @@ const Events = () => {
                 isModalVisible={isEventModalVisible}
                 setIsModalVisible={setIsEventModalVisible}
                 userId={userId}
+                addEvent={addEvent}
+                addEventWithFriend={addEventWithFriend}
             />
             <FriendFormModal
                 isModalVisible={isFriendModalVisible}
@@ -143,7 +156,11 @@ const Events = () => {
                 }
             >
                 <TabPane tab="Events" key="1">
-                    <TableContainer data={newData} />
+                    <TableContainer
+                        data={newData}
+                        getFriendsQuery={GET_FRIENDS}
+                        userId={userId}
+                    />
                 </TabPane>
                 <TabPane tab="People" key="2">
                     <PeopleTable

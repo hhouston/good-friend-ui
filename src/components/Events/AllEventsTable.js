@@ -250,7 +250,7 @@ const OpenNoteFooter = ({ onClick, saveNote }) => {
     )
 }
 
-const NotesColumn = ({ notes, friendId }) => {
+const NotesColumn = ({ notes, friendId, name }) => {
     const [open, setOpen] = React.useState(false)
     const [state, updateState] = useState(notes)
 
@@ -317,7 +317,7 @@ const NotesColumn = ({ notes, friendId }) => {
                                 color: 'rgb(67, 56, 202)'
                             }}
                         >
-                            Notes
+                            {`Notes about ${name}`}
                         </h3>
                         <span
                             onClick={() => setOpen(!open)}
@@ -637,6 +637,8 @@ const AllEventsTable = (props) => {
         variables: { friendId: friendId, eventId: eventId }
     })
 
+    console.log(data)
+
     const [addGiftIdea] = useMutation(ADD_GIFT_IDEA, {
         refetchQueries: [
             {
@@ -650,16 +652,15 @@ const AllEventsTable = (props) => {
     if (loading) return 'loading'
     if (error) return <p>{error}</p>
 
-    const notes = data.getFriendById.interests
+    const { interests, name } = data.getFriendById
 
     const gifts = data.getGiftsByEventId
-    console.log(gifts)
     const sortedGifts = gifts
         .slice()
         .sort((a, b) => (!!a.image && !b.image ? -1 : 1))
     return (
         <div style={{ display: 'flex' }}>
-            <NotesColumn notes={notes} friendId={friendId} />
+            <NotesColumn notes={interests} friendId={friendId} name={name} />
             <div style={{ maxWidth: '50%', width: '100%', padding: '24px' }}>
                 <GiftComponent
                     gifts={sortedGifts}
