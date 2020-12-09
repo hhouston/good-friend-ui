@@ -18,6 +18,13 @@
     line-height: 1.8em;
 }
 
+/* .facebook {
+  background: url('instagram.png');
+  height: 40px;
+  width: 40px;
+  display: block;
+} */
+
 @media (min-width: 768px) {
     .footer-container {
         height: 600px;

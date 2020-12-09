@@ -1,0 +1,105 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e8f0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-wrapper {
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-width: 24rem;
+    border-radius: 0.5rem;
+    border-color: #e2e8f0;
+    background-color: #fff;
+}
+
+.login {
+    padding: 1rem 1.5rem;
+}
+
+.login-greeting {
+    color: #495766;
+    text-align: center;
+    font-size: 22px;
+}
+
+.login-caption {
+    color: #a0aec0;
+    text-align: center;
+    margin-top: 0.25rem;
+    font-size: 16px;
+}
+
+.form-wrapper {
+    color: #e2e8f0;
+    padding-top: 0;
+}
+
+.form {
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.form-password-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.form-forgot-password {
+    color: #718196;
+    font-weight: 16px;
+}
+
+.form-button {
+    background-color: #495667;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.form-account-wrapper {
+    color: #cbd5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7fafc;
+    color: #718096;
+    padding: 16px 0;
+    border-radius: 0 0 8px 8px;
+}
+
+.form-register {
+    color: #3281ce;
+    margin: 0 8px;
+    font-weight: 600;
+}
+
+.my-facebook-button-class {
+    height: 45px;
+    line-height: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    border: none;
+    background-color: #4c69b9;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 16px;
+}

@@ -5,9 +5,11 @@ import Home from './components/Home'
 // import Start from './components/SignUp'
 import Events from './components/Events'
 import { Login, SignUp } from './components/Login'
+import { Contact } from './components/Contact'
 import { PricingCards, Start } from './components/SignUp/'
 import { Account } from './components/MyAccount/'
 import { AboutUs } from './components/AboutUs/'
+import { Affiliate } from './components/Affiliate/'
 import { Blog } from './components/Blog/'
 // import { Provider } from 'react-redux'
 // think about using apolo-client instead of apollo-boost
@@ -22,10 +24,11 @@ export const Root = () => {
             <div>
                 <UserNavBar home={false} />
                 <Switch>
-                    <Route path="/viewAll" component={Events} />
-                    <Route path="/contact" component={PricingCards} />
+                    <Route path="/dashboard" component={Events} />
                     <Route path="/about" component={AboutUs} />
+                    <Route path="/contact" component={Contact} />
                     <Route path="/blog" component={Blog} />
+                    <Route path="/affiliate" component={Affiliate} />
                     <Route path="/account" component={Account} />
                 </Switch>
             </div>

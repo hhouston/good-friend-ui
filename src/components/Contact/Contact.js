@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
 import './styles.css'
-import FacebookLogin from 'react-facebook-login'
-import GoogleLogin from 'react-google-login'
-import { verifyGoogleToken, verifyFacebookToken } from './verify.js'
 import { useHistory } from 'react-router-dom'
-import { gql, useMutation } from '@apollo/client'
-import { Button } from 'antd'
+import { Button, Input } from 'antd'
 import axios from 'axios'
+
+const { TextArea } = Input
 
 const formState = {
     email: '',
-    password: ''
+    message: ''
 }
 
-const Login = () => {
+const Contact = () => {
     const history = useHistory()
     const [credentials, updateUserForm] = useState(formState)
     const [formErrors, setFormErrors] = useState(null)
@@ -27,19 +25,18 @@ const Login = () => {
     }
 
     const handleSubmit = async (e) => {
-        const { email, password } = credentials
+        const { email, message } = credentials
         e.preventDefault()
         setLoadingState(true)
         const backendUrl =
             process.env.NODE_ENV == 'production'
-                ? 'https://api.thankyougift.io/login'
-                : 'http://localhost:9000/login'
+                ? 'https://api.thankyougift.io/contact'
+                : 'http://localhost:9000/contact'
 
         axios
             .post(backendUrl, {
-                // .post('http://localhost:9000/login', {
                 email,
-                password,
+                message,
                 type: 'email'
             })
             .then(
@@ -48,16 +45,11 @@ const Login = () => {
                         setFormErrors(data.error)
                         return
                     }
-                    localStorage.setItem('userId', data.userId)
-                    localStorage.setItem('token', data.token)
-                    localStorage.setItem('expiresAt', data.expiresAt)
-                    history.push('dashboard')
                 },
                 (error) => {
                     console.log(error)
                 }
             )
-        // localStorage.setItem('token', response.token)
         setLoadingState(false)
     }
 
@@ -66,7 +58,7 @@ const Login = () => {
             <div className="login-wrapper">
                 <div className="login">
                     <h3 className="login-greeting">Welcome back</h3>
-                    <p className="login-caption">Login or create account</p>
+                    <p className="login-caption">Contact or create account</p>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
                         {formErrors && (
                             <p
@@ -98,10 +90,17 @@ const Login = () => {
                                 aria-label="Password"
                                 name="password"
                                 onChange={updateForm}
-                                value={credentials.password}
+                                value={credentials.message}
                             />
                         </div>
                         <div className="form-password-wrapper">
+                          <div className="account-input-container">
+                              <TextArea
+                                  rows={4}
+                                  placeholder="Hobbies, interests, dislikes, etc!"
+                                  onChange={updateForm}
+                              />
+                          </div>
                             <a className="form-forgot-password" href="#">
                                 Forget Password?
                             </a>
@@ -127,4 +126,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Contact

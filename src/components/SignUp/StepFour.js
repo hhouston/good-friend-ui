@@ -19,7 +19,7 @@ function StepFour() {
 
     useEffect(() => {
         setTimeout(() => {
-            history.push('/viewAll')
+            history.push('/dashboard')
         }, 3000)
     })
 
