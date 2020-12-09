@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Typography, Button, Form, Input } from 'antd'
 import axios from 'axios'
+import { EventBusy } from '@material-ui/icons'
+import { formatError } from 'graphql'
 
 const { Title } = Typography
 
@@ -15,46 +17,49 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
     const [form] = Form.useForm()
 
     const [formData, updateFormData] = useState(initialForm)
-    const [errors, setErrors] = React.useState({})
-
-    const [touched, setTouched] = React.useState({})
-
-    const updateEntry = (e) => {
-        updateFormData({
-            ...formData,
-            [e.target.name]: e.target.value.trim()
-        })
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const backendUrl =
-            process.env.NODE_ENV == 'production'
-                ? 'https://api.thankyougift.io/signup'
-                : 'http://localhost:9000/signup'
 
-        const result = await axios.post(backendUrl, formData)
-        if (!result.data.error) {
-            const {
-                data: { userId, token, expiresAt }
-            } = result
+        form.validateFields()
+            .then((values) => {
+                const backendUrl =
+                    process.env.NODE_ENV == 'production'
+                        ? 'https://api.thankyougift.io/signup'
+                        : 'http://localhost:9000/signup'
 
-            localStorage.setItem('userId', userId)
-            localStorage.setItem('token', token)
-            localStorage.setItem('expiresAt', expiresAt)
-            updateSignUpForm((prevState) => ({
-                ...prevState,
-                input: {
-                    userId: userId
-                }
-            }))
-            handleNext()
-        }
+                axios.post(backendUrl, formData).then((result) => {
+                    if (!result.data.error) {
+                        const {
+                            data: { userId, token, expiresAt }
+                        } = result
+
+                        localStorage.setItem('userId', userId)
+                        localStorage.setItem('token', token)
+                        localStorage.setItem('expiresAt', expiresAt)
+                        updateSignUpForm((prevState) => ({
+                            ...prevState,
+                            input: {
+                                userId: userId
+                            }
+                        }))
+                        handleNext()
+                    }
+                })
+            })
+            .catch((errorInfo) => {
+                console.log(errorInfo)
+            })
     }
 
-    const onValuesChange = (changed, all) => {
-        console.log(all)
+    const onValuesChange = (props) => {
+        const [formKey, formValue] = Object.entries(props)[0]
+        updateFormData({
+            ...formData,
+            [formKey]: formValue
+        })
     }
+
     return (
         <div className="outer-div">
             <div className="my-account">
@@ -65,6 +70,7 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                     className="account-form-wrapper"
                     initialValues={formData}
                     onValuesChange={onValuesChange}
+                    form={form}
                 >
                     <div className="account-form">
                         <div className="account-input-container">
@@ -155,6 +161,7 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                 size="large"
                 className="bundle-card-button"
                 onClick={handleSubmit}
+                htmlType="submit"
             >
                 Next
             </Button>

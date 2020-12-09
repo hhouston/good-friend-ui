@@ -30,11 +30,14 @@ const Login = () => {
         const { email, password } = credentials
         e.preventDefault()
         setLoadingState(true)
-        const backendUrl = process.env.NODE_ENV == 'production' ? 'https://api.thankyougift.io/login' : 'http://localhost:9000/login'
+        const backendUrl =
+            process.env.NODE_ENV == 'production'
+                ? 'https://api.thankyougift.io/login'
+                : 'http://localhost:9000/login'
 
         axios
             .post(backendUrl, {
-            // .post('http://localhost:9000/login', {
+                // .post('http://localhost:9000/login', {
                 email,
                 password,
                 type: 'email'
@@ -45,6 +48,7 @@ const Login = () => {
                         setFormErrors(data.error)
                         return
                     }
+                    localStorage.setItem('userId', data.userId)
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('expiresAt', data.expiresAt)
                     history.push('home')

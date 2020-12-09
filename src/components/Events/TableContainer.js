@@ -309,6 +309,8 @@ const TableContainer = ({ data }) => {
     const expandedRowRender = (props) => {
         return <AllEventsTable data={props} />
     }
+
+    console.log(data)
     return (
         <>
             <Table
