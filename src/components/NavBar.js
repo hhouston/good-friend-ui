@@ -128,9 +128,9 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <p>About</p>
-                <p>Contact</p>
-                <p>Blog</p>
+                <p onClick={() => history.push('about')}>About</p>
+                <p onClick={() => history.push('contact')}>Contact</p>
+                <p onClick={() => history.push('blog')}>Blog</p>
                 <PrimaryButton
                     onClick={() => history.push('login')}
                     type="secondary"
