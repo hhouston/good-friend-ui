@@ -23,8 +23,8 @@ const StepTwo = () => {
                             Step 2
                         </PrimaryButton>
                         <p className="step-text step-content-text-two">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Nunc porttitor vulputate sem vel facilisis.
+                          Enter your up coming event details (like birthday,
+                          anniversary, Christmas, etc.) the event date and your gift price range.
                         </p>
                     </div>
                 </div>

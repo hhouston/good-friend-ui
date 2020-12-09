@@ -18,8 +18,8 @@ const StepThree = () => {
                             Step 3
                         </PrimaryButton>
                         <p className="step-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Nunc porttitor vulputate sem vel facilisis.
+                          Tell us about the lucky one we are shopping for. Based on their interests you are paired with a personal curator who
+                          will handle the rest!
                         </p>
                     </div>
                     <img

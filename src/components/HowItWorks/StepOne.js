@@ -18,8 +18,7 @@ const StepOne = () => {
                             Step 1
                         </PrimaryButton>
                         <p className="step-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Nunc porttitor vulputate sem vel facilisis.
+                          Get started by setting up an account and selecting your current gift buying needs
                         </p>
                     </div>
                     <img

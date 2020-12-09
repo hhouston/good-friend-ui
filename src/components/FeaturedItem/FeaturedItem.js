@@ -18,13 +18,16 @@ const FeaturedItem = ({ titleSize }) => {
                         Featured Item
                     </Title>
                     <p className="featured-item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
-                        in porttitor ex, non ultrices purus.
+                      Excited about the release of the new gaming consoles
+                      or iPhone, but worried about trouble that goes into
+                      getting the item first? Apply for our featured gift service
+                      and we will handle everything from the preorder to
+                      waiting outside of Best Buy (or Apple) store to make
+                      sure you get your hands on the first batch!
                     </p>
                 </div>
                 <img
-                    src={require('../../images/featured-item.png')}
+                    src={require('../../images/featured-items@2x.png')}
                     className="featured-item-image"
                     alt=""
                 />

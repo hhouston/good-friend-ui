@@ -20,18 +20,18 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
                         className="subtitle"
                         style={{ fontSize: titleSize }}
                     >
-                        Personal Gifts
+                        What We Are
                     </Title>
                     <p className="personal-gifts-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nunc porttitor vulputate sem vel facilisis. Vestibulum
-                        in porttitor ex, non ultrices purus. Curabitur et
-                        commodo nulla. Donec viverra gravida orci, sit amet
-                        molestie odio mattis a. Nulla vestibulum blandit metus
-                        eu maximus. Vestibulum ante ipsum primis in faucibus
+                      Keeping a strong connection with your loved ones is
+                      important. Handling the holiday panic or knowing
+                      what to buy someone can be stressful. Our personal gift
+                      curators are experts in a variety of areas and will
+                      suggest suitable gifts for any occasion based on
+                      who we are buying - completely free!
                     </p>
                     <p className="personal-gifts-subtext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Never forget a special occasion or overpay for gifts again!
                     </p>
                 </div>
                 <img

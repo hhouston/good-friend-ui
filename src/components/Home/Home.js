@@ -199,17 +199,17 @@ const Home = () => {
 
             <PersonalGifts titleSize={titleTwoSize} contentRef={contentRef} />
             <HowItWorks titleSize={titleTwoSize} />
-            <FeaturedItem titleSize={titleTwoSize} />
+            <Experts
+              titleSize={titleTwoSize}
+              isMobile={isMobile}
+              isTablet={isTablet}
+              />
             <WhyWeAre
                 titleSize={titleTwoSize}
                 isMobile={isMobile}
                 isTablet={isTablet}
             />
-          <Experts
-                titleSize={titleTwoSize}
-                isMobile={isMobile}
-                isTablet={isTablet}
-            />
+            <FeaturedItem titleSize={titleTwoSize} />
             <Footer titleSize={titleTwoSize} />
         </div>
     )
