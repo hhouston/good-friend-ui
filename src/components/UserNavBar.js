@@ -63,7 +63,7 @@ const Navbar = ({ isMobile, isHome }) => {
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
                             style={{ border: '2px solid #fff' }}
-                            onClick={() => history.push('viewAll')}
+                            onClick={() => history.push('dashboard')}
                         >
                             Dashboard
                         </Button>
@@ -74,7 +74,7 @@ const Navbar = ({ isMobile, isHome }) => {
                             type="secondary"
                             onMouseEnter={toggleHover}
                             onMouseLeave={toggleHover}
-                            onClick={() => history.push('viewAll')}
+                            onClick={() => history.push('dashboard')}
                         >
                             Dashboard
                         </Button>
@@ -160,7 +160,7 @@ const Navbar = ({ isMobile, isHome }) => {
                 <a href="/blog">Contact</a>
                 <a href="/account">Account</a>
                 <PrimaryButton
-                    onClick={() => history.push('viewAll')}
+                    onClick={() => history.push('dashboard')}
                     type="secondary"
                     style={{ fontWeight: '600', border: '2px solid' }}
                 >
