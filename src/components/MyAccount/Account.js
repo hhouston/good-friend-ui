@@ -219,6 +219,14 @@ const ViewForm = ({
             setChangePassword(false)
         }
     }
+
+    const onClickLogout = () => {
+      localStorage.clear()
+      window.location.href = '/';
+      return false;
+      // history.push('/')
+    }
+
     return (
         <div className="my-account">
             <div className="account-form-wrapper">
@@ -323,6 +331,15 @@ const ViewForm = ({
                         onClick={onClick}
                     >
                         Edit
+                    </Button>
+                    <Button
+                        shape="round"
+                        type="primary"
+                        className="my-account-button"
+                        size="large"
+                        onClick={() => onClickLogout()}
+                    >
+                        Logout
                     </Button>
                 </div>
             </div>
