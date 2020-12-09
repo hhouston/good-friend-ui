@@ -142,11 +142,13 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             <Form.Item
                                 style={{ padding: '8px' }}
                                 name="email"
+                                type="email"
                                 rules={[
                                     {
                                         required: true,
                                         message: 'Email is required'
-                                    }
+                                    },
+                                    { type: 'email' }
                                 ]}
                             >
                                 <Input />
