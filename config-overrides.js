@@ -24,7 +24,8 @@ module.exports = override(
             '@select-item-selected-bg': '#EEF2FF',
             '@border-radius-base': '8px',
             '@select-dropdown-height': '40px',
-            '@item-active-bg': '#EEF2FF'
+            '@item-active-bg': '#EEF2FF',
+            '@input-padding-vertical-base': '8px'
         }
     })
 )
