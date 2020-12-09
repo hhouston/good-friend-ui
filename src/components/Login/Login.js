@@ -51,7 +51,7 @@ const Login = () => {
                     localStorage.setItem('userId', data.userId)
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('expiresAt', data.expiresAt)
-                    history.push('home')
+                    history.push('viewAll')
                 },
                 (error) => {
                     console.log(error)
