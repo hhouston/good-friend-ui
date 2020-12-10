@@ -45,6 +45,21 @@ const AboutUs = () => {
                       Sorry, your browser doesn't support embedded videos.
                   </video>
                 </div>
+                <Title
+                    type="secondary"
+                    level={2}
+                    className="subtitle"
+                    style={{
+                        fontSize: '38px',
+                        margin: '0',
+                        marginBottom: '2rem'
+                    }}
+                >
+                    Ask Us About Our Hand Painted Gift Wrapping!
+                </Title>
+
+                <img src='images/custom-gift-wrapping.jpeg' width="680.5" height="970.5" alt="picture"/>
+
             </div>
         </div>
       </div>
