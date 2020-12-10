@@ -3,8 +3,6 @@ import classNames from 'classnames'
 import './styles.css'
 
 import { Typography, Button } from 'antd'
-import { PrimaryButton } from '../common'
-import EventCard from './EventCard'
 
 const { Title } = Typography
 
@@ -28,27 +26,6 @@ const CheckIcon = () => (
 
 const StepBundle = ({ handleBack, handleNext }) => {
     const [selected, setSelected] = useState(null)
-    const handleSelect = (index) => {
-        if (index === selected) {
-            setSelected(null)
-        } else {
-            setSelected(index)
-        }
-    }
-    const options = [
-        {
-            title: 'MANY',
-            imgUrl: require('../../images/expert-selection.png')
-        },
-        {
-            title: 'CHRISTMAS',
-            imgUrl: require('../../images/christmas-card.png')
-        },
-        {
-            title: 'TRIAL',
-            imgUrl: require('../../images/trial-gift.png')
-        }
-    ]
 
     const handleSubmit = (e) => {
         handleNext()
@@ -58,17 +35,7 @@ const StepBundle = ({ handleBack, handleNext }) => {
         <div className="outer-div">
             <div className="step-bundle">
                 <Title className="subtitle">Select a bundle</Title>
-                <div className="bundle-cards">
-                    {options.map((option, i) => (
-                        <EventCard
-                            imgUrl={option.imgUrl}
-                            title={option.title}
-                            selected={selected}
-                            handleSelect={handleSelect}
-                            className="bundle-card"
-                        />
-                    ))}
-                </div>
+                <div className="bundle-cards"></div>
             </div>
             <div className="signup-buttons">
                 <Button

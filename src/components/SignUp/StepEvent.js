@@ -34,7 +34,6 @@ const StepEvent = ({
     handleBack,
     handleNext,
     userId,
-    addFriendToForm,
     signUpForm,
     updateSignUpForm
 }) => {
@@ -63,21 +62,15 @@ const StepEvent = ({
     }
 
     const handleSubmit = async () => {
-        const { input, friends } = signUpForm
-        console.log('input-----', input)
+        const { input, friend } = signUpForm
         const data = await addEvent({
-            variables: { input, friends }
+            variables: { input, friends: [friend] }
         })
         handleNext()
     }
 
     return (
         <div className="step-event">
-            <Title className="subtitle">Loved ones</Title>
-            <p className="signup-step-paragraph">
-                Add the different events you're shopping for, along with some
-                basic details about each person
-            </p>
             <div>
                 <div ref={eventFormRef}>
                     <StepThree
@@ -90,7 +83,8 @@ const StepEvent = ({
                 </div>
                 <div ref={eventCardsRef}>
                     <StepLovedOne
-                        addFriendToForm={addFriendToForm}
+                        formData={signUpForm}
+                        updateFormData={updateSignUpForm}
                         handleSubmit={handleSubmit}
                         handleBack={handleBack}
                         handleNext={handleNext}
@@ -113,7 +107,7 @@ const StepEvent = ({
                     size="large"
                     className="bundle-card-button"
                     onClick={handleSubmit}
-                    disabled={!signUpForm.friends.length}
+                    disabled={!signUpForm.friend.name && !signUpForm.friend.age}
                 >
                     Next
                 </Button>

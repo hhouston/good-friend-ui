@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './styles.css'
 import { UserOutlined } from '@ant-design/icons'
 
-import { Input, Typography, Select } from 'antd'
+import { Input, Typography, Select, Form, InputNumber } from 'antd'
 import { formatMs } from '@material-ui/core'
 import { PrimaryButton } from '../common'
 
@@ -12,112 +12,141 @@ const { Option } = Select
 
 const { TextArea } = Input
 
-const initialState = {
-    name: '',
-    age: null,
-    gender: '',
-    interests: ''
-}
-
 const StepLovedOne = ({
     ref,
-    addFriendToForm,
     handleSubmit,
     handleBack,
-    handleNext
+    handleNext,
+    formData,
+    updateFormData
 }) => {
-    const [formData, updateFormData] = useState(initialState)
-
+    const [form] = Form.useForm()
     const updateEntry = (e) => {
         const { value, type } = e.target
         updateFormData({
             ...formData,
-            [e.target.name]: type === 'number' ? parseInt(value) : value
+            friend: {
+                ...formData.friend,
+                [e.target.name]: type === 'number' ? parseInt(value) : value
+            }
         })
     }
 
     const handleTextAreaChange = (e) => {
         updateFormData({
             ...formData,
-            interests: e.target.value.trim()
+            friend: {
+                ...formData.friend,
+                interests: e.target.value.trim()
+            }
         })
     }
 
     const handleSelectChange = (value) => {
         updateFormData({
             ...formData,
-            gender: value
+            friend: {
+                ...formData.friend,
+                gender: value
+            }
         })
     }
 
-    const saveFriend = () => {
-        addFriendToForm(formData)
+    const onValuesChange = (props) => {
+        const [formKey, formValue] = Object.entries(props)[0]
+        updateFormData({
+            ...formData,
+            friend: {
+                ...formData.friend,
+                [formKey]: formKey === 'age' ? parseInt(formValue) : formValue
+            }
+        })
     }
 
     return (
         <div style={{ width: '100%', padding: '64px 0' }} ref={ref}>
             <Title level={2} className="subtitle">
-                Some basic details about your loved one
+                Tell us about your loved one
             </Title>
-            <form className="account-form-wrapper">
+            <Form
+                form={form}
+                className="account-form-wrapper"
+                onValuesChange={onValuesChange}
+            >
                 <div className="account-form">
-                    <div className="account-input-container">
-                        <label className="account-form-label" htmlFor="name">
-                            Name
-                        </label>
-                        <input
+                    <div style={{ padding: '0 16px' }}>
+                        <Form.Item
+                            label={
+                                <p className="account-form-label-required">
+                                    First name
+                                </p>
+                            }
                             name="name"
-                            className="account-form-input"
-                            type="text"
-                            placeholder="Name"
-                            aria-label="name"
-                            value={formData.name}
-                            onChange={updateEntry}
-                            required
-                        />
-                    </div>
-                    <div className="account-input-container">
-                        <label
-                            className="account-form-label"
-                            htmlFor="lastName"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Required'
+                                }
+                            ]}
                         >
-                            Age
-                        </label>
-                        <input
+                            <Input />
+                        </Form.Item>
+                    </div>
+
+                    <div style={{ padding: '0 16px' }}>
+                        <Form.Item
+                            label={
+                                <p className="account-form-label-required">
+                                    Age
+                                </p>
+                            }
                             name="age"
-                            className="account-form-input"
-                            type="number"
-                            placeholder="Age"
-                            aria-label="Age"
-                            value={formData.age}
-                            onChange={updateEntry}
-                            required
-                        />
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Required'
+                                }
+                            ]}
+                        >
+                            <InputNumber />
+                        </Form.Item>
                     </div>
                 </div>
-                <div className="account-input-container">
-                    <label className="account-form-label" htmlFor="gender">
-                        Gender
-                    </label>
-                    <Select
-                        style={{ width: 200, borderRadius: '8px' }}
-                        placeholder="Gender"
-                        onChange={handleSelectChange}
+                <div style={{ padding: '0 16px' }}>
+                    <Form.Item
+                        name="gender"
+                        label={
+                            <p className="account-form-label-required">
+                                Gender
+                            </p>
+                        }
+                        rules={[{ required: true }]}
                     >
-                        <Option value="female">Female</Option>
-                        <Option value="male">Male</Option>
-                        <Option value="other">Prefer not to say</Option>
-                    </Select>
+                        <Select
+                            style={{
+                                width: 200,
+                                borderRadius: '8px',
+                                padding: '8px'
+                            }}
+                            onChange={handleSelectChange}
+                        >
+                            <Option value="female">Female</Option>
+                            <Option value="male">Male</Option>
+                            <Option value="other">Prefer not to say</Option>
+                        </Select>
+                    </Form.Item>
                 </div>
-                <div className="account-input-container">
-                    <TextArea
-                        rows={8}
-                        placeholder="Hobbies, interests, dislikes, etc!"
-                        onChange={handleTextAreaChange}
-                    />
+
+                <div style={{ padding: '0 16px' }}>
+                    <Form.Item rules={[{ required: true }]}>
+                        <TextArea
+                            rows={8}
+                            placeholder="Hobbies, interests, dislikes, etc!"
+                            onChange={handleTextAreaChange}
+                        />
+                    </Form.Item>
                 </div>
-            </form>
-            <PrimaryButton onClick={saveFriend}>Save</PrimaryButton>
+            </Form>
         </div>
     )
 }

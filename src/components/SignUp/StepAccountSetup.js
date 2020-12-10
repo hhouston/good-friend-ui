@@ -3,6 +3,8 @@ import { Typography, Button, Form, Input } from 'antd'
 import axios from 'axios'
 import { EventBusy } from '@material-ui/icons'
 import { formatError } from 'graphql'
+import { PrimaryButton } from '../common'
+import BundleCard from './BundleCard'
 
 const { Title } = Typography
 
@@ -13,10 +15,36 @@ const initialForm = {
     password: ''
 }
 
+const bundleOptions = [
+    {
+        title: 'Upcoming event',
+        imgUrl: require('../../images/trial-gift.png'),
+        description: 'I need help finding the right gift for an occasion'
+    },
+    {
+        title: 'Holiday shopping',
+        imgUrl: require('../../images/christmas-card.png'),
+        description: 'I need help finding gifts for Christmas'
+    },
+    {
+        title: 'Gift bundles',
+        imgUrl: require('../../images/expert-selection.png'),
+        description: 'I need help finding a similar gift for many people'
+    }
+]
+
 const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
     const [form] = Form.useForm()
+    const [selected, setSelected] = useState(null)
 
     const [formData, updateFormData] = useState(initialForm)
+    const handleSelect = (index) => {
+        if (index === selected) {
+            setSelected(null)
+        } else {
+            setSelected(index)
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -40,6 +68,7 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                         updateSignUpForm((prevState) => ({
                             ...prevState,
                             input: {
+                                ...prevState.input,
                                 userId: userId
                             }
                         }))
@@ -63,24 +92,31 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
     return (
         <div className="outer-div">
             <div className="my-account">
-                <Title className="subtitle" style={{ textAlign: 'center' }}>
-                    Let's get some basic info
+                <Title
+                    className="subtitle"
+                    style={{
+                        textAlign: 'center',
+                        fontSize: '36px',
+                        marginBottom: '24px'
+                    }}
+                >
+                    Basic info
                 </Title>
                 <Form
                     className="account-form-wrapper"
                     initialValues={formData}
                     onValuesChange={onValuesChange}
                     form={form}
+                    style={{ marginTop: '0' }}
                 >
                     <div className="account-form">
                         <div className="account-input-container">
-                            <label
-                                className="account-form-label"
-                                htmlFor="firstName"
-                            >
-                                First name
-                            </label>
                             <Form.Item
+                                label={
+                                    <p className="account-form-label-required">
+                                        First name
+                                    </p>
+                                }
                                 style={{ padding: '8px' }}
                                 name="firstName"
                                 rules={[
@@ -94,13 +130,12 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             </Form.Item>
                         </div>
                         <div className="account-input-container">
-                            <label
-                                className="account-form-label"
-                                htmlFor="lastName"
-                            >
-                                Last name
-                            </label>
                             <Form.Item
+                                label={
+                                    <p className="account-form-label-required">
+                                        Last name
+                                    </p>
+                                }
                                 style={{ padding: '8px' }}
                                 name="lastName"
                                 rules={[
@@ -116,13 +151,12 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                     </div>
                     <div className="account-form">
                         <div className="account-input-container">
-                            <label
-                                className="account-form-label"
-                                for="password"
-                            >
-                                Password
-                            </label>
                             <Form.Item
+                                label={
+                                    <p className="account-form-label-required">
+                                        Password
+                                    </p>
+                                }
                                 style={{ padding: '8px' }}
                                 name="password"
                                 rules={[
@@ -136,10 +170,12 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                             </Form.Item>
                         </div>
                         <div className="account-input-container">
-                            <label className="account-form-label" for="email">
-                                Email
-                            </label>
                             <Form.Item
+                                label={
+                                    <p className="account-form-label-required">
+                                        Email
+                                    </p>
+                                }
                                 style={{ padding: '8px' }}
                                 name="email"
                                 type="email"
@@ -156,6 +192,28 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                         </div>
                     </div>
                 </Form>
+                <Title
+                    className="subtitle"
+                    style={{
+                        textAlign: 'center',
+                        fontSize: '28px',
+                        marginBottom: '36px'
+                    }}
+                >
+                    Tell us more about your gift-buying needs
+                </Title>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    {bundleOptions.map((option, i) => (
+                        <BundleCard
+                            imgUrl={option.imgUrl}
+                            title={option.title}
+                            selected={selected}
+                            handleSelect={handleSelect}
+                            className="bundle-card"
+                            description={option.description}
+                        />
+                    ))}
+                </div>
             </div>
             <Button
                 shape="round"

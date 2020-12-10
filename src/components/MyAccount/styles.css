@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    padding: 24px 0 48px;
 }
 
 .account-form {
@@ -39,6 +40,25 @@
     border-radius: 8px;
     margin: 0;
     font-size: 16px;
+}
+
+.account-form-label-required {
+    color: #4a5568;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ant-form-item-label > label {
+    height: 42px;
+}
+
+.ant-form-item-label > label::after {
+    content: '';
+}
+
+.account-form-label-required::after {
+    display: none;
 }
 
 .account-form-label {

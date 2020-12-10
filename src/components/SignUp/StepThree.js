@@ -5,7 +5,7 @@ import './styles.css'
 import EventCard from './EventCard'
 import StepLovedOne from './StepLovedOne'
 
-import { Typography, DatePicker, Input, Button } from 'antd'
+import { Typography, DatePicker, Input, Button, Form } from 'antd'
 import { types } from '../../utils/constants'
 
 const { Title } = Typography
@@ -18,6 +18,7 @@ const StepThree = ({
     signUpForm
 }) => {
     const [selected, setSelected] = useState(null)
+    const [form] = Form.useForm()
 
     const dateFormat = 'MM/DD/YYYY'
 
@@ -57,6 +58,17 @@ const StepThree = ({
         })
     }
 
+    const onValuesChange = (props) => {
+        const [formKey, formValue] = Object.entries(props)[0]
+        updateSignUpForm({
+            ...signUpForm,
+            input: {
+                ...signUpForm.input,
+                [formKey]: formValue
+            }
+        })
+    }
+
     const cardSize = isMobile ? 'small' : 'default'
     return (
         <div
@@ -71,38 +83,50 @@ const StepThree = ({
             <Title level={2} className="subtitle">
                 Event details
             </Title>
-            <div className="event-form">
+            <p className="signup-step-paragraph">
+                Add the different events you're shopping for, along with some
+                basic details about each person
+            </p>
+            <Form
+                className="event-form"
+                form={form}
+                onValuesChange={onValuesChange}
+                style={{ display: 'inline-flex', flexWrap: 'wrap' }}
+            >
                 <div className="account-input-container">
-                    <label className="account-form-label" htmlFor="name">
-                        Name of event
-                    </label>
-                    <Input
+                    <Form.Item
                         name="title"
-                        className="account-form-input"
-                        type="text"
-                        placeholder="Event name"
-                        style={{ width: '300px' }}
-                        aria-label="Title"
-                        value={signUpForm.input.title}
-                        onChange={updateEntry}
-                        // onBlur={handleBlur}
-                        // required
-                    />
+                        label={
+                            <p className="account-form-label-required">
+                                Name of event
+                            </p>
+                        }
+                        rules={[{ required: true }]}
+                    >
+                        <Input />
+                    </Form.Item>
                 </div>
                 <div className="account-input-container">
-                    <label className="account-form-label" htmlFor="name">
-                        Date of event
-                    </label>
-                    <DatePicker
-                        defaultValue={moment()}
-                        format={dateFormat}
-                        allowClear={false}
-                        size="large"
-                        style={{ width: '300px' }}
-                        onChange={handleDateChange}
-                    />
+                    <Form.Item
+                        name="date"
+                        label={
+                            <p className="account-form-label-required">
+                                Date of event
+                            </p>
+                        }
+                        rules={[{ required: true }]}
+                    >
+                        <DatePicker
+                            defaultValue={moment()}
+                            format={dateFormat}
+                            allowClear={false}
+                            size="large"
+                            style={{ width: '300px' }}
+                            onChange={handleDateChange}
+                        />
+                    </Form.Item>
                 </div>
-            </div>
+            </Form>
             <div className="cards-wrapper">
                 <EventCard
                     key={'anniversary'}

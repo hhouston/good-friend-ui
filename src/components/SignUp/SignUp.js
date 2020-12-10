@@ -1,3 +1,4 @@
+import moment from 'moment'
 // import React, { useState, useEffect } from 'react'
 import StepOne from './StepOne'
 // import StepTwo from './StepTwo'
@@ -66,23 +67,21 @@ const SignUp = () => {
         input: {
             userId: null,
             type: '',
-            date: null,
+            date: moment.now().valueOf().toString(),
             status: 'NEW',
             title: ''
         },
-        friends: []
+        friend: {
+            name: '',
+            age: null,
+            gender: '',
+            interests: ''
+        }
     })
 
     const {
         input: { userId }
     } = signUpForm
-
-    const addFriendToForm = (friend) => {
-        updateSignUpForm((prevState) => ({
-            ...prevState,
-            friends: [...prevState.friends, friend]
-        }))
-    }
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -123,7 +122,7 @@ const SignUp = () => {
     }
 
     function getSteps() {
-        return ['Create account', 'Select bundle', 'Loved one', 'Details']
+        return ['Create account', 'Details', 'Finish!']
     }
 
     function getStepContent(step) {
@@ -137,23 +136,15 @@ const SignUp = () => {
                 )
             case 1:
                 return (
-                    <StepBundle
-                        handleBack={handleBack}
-                        handleNext={handleNext}
-                    />
-                )
-            case 2:
-                return (
                     <StepEvent
                         handleBack={handleBack}
                         handleNext={handleNext}
                         userId={userId}
-                        addFriendToForm={addFriendToForm}
                         signUpForm={signUpForm}
                         updateSignUpForm={updateSignUpForm}
                     />
                 )
-            case 3:
+            case 2:
                 return <StepFour />
             default:
                 return 'Unknown step'
