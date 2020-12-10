@@ -23,15 +23,16 @@ const PersonalGifts = ({ titleSize, contentRef }) => {
                         What We Are
                     </Title>
                     <p className="personal-gifts-text">
-                      Keeping a strong connection with your loved ones is
-                      important. Handling the holiday panic or knowing
-                      what to buy someone can be stressful. Our personal gift
-                      curators are experts in a variety of areas and will
-                      suggest suitable gifts for any occasion based on
-                      who we are buying - completely free!
+                        Keeping a strong connection with your loved ones is
+                        important. Handling the holiday panic or knowing what to
+                        buy someone can be stressful. Our personal gift curators
+                        are experts in a variety of areas and will suggest
+                        suitable gifts for your loved one for any occasion -
+                        completely free!
                     </p>
                     <p className="personal-gifts-subtext">
-                      Never forget a special occasion or overpay for gifts again!
+                        Never forget a special occasion or overpay for gifts
+                        again.
                     </p>
                 </div>
                 <img

@@ -88,7 +88,7 @@ const Events = () => {
     }
 
     return (
-        <div>
+        <div style={{ marginTop: '48px' }}>
             <EventFormModal
                 isModalVisible={isEventModalVisible}
                 setIsModalVisible={setIsEventModalVisible}

@@ -7,6 +7,7 @@ import StepLovedOne from './StepLovedOne'
 
 import { Typography, DatePicker, Input, Button, Form } from 'antd'
 import { types } from '../../utils/constants'
+import { validate } from 'graphql'
 
 const { Title } = Typography
 
@@ -15,10 +16,10 @@ const StepThree = ({
     ref,
     scrollToNextSection,
     updateSignUpForm,
-    signUpForm
+    signUpForm,
+    form
 }) => {
     const [selected, setSelected] = useState(null)
-    const [form] = Form.useForm()
 
     const dateFormat = 'MM/DD/YYYY'
 
@@ -39,13 +40,13 @@ const StepThree = ({
     }
 
     const handleDateChange = (e) => {
-        updateSignUpForm((prevState) => ({
-            ...prevState,
+        updateSignUpForm({
+            ...signUpForm,
             input: {
-                ...prevState.input,
+                ...signUpForm.input,
                 date: e.valueOf().toString()
             }
-        }))
+        })
     }
 
     const updateEntry = (e) => {
@@ -53,7 +54,7 @@ const StepThree = ({
             ...signUpForm,
             input: {
                 ...signUpForm.input,
-                title: e.target.value
+                [e.target.name]: e.target.value
             }
         })
     }
@@ -95,7 +96,6 @@ const StepThree = ({
             >
                 <div className="account-input-container">
                     <Form.Item
-                        name="title"
                         label={
                             <p className="account-form-label-required">
                                 Name of event
@@ -103,7 +103,13 @@ const StepThree = ({
                         }
                         rules={[{ required: true }]}
                     >
-                        <Input />
+                        <input
+                            className="form-input"
+                            type="text"
+                            name="title"
+                            onChange={updateEntry}
+                            value={signUpForm.input.title}
+                        />
                     </Form.Item>
                 </div>
                 <div className="account-input-container">
@@ -114,7 +120,6 @@ const StepThree = ({
                                 Date of event
                             </p>
                         }
-                        rules={[{ required: true }]}
                     >
                         <DatePicker
                             defaultValue={moment()}

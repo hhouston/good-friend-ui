@@ -36,6 +36,7 @@ const bundleOptions = [
 const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
     const [form] = Form.useForm()
     const [selected, setSelected] = useState(null)
+    const [errors, setErrors] = useState(null)
 
     const [formData, updateFormData] = useState(initialForm)
     const handleSelect = (index) => {
@@ -57,7 +58,10 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                         : 'http://localhost:9000/signup'
 
                 axios.post(backendUrl, formData).then((result) => {
-                    if (!result.data.error) {
+                    if (result.data.error) {
+                        setErrors(result.data.error)
+                        return
+                    } else {
                         const {
                             data: { userId, token, expiresAt }
                         } = result
@@ -109,6 +113,17 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                     form={form}
                     style={{ marginTop: '0' }}
                 >
+                    {errors && (
+                        <p
+                            style={{
+                                color: '#f56565',
+                                fontSize: '14px',
+                                margin: '0'
+                            }}
+                        >
+                            {errors}
+                        </p>
+                    )}
                     <div className="account-form">
                         <div className="account-input-container">
                             <Form.Item

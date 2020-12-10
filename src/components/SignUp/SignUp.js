@@ -66,7 +66,7 @@ const SignUp = () => {
     const [signUpForm, updateSignUpForm] = useState({
         input: {
             userId: null,
-            type: '',
+            type: 'OTHER',
             date: moment.now().valueOf().toString(),
             status: 'NEW',
             title: ''

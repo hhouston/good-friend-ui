@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { map, pipe, pick } from 'ramda'
 import StepThree from './StepThree'
 import StepLovedOne from './StepLovedOne'
-import { Typography, Button } from 'antd'
+import { Typography, Button, Form } from 'antd'
 import { gql, useMutation } from '@apollo/client'
 
 import { ADD_EVENT_WITH_FRIEND } from '../../mutations/createEvent'
@@ -39,6 +39,8 @@ const StepEvent = ({
 }) => {
     const [addEvent, { data }] = useMutation(ADD_EVENT_WITH_FRIEND)
 
+    const [form] = Form.useForm()
+
     const eventFormRef = useRef(null)
     const eventCardsRef = useRef(null)
 
@@ -62,11 +64,14 @@ const StepEvent = ({
     }
 
     const handleSubmit = async () => {
-        const { input, friend } = signUpForm
-        const data = await addEvent({
-            variables: { input, friends: [friend] }
+        form.validateFields().then(() => {
+            const { input, friend } = signUpForm
+            addEvent({
+                variables: { input, friends: [friend] }
+            }).then(() => {
+                handleNext()
+            })
         })
-        handleNext()
     }
 
     return (
@@ -74,6 +79,7 @@ const StepEvent = ({
             <div>
                 <div ref={eventFormRef}>
                     <StepThree
+                        form={form}
                         signUpForm={signUpForm}
                         updateSignUpForm={updateSignUpForm}
                         scrollToNextSection={() =>
@@ -83,6 +89,7 @@ const StepEvent = ({
                 </div>
                 <div ref={eventCardsRef}>
                     <StepLovedOne
+                        form={form}
                         formData={signUpForm}
                         updateFormData={updateSignUpForm}
                         handleSubmit={handleSubmit}

@@ -18,9 +18,9 @@ const StepLovedOne = ({
     handleBack,
     handleNext,
     formData,
-    updateFormData
+    updateFormData,
+    form
 }) => {
-    const [form] = Form.useForm()
     const updateEntry = (e) => {
         const { value, type } = e.target
         updateFormData({
@@ -54,6 +54,7 @@ const StepLovedOne = ({
 
     const onValuesChange = (props) => {
         const [formKey, formValue] = Object.entries(props)[0]
+        console.log(formKey, formValue)
         updateFormData({
             ...formData,
             friend: {
@@ -138,7 +139,7 @@ const StepLovedOne = ({
                 </div>
 
                 <div style={{ padding: '0 16px' }}>
-                    <Form.Item rules={[{ required: true }]}>
+                    <Form.Item name="interests" rules={[{ required: true }]}>
                         <TextArea
                             rows={8}
                             placeholder="Hobbies, interests, dislikes, etc!"

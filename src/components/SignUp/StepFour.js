@@ -20,7 +20,7 @@ function StepFour() {
     useEffect(() => {
         setTimeout(() => {
             history.push('/dashboard')
-        }, 3000)
+        }, 1500)
     })
 
     return (

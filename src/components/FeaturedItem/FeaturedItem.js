@@ -9,21 +9,34 @@ const FeaturedItem = ({ titleSize }) => {
         <FadeInSection direction="up">
             <div className="featured-item-container">
                 <div className="featured-item-content">
-                    <Title
-                        type="secondary"
-                        level={2}
-                        className="subtitle"
-                        style={{ fontSize: titleSize }}
-                    >
-                        Featured Item
-                    </Title>
+                    <span>
+                        <span
+                            style={{
+                                padding: '4px',
+                                borderRadius: '16px',
+                                background: '#FF3399',
+                                color: '#fff',
+                                fontSize: '12px'
+                            }}
+                        >
+                            Coming soon
+                        </span>
+                        <Title
+                            type="secondary"
+                            level={2}
+                            className="subtitle"
+                            style={{ fontSize: titleSize, marginTop: '4px' }}
+                        >
+                            Featured Item
+                        </Title>
+                    </span>
                     <p className="featured-item-text">
-                      Excited about the release of the new gaming consoles
-                      or iPhone, but worried about trouble that goes into
-                      getting the item first? Apply for our featured gift service
-                      and we will handle everything from the preorder to
-                      waiting outside of Best Buy (or Apple) store to make
-                      sure you get your hands on the first batch!
+                        Excited about the release of the new gaming consoles or
+                        iPhone, but worried about trouble that goes into getting
+                        the item first? Apply for our featured gift service and
+                        we will handle everything from the preorder to waiting
+                        outside of Best Buy (or Apple) store to make sure you
+                        get your hands on the first batch!
                     </p>
                 </div>
                 <img
