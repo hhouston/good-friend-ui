@@ -217,7 +217,10 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
                 >
                     Tell us more about your gift-buying needs
                 </Title>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div
+                    style={{ display: 'flex', justifyContent: 'center' }}
+                    className="bundle-cards-step-one-container"
+                >
                     {bundleOptions.map((option, i) => (
                         <BundleCard
                             imgUrl={option.imgUrl}

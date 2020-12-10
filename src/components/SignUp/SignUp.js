@@ -17,6 +17,8 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 // import Button from '@material-ui/core/Button'
 
+import { useIsMobile } from '../../hooks/window-resize'
+
 import classNames from 'classnames'
 
 import StepBundle from './StepBundle'
@@ -63,6 +65,7 @@ function StyledStepIcon(props) {
 }
 
 const SignUp = () => {
+    const isMobile = useIsMobile()
     const [signUpForm, updateSignUpForm] = useState({
         input: {
             userId: null,
@@ -157,19 +160,21 @@ const SignUp = () => {
 
     return (
         <div className={classes.root}>
-            <Stepper
-                activeStep={activeStep}
-                orientation="vertical"
-                className={classes.stepper}
-            >
-                {steps.map((label, index) => (
-                    <Step key={label}>
-                        <StepLabel StepIconComponent={StyledStepIcon}>
-                            {label}
-                        </StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
+            {!isMobile && (
+                <Stepper
+                    activeStep={activeStep}
+                    orientation="vertical"
+                    className={classes.stepper}
+                >
+                    {steps.map((label, index) => (
+                        <Step key={label}>
+                            <StepLabel StepIconComponent={StyledStepIcon}>
+                                {label}
+                            </StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
+            )}
             <div className="active-step-container">
                 {getStepContent(activeStep)}
             </div>

@@ -91,3 +91,14 @@
 .account-form-wrapper .ant-btn {
     font-size: 14px;
 }
+
+@media (max-width: 767px) {
+    .account-form {
+        flex-wrap: wrap;
+    }
+
+    .bundle-cards-step-one-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
