@@ -76,31 +76,6 @@ const Blog = () => {
                   </p>
                 </div>
             </div>
-            <Title
-                level={3}
-                type="secondary"
-                style={{
-                    color: 'rgba(60, 13, 153, 0.5)',
-                    letterSpacing: '2px',
-                    fontSize: '16px',
-                    marginTop: '6rem'
-                }}
-            >
-                MEET OUR LOCAL ARTISTS
-            </Title>
-            <Title
-                type="secondary"
-                level={2}
-                className="subtitle"
-                style={{
-                    fontSize: '38px',
-                    margin: '0',
-                    marginBottom: '2rem'
-                }}
-            >
-                Partnerships
-            </Title>
-            <div className="artist-card">name</div>
         </div>
     )
 }
