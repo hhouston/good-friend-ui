@@ -55,13 +55,13 @@ const Navbar = ({ isMobile, isHome }) => {
                     theme={isHome ? 'dark' : 'light'}
                 >
                     <Menu.Item className={'navbar-item'} key="about">
-                        About
+                        <a href="/about">About</a>
                     </Menu.Item>
                     <Menu.Item className={'navbar-item'} key="contact">
-                        Contact
+                        <a href="/contact">Contact</a>
                     </Menu.Item>
                     <Menu.Item className={'navbar-item'} key="blog">
-                        Blog
+                        <a href="/blog">Blog</a>
                     </Menu.Item>
                     {isHome ? (
                         <Button
@@ -128,9 +128,9 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <p onClick={() => history.push('about')}>About</p>
-                <p onClick={() => history.push('contact')}>Contact</p>
-                <p onClick={() => history.push('blog')}>Blog</p>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog">Blog</a>
                 <PrimaryButton
                     onClick={() => history.push('login')}
                     type="secondary"
