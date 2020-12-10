@@ -35,11 +35,13 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="logo-wrapper"
                     onClick={() => history.push('home')}
                 >
-                    <img
+                    <a href="/home">
+                      <img
                         src={require('../images/geometric-heart-logo.png')}
                         className="logo-image"
                         alt="thank you logo"
-                    />
+                      />
+                    </a>
 
                     <span className="logo">THANK YOU.</span>
                 </div>

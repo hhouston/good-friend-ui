@@ -34,11 +34,13 @@ const Navbar = ({ isMobile, isHome }) => {
         return (
             <div className="navbar-wrapper">
                 <div className="logo-wrapper">
-                    <img
+                    <a href="/home">
+                      <img
                         src={require('../images/geometric-heart-logo.png')}
                         className="logo-image"
                         alt="thank you logo"
-                    />
+                        />
+                    </a>
 
                     <span className="logo">THANK YOU.</span>
                 </div>
