@@ -57,9 +57,9 @@ const Contact = () => {
         <div className="login-container">
             <div className="login-wrapper">
                 <div className="login">
-                    <h3 className="login-greeting">Welcome back</h3>
-                    <p className="login-caption">Contact or create account</p>
-                    <form className="form-wrapper" onSubmit={handleSubmit}>
+                    <h3 className="login-greeting">Have a problem or a question ?</h3>
+                    <p className="login-caption">We would love to here it! Leave details below.</p>
+                    <form className="form-wrapper" style={{paddingTop: '0'}} onSubmit={handleSubmit}>
                         {formErrors && (
                             <p
                                 style={{
@@ -82,37 +82,23 @@ const Contact = () => {
                                 value={credentials.email}
                             />
                         </div>
-                        <div className="form">
-                            <input
-                                className="form-input"
-                                type="password"
-                                placeholder="Password"
-                                aria-label="Password"
-                                name="password"
-                                onChange={updateForm}
-                                value={credentials.message}
-                            />
-                        </div>
                         <div className="form-password-wrapper">
                           <div className="account-input-container">
                               <TextArea
                                   rows={4}
-                                  placeholder="Hobbies, interests, dislikes, etc!"
+                                  placeholder="I can't find my account information - help!"
                                   onChange={updateForm}
                               />
                           </div>
-                            <a className="form-forgot-password" href="#">
-                                Forget Password?
-                            </a>
-                            <Button
-                                shape="round"
-                                type="primary"
-                                htmlType="submit"
-                                loading={loadingState}
-                            >
-                                Log in
-                            </Button>
                         </div>
+                        <Button
+                          shape="round"
+                          type="primary"
+                          htmlType="submit"
+                          loading={loadingState}
+                          >
+                          Send
+                        </Button>
                     </form>
                 </div>
                 <div className="form-account-wrapper">
