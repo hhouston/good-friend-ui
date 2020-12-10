@@ -28,7 +28,6 @@ const AboutUs = () => {
 
                       Sorry, your browser doesn't support embedded videos.
                   </video>
-
                 </div>
             </div>
         </div>
