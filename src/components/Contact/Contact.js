@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import './styles.css'
+import NavBar from '../NavBar'
+import UserNavBar from '../UserNavBar'
+
 import { useHistory } from 'react-router-dom'
-import { Button, Input } from 'antd'
+import { useIsMobile } from '../../hooks/window-resize'
+
+import { Button, Input, Layout } from 'antd'
 import axios from 'axios'
 
+const { Header } = Layout
 const { TextArea } = Input
 
 const formState = {
@@ -12,6 +18,9 @@ const formState = {
 }
 
 const Contact = () => {
+    const isLoggedIn = !!localStorage.getItem('token')
+    const isMobile = useIsMobile()
+
     const history = useHistory()
     const [credentials, updateUserForm] = useState(formState)
     const [formErrors, setFormErrors] = useState(null)
@@ -54,6 +63,14 @@ const Contact = () => {
     }
 
     return (
+      <div className="header-section">
+          <Header style={{  background: 'transparent', textAlign: 'end' }}>
+              {isLoggedIn ? (
+                  <UserNavBar isMobile={isMobile} isHome={false} />
+              ) : (
+                  <NavBar isMobile={isMobile} isHome={false} />
+              )}
+          </Header>
         <div className="login-container">
             <div className="login-wrapper">
                 <div className="login">
@@ -109,6 +126,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
+      </div>
     )
 }
 

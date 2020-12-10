@@ -52,7 +52,7 @@ const Navbar = ({ isMobile, isHome }) => {
                         zIndex: '30',
                         background: 'none'
                     }}
-                    theme="dark"
+                    theme={isHome ? 'dark' : 'light'}
                 >
                     <Menu.Item className={'navbar-item'} key="about">
                         About

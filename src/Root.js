@@ -25,10 +25,6 @@ export const Root = () => {
                 <UserNavBar home={false} />
                 <Switch>
                     <Route path="/dashboard" component={Events} />
-                    <Route path="/about" component={AboutUs} />
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/blog" component={Blog} />
-                    <Route path="/affiliate" component={Affiliate} />
                     <Route path="/account" component={Account} />
                 </Switch>
             </div>
@@ -41,6 +37,10 @@ export const Root = () => {
                 <Route exact path="/home" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Start} />
+                <Route path="/about" component={AboutUs} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/blog" component={Blog} />
+                <Route path="/affiliate" component={Affiliate} />
                 <Route component={SubRoutes} />
             </Switch>
         </Router>

@@ -1,11 +1,28 @@
 import React from 'react'
 import './styles.css'
-import { Typography } from 'antd'
+import NavBar from '../NavBar'
+import UserNavBar from '../UserNavBar'
+
+import { useIsMobile } from '../../hooks/window-resize'
+import { Typography, Layout } from 'antd'
 
 const { Title } = Typography
+const { Header } = Layout
+
 
 const Blog = () => {
+  const isLoggedIn = !!localStorage.getItem('token')
+  const isMobile = useIsMobile()
+
     return (
+      <div className="header-section">
+          <Header style={{  background: 'transparent', textAlign: 'end' }}>
+              {isLoggedIn ? (
+                  <UserNavBar isMobile={isMobile} />
+              ) : (
+                  <NavBar isMobile={isMobile} />
+              )}
+          </Header>
         <div className="blog">
             <div>
                 <Title
@@ -77,6 +94,7 @@ const Blog = () => {
                 </div>
             </div>
         </div>
+      </div>
     )
 }
 
