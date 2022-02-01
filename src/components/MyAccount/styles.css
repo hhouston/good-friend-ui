@@ -92,6 +92,10 @@
     font-size: 14px;
 }
 
+.account-input-container{
+    padding: 0;
+}
+
 @media (max-width: 767px) {
     .account-form {
         flex-wrap: wrap;

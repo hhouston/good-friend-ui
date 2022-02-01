@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import './styles.css'
 import PropTypes from 'prop-types'
@@ -353,6 +354,13 @@ ViewForm.defaultProps = {
 }
 
 const Account = ({ editMode }) => {
+    const history = useHistory();
+    const loggedIn = !!localStorage.getItem('token');
+    if (!loggedIn) {
+        history.push({
+            pathname: '/login',
+        });
+    }
     const userId = localStorage.getItem('userId')
     const [isEditing, setIsEditing] = useState(editMode)
     const [updatedUserInput, setUpdatedUserInput] = useState({})

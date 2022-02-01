@@ -14,7 +14,13 @@ const formState = {
 }
 
 const Login = () => {
-    const history = useHistory()
+    const history = useHistory();
+    const loggedIn = !!localStorage.getItem('token');
+    if (loggedIn) {
+        history.push({
+            pathname: '/dashboard',
+        });
+    }
     const [credentials, updateUserForm] = useState(formState)
     const [formErrors, setFormErrors] = useState(null)
     const [loadingState, setLoadingState] = useState(false)
@@ -65,7 +71,7 @@ const Login = () => {
         <div className="login-container">
             <div className="login-wrapper">
                 <div className="login">
-                    <h3 className="login-greeting">Welcome back</h3>
+                    <a href="/"><h3 className="login-greeting">Welcome back</h3></a>
                     <p className="login-caption">Login or create account</p>
                     <form className="form-wrapper" onSubmit={handleSubmit}>
                         {formErrors && (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import TableContainer from './TableContainer'
 import { Tabs, Button, Modal } from 'antd'
@@ -54,6 +55,13 @@ const GET_FRIENDS = gql`
 `
 
 const Events = () => {
+    const history = useHistory();
+    const loggedIn = !!localStorage.getItem('token');
+    if (!loggedIn) {
+        history.push({
+            pathname: '/login',
+        });
+    }
     const [isEventModalVisible, setIsEventModalVisible] = useState(false)
     const [isFriendModalVisible, setIsFriendModalVisible] = useState(false)
     const userId = localStorage.getItem('userId')
