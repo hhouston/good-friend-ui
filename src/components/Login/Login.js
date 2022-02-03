@@ -3,7 +3,7 @@ import './styles.css'
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
 import { verifyGoogleToken, verifyFacebookToken } from './verify.js'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
 import { Button } from 'antd'
 import axios from 'axios'
@@ -102,9 +102,9 @@ const Login = () => {
                             />
                         </div>
                         <div className="form-password-wrapper">
-                            <a className="form-forgot-password" href="#">
+                            <Link className="form-forgot-password" to="#">
                                 Forget Password?
-                            </a>
+                            </Link>
                             <Button
                                 shape="round"
                                 type="primary"
@@ -118,9 +118,9 @@ const Login = () => {
                 </div>
                 <div className="form-account-wrapper">
                     <span className="">Don't have an account? </span>
-                    <a href="/signup" className="form-register">
+                    <Link to="/signup" className="form-register">
                         Register
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

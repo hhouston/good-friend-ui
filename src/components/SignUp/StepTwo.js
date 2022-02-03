@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import './styles.css'
 
 import { Form, DatePicker, Button, Typography } from 'antd'
@@ -71,9 +72,9 @@ const StepTwo = ({ next }) => {
                     <div class="price-text">
                         $19 <span class="month-span">/mo</span>
                     </div>
-                    <a href="#" onClick={next} className="price-button">
+                    <Link to="#" onClick={next} className="price-button">
                         Select plan
-                    </a>
+                    </Link>
                 </div>
                 <div className="pricing-details">
                     <ul className="pricing-list">
@@ -102,9 +103,9 @@ const StepTwo = ({ next }) => {
                     <div class="price-text">
                         $39 <span class="month-span">/mo</span>
                     </div>
-                    <a href="#" onClick={next} className="price-button">
+                    <Link to="#" onClick={next} className="price-button">
                         Select plan
-                    </a>
+                    </Link>
                 </div>
                 <div className="pricing-details">
                     <ul className="pricing-list">

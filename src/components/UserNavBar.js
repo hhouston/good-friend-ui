@@ -4,7 +4,7 @@ import { MenuOutlined } from '@ant-design/icons'
 import { Menu, Button, Drawer } from 'antd'
 import { PrimaryButton } from './common'
 import BlobImage from '../images/purple-blob.png'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const Navbar = ({ isMobile, isHome }) => {
@@ -33,15 +33,15 @@ const Navbar = ({ isMobile, isHome }) => {
             <div className="navbar-wrapper">
                 <div
                     className="logo-wrapper"
-                    onClick={() => history.push('home')}
                 >
-                    <img
-                        src={require('../images/geometric-heart-logo.png')}
-                        className="logo-image"
-                        alt="thank you logo"
-                    />
-
-                    <span className="logo">THANK YOU.</span>
+                    <Link to="/">
+                        <img
+                            src={require('../images/geometric-heart-logo.png')}
+                            className="logo-image"
+                            alt="thank you logo"
+                        />
+                        <span className="logo">THANK YOU.</span>
+                    </Link>
                 </div>
                 <Menu
                     className="navbar"
@@ -83,25 +83,25 @@ const Navbar = ({ isMobile, isHome }) => {
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="about"
                     >
-                        <a href="/about">About</a>
+                        <Link to="/about">About</Link>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="contact"
                     >
-                        <a href="/contact">Contact</a>
+                        <Link to="/contact">Contact</Link>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="blog"
                     >
-                        <a href="/blog">Blog</a>
+                        <Link to="/blog">Blog</Link>
                     </Menu.Item>
                     <Menu.Item
                         className={isHome ? 'navbar-item-light' : 'navbar-item'}
                         key="account"
                     >
-                        <a href="/account">
+                        <Link to="/account">
                             <img
                                 className="user-navbar-icon"
                                 style={{
@@ -112,7 +112,7 @@ const Navbar = ({ isMobile, isHome }) => {
                                 src={require('../images/user_profile.png')}
                             ></img>
                             Account
-                        </a>
+                        </Link>
                     </Menu.Item>
                 </Menu>
             </div>
@@ -121,14 +121,16 @@ const Navbar = ({ isMobile, isHome }) => {
     return (
         <div className="mobile-header">
             <div className="mobile-logo-wrapper">
-                <img
-                    src={require('../images/geometric-heart-logo.png')}
-                    className="logo-image"
-                    alt="thank you logo"
-                />
-                <span className={visible ? 'logo logo-open' : 'logo'}>
-                    THANK YOU
-                </span>
+                <Link to="/">
+                    <img
+                        src={require('../images/geometric-heart-logo.png')}
+                        className="logo-image"
+                        alt="thank you logo"
+                    />
+                    <span className={visible ? 'logo logo-open' : 'logo'}>
+                        THANK YOU
+                    </span>
+                </Link>
             </div>
             <MenuOutlined
                 onClick={showDrawer}
@@ -155,10 +157,10 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/blog">Contact</a>
-                <a href="/account">Account</a>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/blog">Contact</Link>
+                <Link to="/account">Account</Link>
                 <PrimaryButton
                     onClick={() => history.push('dashboard')}
                     type="secondary"

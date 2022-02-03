@@ -2,6 +2,7 @@ import React from 'react'
 import './styles.css'
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     return (
@@ -50,9 +51,9 @@ const Login = () => {
                             />
                         </div>
                         <div className="form-password-wrapper">
-                            <a className="form-forgot-password" href="#">
+                            <Link className="form-forgot-password" to="#">
                                 Forget Password?
-                            </a>
+                            </Link>
                             <button className="form-button" type="button">
                                 Login
                             </button>
@@ -61,9 +62,9 @@ const Login = () => {
                 </div>
                 <div className="form-account-wrapper">
                     <span className="">Already have an account </span>
-                    <a href="/login" className="form-register">
+                    <Link to="/login" className="form-register">
                         Log in
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
