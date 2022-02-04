@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { map, pipe, pick } from 'ramda'
 import StepThree from './StepThree'
 import StepLovedOne from './StepLovedOne'
@@ -118,6 +119,16 @@ const StepEvent = ({
                 >
                     Next
                 </Button>
+                <Link to="/dashboard">
+                    <Button
+                        shape="round"
+                        type="primary"
+                        size="large"
+                        className="bundle-card-button"
+                    >
+                        Skip
+                    </Button>
+                </Link>
             </div>
         </div>
     )

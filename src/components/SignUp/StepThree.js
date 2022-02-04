@@ -19,6 +19,7 @@ const StepThree = ({
     signUpForm,
     form
 }) => {
+    const [noOfEvents, setNoOfEvents] = useState([Math.random()]);
     const [selected, setSelected] = useState(null)
 
     const dateFormat = 'MM/DD/YYYY'
@@ -39,24 +40,43 @@ const StepThree = ({
         }
     }
 
-    const handleDateChange = (e) => {
+    const handleDateChange = (e, i) => {
+        signUpForm.input[i] = {
+            ...signUpForm.input[i],
+            date: e.valueOf().toString()
+        }
         updateSignUpForm({
+            ...signUpForm,
+        })
+        /* updateSignUpForm({
             ...signUpForm,
             input: {
                 ...signUpForm.input,
                 date: e.valueOf().toString()
             }
-        })
+        }) */
     }
 
     const updateEntry = (e) => {
-        updateSignUpForm({
-            ...signUpForm,
-            input: {
-                ...signUpForm.input,
+        console.log('e', e.target.id, signUpForm);
+        if (e.target.name === 'title' || e.target.name === 'date') {
+            signUpForm.input[e.target.id] = {
+                ...signUpForm.input[e.target.id],
                 [e.target.name]: e.target.value
             }
-        })
+            updateSignUpForm({
+                ...signUpForm,
+            })
+        }
+        else {
+            updateSignUpForm({
+                ...signUpForm,
+                input: {
+                    ...signUpForm.input,
+                    [e.target.name]: e.target.value
+                }
+            })
+        }
     }
 
     const onValuesChange = (props) => {
@@ -68,6 +88,20 @@ const StepThree = ({
                 [formKey]: formValue
             }
         })
+    }
+
+    const addMoreEvent = () => {
+        signUpForm.input[noOfEvents.length] = {
+            userId: null,
+            type: 'OTHER',
+            date: moment.now().valueOf().toString(),
+            status: 'NEW',
+            title: ''
+        }
+        updateSignUpForm({
+            ...signUpForm,
+        })
+        setNoOfEvents([...noOfEvents, Math.random()]);
     }
 
     const cardSize = isMobile ? 'small' : 'default'
@@ -94,43 +128,51 @@ const StepThree = ({
                 onValuesChange={onValuesChange}
                 style={{ display: 'inline-flex', flexWrap: 'wrap' }}
             >
-                <div className="account-input-container">
-                    <Form.Item
-                        label={
-                            <p className="account-form-label-required">
-                                Name of event
-                            </p>
-                        }
-                        rules={[{ required: true }]}
-                    >
-                        <input
-                            className="form-input"
-                            type="text"
-                            name="title"
-                            onChange={updateEntry}
-                            value={signUpForm.input.title}
-                        />
-                    </Form.Item>
-                </div>
-                <div className="account-input-container">
-                    <Form.Item
-                        name="date"
-                        label={
-                            <p className="account-form-label-required">
-                                Date of event
-                            </p>
-                        }
-                    >
-                        <DatePicker
-                            defaultValue={moment()}
-                            format={dateFormat}
-                            allowClear={false}
-                            size="large"
-                            style={{ width: '300px' }}
-                            onChange={handleDateChange}
-                        />
-                    </Form.Item>
-                </div>
+                {noOfEvents.map((i, key) => {
+                    console.log(signUpForm.input[key].date);
+                    return <>
+                        <div className="account-input-container">
+                            <Form.Item
+                                label={
+                                    <p className="account-form-label-required">
+                                        Name of event
+                                    </p>
+                                }
+                                rules={[{ required: true }]}
+                            >
+                                <input
+                                    className="form-input"
+                                    type="text"
+                                    name="title"
+                                    id={key}
+                                    onChange={updateEntry}
+                                    value={signUpForm.input[key].title}
+                                />
+                            </Form.Item>
+                        </div>
+                        <div className="account-input-container">
+                            <Form.Item
+                                name="date"
+                                label={
+                                    <p className="account-form-label-required">
+                                        Date of event
+                                    </p>
+                                }
+                            >
+                                <DatePicker
+                                    defaultValue={moment()}
+                                    format={dateFormat}
+                                    allowClear={false}
+                                    size="large"
+                                    style={{ width: '300px' }}
+                                    value={signUpForm.input[key].date}
+                                    onChange={(e) => handleDateChange(e, key)}
+                                />
+                            </Form.Item>
+                        </div>
+                    </>
+                })}
+                <Button onClick={addMoreEvent}>Add More Event</Button>
             </Form>
             <div className="cards-wrapper">
                 <EventCard

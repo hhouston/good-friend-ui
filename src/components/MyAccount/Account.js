@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import './styles.css'
 import PropTypes from 'prop-types'
@@ -184,6 +185,7 @@ const ViewForm = ({
     changePassword,
     setChangePassword
 }) => {
+    const history = useHistory()
     const [passwordForm, updatePasswordForm] = useState({
         newPassword: '',
         newPasswordConfirm: ''
@@ -222,9 +224,9 @@ const ViewForm = ({
 
     const onClickLogout = () => {
       localStorage.clear()
-      window.location.href = '/';
+    //   window.location.href = '/';
+      history.push('/')
       return false;
-      // history.push('/')
     }
 
     return (
