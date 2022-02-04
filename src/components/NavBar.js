@@ -4,7 +4,7 @@ import { MenuOutlined } from '@ant-design/icons'
 import { Menu, Button, Drawer } from 'antd'
 import { PrimaryButton } from './common'
 import BlobImage from '../images/purple-blob.png'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const Navbar = ({ isMobile, isHome }) => {
@@ -55,13 +55,13 @@ const Navbar = ({ isMobile, isHome }) => {
                     theme={isHome ? 'dark' : 'light'}
                 >
                     <Menu.Item className={'navbar-item'} key="about">
-                        <a href="/about">About</a>
+                        <Link to="/about">About</Link>
                     </Menu.Item>
                     <Menu.Item className={'navbar-item'} key="contact">
-                        <a href="/contact">Contact</a>
+                        <Link to="/contact">Contact</Link>
                     </Menu.Item>
                     <Menu.Item className={'navbar-item'} key="blog">
-                        <a href="/blog">Blog</a>
+                        <Link to="/blog">Blog</Link>
                     </Menu.Item>
                     {isHome ? (
                         <Button
@@ -128,9 +128,9 @@ const Navbar = ({ isMobile, isHome }) => {
                     className="mobile-drawer-header-img"
                     alt=""
                 />
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/blog">Blog</a>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/blog">Blog</Link>
                 <PrimaryButton
                     onClick={() => history.push('login')}
                     type="secondary"
