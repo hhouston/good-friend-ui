@@ -155,7 +155,7 @@ const SignUp = () => {
     }
 
     const classes = useStyles()
-    const [activeStep, setActiveStep] = React.useState(1)
+    const [activeStep, setActiveStep] = React.useState(0)
     const steps = getSteps()
 
     return (

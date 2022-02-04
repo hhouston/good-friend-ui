@@ -126,7 +126,7 @@ const StepEvent = ({
                         size="large"
                         className="bundle-card-button"
                     >
-                        Skip
+                        Skip for now
                     </Button>
                 </Link>
             </div>

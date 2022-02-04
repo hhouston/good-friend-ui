@@ -116,6 +116,14 @@ const Login = () => {
                         </div>
                     </form>
                 </div>
+                <FacebookLogin
+                    appId="1066802667123134"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    onClick={() => console.log('clicked')}
+                    callback={() => console.log('callback')}
+                    cssClass="my-facebook-button-class"
+                />
                 <div className="form-account-wrapper">
                     <span className="">Don't have an account? </span>
                     <a href="/signup" className="form-register">
