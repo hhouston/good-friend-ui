@@ -21,8 +21,9 @@ class EnsureLoggedInContainer extends React.Component {
                 isLoggedIn: new Date().getTime() / 1000 < tokenExp
             })
         } else {
+            localStorage.clear()
             this.setState({ isLoggedIn: false })
-            this.props.history.push('/')
+            this.props.history.push('/login')
         }
         if (!isLoggedIn) {
             this.props.history.push('/')
