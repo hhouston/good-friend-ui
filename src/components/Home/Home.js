@@ -180,23 +180,25 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="subheader-separator">
-                <Button
-                    type="secondary"
-                    shape="circle"
-                    size="large"
-                    onClick={() => scrollToRef(contentRef)}
-                    ghost
-                    style={{
-                        boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                        color: '#2b137d',
-                        height: '60px',
-                        width: '60px'
-                    }}
-                >
-                    <ArrowDownOutlined style={{ fontSize: '24px' }} />
-                </Button>
-            </div>
+            <LazyLoad>
+                <div className="subheader-separator">
+                    <Button
+                        type="secondary"
+                        shape="circle"
+                        size="large"
+                        onClick={() => scrollToRef(contentRef)}
+                        ghost
+                        style={{
+                            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
+                            color: '#2b137d',
+                            height: '60px',
+                            width: '60px'
+                        }}
+                    >
+                        <ArrowDownOutlined style={{ fontSize: '24px' }} />
+                    </Button>
+                </div>
+            </LazyLoad>
 
             <PersonalGifts titleSize={titleTwoSize} contentRef={contentRef} />
             <LazyLoad>
