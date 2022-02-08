@@ -243,6 +243,11 @@ const SetupAccountSetup = ({ handleNext, updateSignUpForm }) => {
             >
                 Next
             </Button>
+            <span className="">Have an account?
+                <a href="/login" className="form-register">
+                    Login
+                </a>
+            </span>
         </div>
     )
 }

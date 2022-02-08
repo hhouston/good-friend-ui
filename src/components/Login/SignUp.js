@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.css'
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login'
 
 const Login = () => {
+    const history = useHistory();
+    const loggedIn = !!localStorage.getItem('token');
+    if (loggedIn) {
+        history.push({
+            pathname: '/dashboard',
+        });
+    }
     return (
         <div className="login-container">
             <div className="login-wrapper">

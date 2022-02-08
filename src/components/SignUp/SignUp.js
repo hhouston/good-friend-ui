@@ -11,6 +11,7 @@ import StepEvent from './StepEvent'
 import Check from '@material-ui/icons/Check'
 
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
@@ -65,6 +66,15 @@ function StyledStepIcon(props) {
 }
 
 const SignUp = () => {
+    const history = useHistory();
+    const loggedIn = !!localStorage.getItem('token');
+    React.useEffect(() => {
+        if (loggedIn) {
+            history.push({
+                pathname: '/dashboard',
+            });
+        }
+    }, [])
     const isMobile = useIsMobile()
     const [signUpForm, updateSignUpForm] = useState({
         input: {

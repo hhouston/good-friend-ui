@@ -63,70 +63,70 @@ const Contact = () => {
     }
 
     return (
-      <div className="header-section">
-          <Header style={{  background: 'transparent', textAlign: 'end' }}>
-              {isLoggedIn ? (
-                  <UserNavBar isMobile={isMobile} isHome={false} />
-              ) : (
-                  <NavBar isMobile={isMobile} isHome={false} />
-              )}
-          </Header>
-        <div className="login-container">
-            <div className="login-wrapper">
-                <div className="login">
-                    <h3 className="login-greeting">Have a problem or a question ?</h3>
-                    <p className="login-caption">We would love to here it! Leave details below.</p>
-                    <form className="form-wrapper" style={{paddingTop: '0'}} onSubmit={handleSubmit}>
-                        {formErrors && (
-                            <p
-                                style={{
-                                    color: '#f56565',
-                                    fontSize: '14px',
-                                    margin: '0'
-                                }}
+        <div className="header-section">
+            <Header style={{ background: 'transparent', textAlign: 'end' }}>
+                {isLoggedIn ? (
+                    <UserNavBar isMobile={isMobile} isHome={false} />
+                ) : (
+                    <NavBar isMobile={isMobile} isHome={false} />
+                )}
+            </Header>
+            <div className="login-container" style={{width: 'auto'}}>
+                <div className="login-wrapper">
+                    <div className="login">
+                        <h3 className="login-greeting">Have a problem or a question ?</h3>
+                        <p className="login-caption">We would love to here it! Leave details below.</p>
+                        <form className="form-wrapper" style={{ paddingTop: '0' }} onSubmit={handleSubmit}>
+                            {formErrors && (
+                                <p
+                                    style={{
+                                        color: '#f56565',
+                                        fontSize: '14px',
+                                        margin: '0'
+                                    }}
+                                >
+                                    {formErrors}
+                                </p>
+                            )}
+                            <div className="form">
+                                <input
+                                    className="form-input"
+                                    type="email"
+                                    placeholder="Email Address"
+                                    aria-label="Email Address"
+                                    name="email"
+                                    onChange={updateForm}
+                                    value={credentials.email}
+                                />
+                            </div>
+                            <div className="form-password-wrapper">
+                                <div className="account-input-container">
+                                    <TextArea
+                                        rows={4}
+                                        placeholder="I can't find my account information - help!"
+                                        onChange={updateForm}
+                                    />
+                                </div>
+                            </div>
+                            <Button
+                                shape="round"
+                                type="primary"
+                                htmlType="submit"
+                                loading={loadingState}
                             >
-                                {formErrors}
-                            </p>
-                        )}
-                        <div className="form">
-                            <input
-                                className="form-input"
-                                type="email"
-                                placeholder="Email Address"
-                                aria-label="Email Address"
-                                name="email"
-                                onChange={updateForm}
-                                value={credentials.email}
-                            />
-                        </div>
-                        <div className="form-password-wrapper">
-                          <div className="account-input-container">
-                              <TextArea
-                                  rows={4}
-                                  placeholder="I can't find my account information - help!"
-                                  onChange={updateForm}
-                              />
-                          </div>
-                        </div>
-                        <Button
-                          shape="round"
-                          type="primary"
-                          htmlType="submit"
-                          loading={loadingState}
-                          >
-                          Send
-                        </Button>
-                    </form>
-                </div>
-                <div className="form-account-wrapper">
-                    <span className="">Don't have an account? </span>
-                    <a href="/signup" className="form-register">
-                        Register
-                    </a>
+                                Send
+                            </Button>
+                        </form>
+                    </div>
+                    <div className="form-account-wrapper">
+                        <span className="">Don't have an account? </span>
+                        <a href="/signup" className="form-register">
+                            Register
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     )
 }
 
