@@ -67,8 +67,17 @@ const StepEvent = ({
     const handleSubmit = async () => {
         form.validateFields().then(() => {
             const { input, friend } = signUpForm
+            let inputs = [];
+            for (let x in input) {
+                if (x !== 'userId' && x !== 'type') {
+                    let item = input[x];
+                    item.userId = input.userId;
+                    if (input.type) item.type = input.type
+                    inputs.push(item)
+                }
+            }
             addEvent({
-                variables: { input, friends: [friend] }
+                variables: { input: inputs, friends: [friend] }
             }).then(() => {
                 handleNext()
             })

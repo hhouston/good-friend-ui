@@ -15,7 +15,7 @@ export const ADD_EVENT = gql`
 `
 
 export const ADD_EVENT_WITH_FRIEND = gql`
-    mutation addEvent($input: EventInput!, $friends: [FriendInput]) {
+    mutation addEvent($input: [EventInput!]!, $friends: [FriendInput]) {
         addEvent(event: $input) {
             id
             createFriends(friends: $friends) {
