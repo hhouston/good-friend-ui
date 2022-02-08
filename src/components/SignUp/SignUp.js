@@ -68,11 +68,13 @@ function StyledStepIcon(props) {
 const SignUp = () => {
     const history = useHistory();
     const loggedIn = !!localStorage.getItem('token');
-    if (loggedIn) {
-        history.push({
-            pathname: '/dashboard',
-        });
-    }
+    React.useEffect(() => {
+        if (loggedIn) {
+            history.push({
+                pathname: '/dashboard',
+            });
+        }
+    }, [])
     const isMobile = useIsMobile()
     const [signUpForm, updateSignUpForm] = useState({
         input: {
