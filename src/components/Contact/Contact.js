@@ -3,7 +3,7 @@ import './styles.css'
 import NavBar from '../NavBar'
 import UserNavBar from '../UserNavBar'
 
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useIsMobile } from '../../hooks/window-resize'
 
 import { Button, Input, Layout } from 'antd'
@@ -120,9 +120,9 @@ const Contact = () => {
                 </div>
                 <div className="form-account-wrapper">
                     <span className="">Don't have an account? </span>
-                    <a href="/signup" className="form-register">
+                    <Link to="/signup" className="form-register">
                         Register
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

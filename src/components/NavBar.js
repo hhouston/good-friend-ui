@@ -34,15 +34,14 @@ const Navbar = ({ isMobile, isHome }) => {
         return (
             <div className="navbar-wrapper">
                 <div className="logo-wrapper">
-                    <a href="/home">
-                      <img
-                        src={require('../images/geometric-heart-logo.png')}
-                        className="logo-image"
-                        alt="thank you logo"
+                    <Link to="/">
+                        <img
+                            src={require('../images/geometric-heart-logo.png')}
+                            className="logo-image"
+                            alt="thank you logo"
                         />
-                    </a>
-
-                    <span className="logo">THANK YOU.</span>
+                        <span className="logo">THANK YOU.</span>
+                    </Link>
                 </div>
                 <Menu
                     className="navbar"
@@ -96,14 +95,16 @@ const Navbar = ({ isMobile, isHome }) => {
     return (
         <div className="mobile-header">
             <div className="mobile-logo-wrapper">
-                <img
-                    src={require('../images/geometric-heart-logo.png')}
-                    className="logo-image"
-                    alt="thank you logo"
-                />
-                <span className={visible ? 'logo logo-open' : 'logo'}>
-                    THANK YOU
-                </span>
+                <Link to="/">
+                    <img
+                        src={require('../images/geometric-heart-logo.png')}
+                        className="logo-image"
+                        alt="thank you logo"
+                    />
+                    <span className={visible ? 'logo logo-open' : 'logo'}>
+                        THANK YOU
+                    </span>
+                </Link>
             </div>
             <MenuOutlined
                 onClick={showDrawer}

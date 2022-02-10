@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Typography, Button } from 'antd'
 import './styles.css'
 
@@ -76,9 +77,9 @@ const PricingCards = () => {
                                 <span>Lorem ipsum dolor sit amet</span>
                             </li>
                         </ul>
-                        <a href="#" className="price-button">
+                        <Link to="#" className="price-button">
                             Select plan
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -112,9 +113,9 @@ const PricingCards = () => {
                                 <span>Lorem ipsum dolor sit amet</span>
                             </li>
                         </ul>
-                        <a href="#" className="price-button">
+                        <Link to="#" className="price-button">
                             Select plan
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -146,9 +147,9 @@ const PricingCards = () => {
                                 <span>Lorem ipsum dolor sit amet</span>
                             </li>
                         </ul>
-                        <a href="#" className="price-button button-free">
+                        <Link to="#" className="price-button button-free">
                             Select plan
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

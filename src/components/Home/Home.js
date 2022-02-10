@@ -20,6 +20,7 @@ import { TYPED_STRINGS } from '../../utils/constants'
 import { useHistory } from 'react-router-dom'
 
 import { useIsMobile, useIsTablet } from '../../hooks/window-resize'
+import LazyLoad from 'react-lazyload';
 
 const { Header } = Layout
 
@@ -63,7 +64,7 @@ const Home = () => {
     })
 
     const applyNowClick = () => {
-      history.push('/signup')
+        history.push('/signup')
     }
 
     const contentRef = useRef(null)
@@ -179,37 +180,47 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="subheader-separator">
-                <Button
-                    type="secondary"
-                    shape="circle"
-                    size="large"
-                    onClick={() => scrollToRef(contentRef)}
-                    ghost
-                    style={{
-                        boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
-                        color: '#2b137d',
-                        height: '60px',
-                        width: '60px'
-                    }}
-                >
-                    <ArrowDownOutlined style={{ fontSize: '24px' }} />
-                </Button>
-            </div>
+            <LazyLoad>
+                <div className="subheader-separator">
+                    <Button
+                        type="secondary"
+                        shape="circle"
+                        size="large"
+                        onClick={() => scrollToRef(contentRef)}
+                        ghost
+                        style={{
+                            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
+                            color: '#2b137d',
+                            height: '60px',
+                            width: '60px'
+                        }}
+                    >
+                        <ArrowDownOutlined style={{ fontSize: '24px' }} />
+                    </Button>
+                </div>
+            </LazyLoad>
 
             <PersonalGifts titleSize={titleTwoSize} contentRef={contentRef} />
-            <HowItWorks titleSize={titleTwoSize} />
-            <Experts
-              titleSize={titleTwoSize}
-              isMobile={isMobile}
-              isTablet={isTablet}
-              />
-            <WhyWeAre
-                titleSize={titleTwoSize}
-                isMobile={isMobile}
-                isTablet={isTablet}
-            />
-            <FeaturedItem titleSize={titleTwoSize} />
+            <LazyLoad>
+                <HowItWorks titleSize={titleTwoSize} />
+            </LazyLoad>
+            <LazyLoad>
+                <Experts
+                    titleSize={titleTwoSize}
+                    isMobile={isMobile}
+                    isTablet={isTablet}
+                />
+            </LazyLoad>
+            <LazyLoad>
+                <WhyWeAre
+                    titleSize={titleTwoSize}
+                    isMobile={isMobile}
+                    isTablet={isTablet}
+                />
+            </LazyLoad>
+            <LazyLoad>
+                <FeaturedItem titleSize={titleTwoSize} />
+            </LazyLoad>
             <Footer titleSize={titleTwoSize} />
         </div>
     )
