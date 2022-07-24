@@ -1,8 +1,6 @@
 import React from 'react'
-import NavBar from './components/NavBar'
 import UserNavBar from './components/UserNavBar'
 import Home from './components/Home'
-// import Start from './components/SignUp'
 import Events from './components/Events'
 import { Login, SignUp } from './components/Login'
 import { Contact } from './components/Contact'
@@ -13,13 +11,20 @@ import { Affiliate } from './components/Affiliate/'
 import { Blog } from './components/Blog/'
 // import { Provider } from 'react-redux'
 // think about using apolo-client instead of apollo-boost
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { Switch, Route } from 'react-router'
 import { connect } from 'react-redux'
 
 export const Root = () => {
-    const loggedIn = !!localStorage.getItem('token')
     const SubRoutes = () => {
+        const expiresAt = localStorage.getItem('expiresAt')
+        if (!expiresAt || expiresAt - Date.now() / 1000 <= 0) {
+            localStorage.removeItem('userId')
+            localStorage.removeItem('token')
+            localStorage.removeItem('expiresAt')
+            return <Redirect to="/login" />
+        }
+
         return (
             <div>
                 <UserNavBar home={false} />
