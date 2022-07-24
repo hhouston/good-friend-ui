@@ -310,7 +310,6 @@ const TableContainer = ({ data }) => {
         return <AllEventsTable data={props} />
     }
 
-    console.log(data)
     return (
         <>
             <Table

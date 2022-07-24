@@ -69,15 +69,21 @@ const EventFormModal = ({
         }
     }
 
+    const clearModal = () => {
+        updateFormData(initialState)
+        setStep(0)
+        setIsModalVisible(false)
+    }
+
     const handleOk = async () => {
         setConfirmLoading(true)
         await handleSubmit()
-        setIsModalVisible(false)
         setConfirmLoading(false)
+        clearModal()
     }
 
     const handleCancel = () => {
-        setIsModalVisible(false)
+        clearModal()
     }
 
     const modalSteps = {
