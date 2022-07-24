@@ -43,12 +43,18 @@ const ChooseFriendFormModal = ({
 
     const handlePersonClick = (val) => {
         if (formData.recipientIds.includes(val)) {
-            return
+            updateFormData((prevState) => ({
+                ...prevState,
+                recipientIds: prevState.recipientIds.filter(
+                    (recipientId) => recipientId !== val
+                )
+            }))
+        } else {
+            updateFormData((prevState) => ({
+                ...prevState,
+                recipientIds: [...prevState.recipientIds, val]
+            }))
         }
-        updateFormData((prevState) => ({
-            ...prevState,
-            recipientIds: [...prevState.recipientIds, val]
-        }))
     }
 
     const nextNextStep = () => {

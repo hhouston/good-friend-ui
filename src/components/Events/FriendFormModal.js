@@ -64,6 +64,7 @@ const FriendFormModal = ({
     }
 
     const handleCancel = () => {
+        updateFormData(initialState)
         setIsModalVisible(false)
     }
 
