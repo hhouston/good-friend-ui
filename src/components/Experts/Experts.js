@@ -1,6 +1,9 @@
 import React from 'react'
 import { Typography } from 'antd'
 import { PrimaryButton } from '../common'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { curators } from './curatorData'
 
@@ -133,6 +136,33 @@ const Expert = ({
     )
 }
 
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    autoplay: true,
+    arrows: true,
+    autoplaySpeed: 5000,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        }
+    ]
+};
+
 const Experts = ({ titleSize, isTablet, isMobile }) => {
     return (
         <div>
@@ -145,11 +175,18 @@ const Experts = ({ titleSize, isTablet, isMobile }) => {
                 >
                     Who We Are
                 </Title>
-                <div className="curator-cards">
+                <Slider {...settings}>
+                    {curators.map((curator, i) => (
+                        <div>
+                            <Expert {...curator} />
+                        </div>
+                    ))}
+                </Slider>
+                {/* <div className="curator-cards">
                     {curators.map((curator, i) => (
                         <Expert {...curator} />
                     ))}
-                </div>
+                </div> */}
             </div>
         </div>
     )
