@@ -67,13 +67,13 @@ function StyledStepIcon(props) {
 const SignUp = () => {
     const isMobile = useIsMobile()
     const [signUpForm, updateSignUpForm] = useState({
-        input: {
+        input: [{
             userId: null,
             type: 'OTHER',
             date: moment.now().valueOf().toString(),
             status: 'NEW',
             title: ''
-        },
+        }],
         friend: {
             name: '',
             age: null,

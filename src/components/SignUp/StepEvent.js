@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { map, pipe, pick } from 'ramda'
 import StepThree from './StepThree'
 import StepLovedOne from './StepLovedOne'
@@ -66,8 +67,17 @@ const StepEvent = ({
     const handleSubmit = async () => {
         form.validateFields().then(() => {
             const { input, friend } = signUpForm
+            let inputs = []; 
+            for (let x in input) {
+                if (x !== 'userId' && x !== 'type') {
+                    let item = input[x];
+                    item.userId = input.userId;
+                    if (input.type) item.type = input.type
+                    inputs.push(item)
+                }
+            }
             addEvent({
-                variables: { input, friends: [friend] }
+                variables: { input: inputs, friends: [friend] }
             }).then(() => {
                 handleNext()
             })
@@ -118,6 +128,16 @@ const StepEvent = ({
                 >
                     Next
                 </Button>
+                <Link to="/dashboard">
+                    <Button
+                        shape="round"
+                        type="primary"
+                        size="large"
+                        className="bundle-card-button"
+                    >
+                        Skip for now
+                    </Button>
+                </Link>
             </div>
         </div>
     )

@@ -26,22 +26,34 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = async (e) => {
-        const { email, password } = credentials
-        e.preventDefault()
+    const handleSubmit = async (type = "login", response = {}) => {
+        // e.preventDefault()
         setLoadingState(true)
-        const backendUrl =
-            process.env.NODE_ENV == 'production'
-                ? 'https://api.thankyougift.io/login'
-                : 'http://localhost:9000/login'
+        let requestData, backendUrl;
+        if (type === 'facebook') {
+            requestData = {
+                userID: response.userID,
+                accessToken: response.accessToken
+            }
+            backendUrl =
+                process.env.NODE_ENV == 'production'
+                    ? 'https://api.thankyougift.io/facebook-login'
+                    : 'http://localhost:9000/facebook-login'
+        }
+        else {
+            requestData = {
+                email: credentials.email,
+                password: credentials.password,
+                type: 'email'
+            }
+            backendUrl =
+                process.env.NODE_ENV == 'production'
+                    ? 'https://api.thankyougift.io/login'
+                    : 'http://localhost:9000/login'
+        }
 
         axios
-            .post(backendUrl, {
-                // .post('http://localhost:9000/login', {
-                email,
-                password,
-                type: 'email'
-            })
+            .post(backendUrl, requestData)
             .then(
                 ({ data }) => {
                     if (data.error) {
@@ -67,7 +79,7 @@ const Login = () => {
                 <div className="login">
                     <h3 className="login-greeting">Welcome back</h3>
                     <p className="login-caption">Login or create account</p>
-                    <form className="form-wrapper" onSubmit={handleSubmit}>
+                    <form className="form-wrapper" >
                         {formErrors && (
                             <p
                                 style={{
@@ -108,14 +120,23 @@ const Login = () => {
                             <Button
                                 shape="round"
                                 type="primary"
-                                htmlType="submit"
+                                // htmlType="submit"
                                 loading={loadingState}
+                                onClick={handleSubmit}
                             >
                                 Log in
                             </Button>
                         </div>
                     </form>
                 </div>
+                <FacebookLogin
+                    appId="2177431552305726"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    onClick={() => console.log('clicked')}
+                    callback={(response) => { console.log('callback'); handleSubmit("facebook", response) }}
+                    cssClass="my-facebook-button-class"
+                />
                 <div className="form-account-wrapper">
                     <span className="">Don't have an account? </span>
                     <a href="/signup" className="form-register">
