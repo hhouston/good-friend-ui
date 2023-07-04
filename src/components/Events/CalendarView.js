@@ -8,7 +8,7 @@ const CalendarView = ({ data }) => {
 
         data.getEventsByUserId.map((event) => {
             if (moment(Number(event.date)).isSame(value, 'day')) {
-                listData = event.title
+                listData.push(event.title)
             }
         })
         return listData || []
