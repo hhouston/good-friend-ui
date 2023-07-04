@@ -4,11 +4,11 @@ import moment from 'moment'
 
 const CalendarView = ({ data }) => {
     function getListData(value) {
-        let listData
+        let listData = []
 
         data.getEventsByUserId.map((event) => {
             if (moment(Number(event.date)).isSame(value, 'day')) {
-                listData = event.title
+                listData.push(event.title)
             }
         })
         return listData || []
